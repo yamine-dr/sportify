@@ -21,7 +21,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
                         <a class="nav-link" href="#">Inscription/Connexion</a>
                         <a class="nav-link" href="#">Ateliers</a>
-                        <!-- <a class="nav-link" href="#">Contacts</a> -->
+                        <a class="nav-link" href="#">Contacts</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,23 @@
     </header>
 
     <main>
+        <section id="hero-section">
+            <div class="hero-content">
+                <h1>Le sport,</br> comme vous l'aimez!</h1>
+                <div>
+                    <button class="hero-btn">
+                        Inscription
+                    </button>
+                    <button class="hero-btn">
+                        Connexion
+                    </button>
+                </div>
+            </div>
 
+            <div id="hero-img-credit">
+                <p>Picture by <a href="https://unsplash.com/" target="_blank">someone</a>
+            </div>
+        </section>
     </main>
 
     <script src="styles/bootstrap.js"></script>
