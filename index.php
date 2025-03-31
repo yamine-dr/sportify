@@ -21,7 +21,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
                         <a class="nav-link" href="#">Inscription/Connexion</a>
                         <a class="nav-link" href="#">Ateliers</a>
-                        <a class="nav-link" href="#">Contacts</a>
+                        <!-- <a class="nav-link" href="#">Contacts</a> -->
                     </div>
                 </div>
             </div>
