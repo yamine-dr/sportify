@@ -29,28 +29,7 @@
     </header>
 
     <main>
-        <div id="heroSection" class="container-fluid">
-            <video autoplay="" id="heroVideo" loop="" muted="" poster="assets/hero-video-poster.jpg">
-                <source src="assets/hero-video.mp4" type="video/mp4" />
-                <!-- Video downloaded on [Coverr](https://coverr.co) -->
-            </video>
-            <img id="heroMobliePoster" class="poster img-fluid mx-auto d-block d-sm-none" alt="poster image mobile" src="assets/hero-video-poster.jpg" />
-            <div class="d-flex">
-                <div class="container d-flex flex-row">
-                    <div class="row">
-                        <div class="col-lg-12 d-flex flex-column justify-content-center item text-primary py-md-5 text-container">
-                            <h1 class="display-4 mb-0 fw-bold">
-                                Le sport,
-                                <br>comme vous l'aimez.
-                            </h1>
-                            <p class="lead my-4 fw-semibold">
-                                Chez Sportify, les cours sont ouvert à tout le monde.
-                            </p>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
+
     </main>
 
     <script src="styles/bootstrap.js"></script>
