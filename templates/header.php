@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sportify</title>
-    <link rel="stylesheet" href="styles/bootstrap.css">
-    <link rel="stylesheet" href="styles/styles.css">
-</head>
-<header>
+<header>  
         <nav id="nav" class="navbar navbar-expand-md bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Sportify</a>
@@ -25,7 +16,4 @@
                 </div>
             </div>
         </nav>
-        <script src="styles/bootstrap.js"></script>
 </header>
-</html>
-

@@ -19,7 +19,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
-                        <a class="nav-link" href="#">Inscription/Connexion</a>
+                        <a class="nav-link" href="templates/portail.php">Inscription/Connexion</a>
                         <a class="nav-link" href="#">Ateliers</a>
                         <a class="nav-link" href="#">Contacts</a>
                     </div>
