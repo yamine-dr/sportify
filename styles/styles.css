@@ -50,6 +50,13 @@ h1 {
     right: 10px;
 }
 
+#about-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 @media (max-width: 1090px) {
     h1 {
         font-size: 40px;
@@ -64,6 +71,7 @@ h1 {
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
     #hero-btn {
         text-align: center;
     }

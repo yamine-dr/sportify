@@ -30,7 +30,7 @@
 
     <main>
         <section id="hero-section">
-            <div class="hero-content">
+            <div class="hero-content container">
                 <h1>Le sport,</br> comme vous l'aimez!</h1>
                 <div>
                     <button class="hero-btn">
@@ -44,6 +44,26 @@
 
             <div id="hero-img-credit">
                 <p>Picture by <a href="https://unsplash.com/" target="_blank">someone</a>
+            </div>
+        </section>
+
+        <section id="about-section" class="container d-md-flex">
+            <div id="about-images" class="row row-cols-2 border border-4 border-danger">
+                    <div class="col">
+                        <img src="assets/gym-img1.jpg" alt="Etage de la salle de sport" id="about-img1" class="img-fluid w-25">
+                    </div>
+                    <div class="col">
+                        <img src="assets/gym-img1.jpg" alt="Etage de la salle de sport" id="about-img1" class="img-fluid w-25">
+                    </div>
+                    <div class="col">
+                        <img src="assets/gym-img1.jpg" alt="Etage de la salle de sport" id="about-img1" class="img-fluid w-25">
+                    </div>
+                    <div class="col">
+                        <img src="assets/gym-img1.jpg" alt="Etage de la salle de sport" id="about-img1" class="img-fluid w-25">
+                    </div>
+            </div>
+            <div id="about-text" class="col border border-4 border-danger">
+                <h2>Description</h2>
             </div>
         </section>
     </main>
