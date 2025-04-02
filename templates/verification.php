@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try{ # test if DB already exists
         $connexion = new PDO("mysql:host=$host;dbname=$dbName", $login, $dbPassword);
         $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connexion sql reussie\n";
+        #echo "Connexion sql reussie\n";
         
         # test if email is already in the DB 
         $mail_exist = $connexion->prepare("SELECT COUNT(*) FROM login_user WHERE mail LIKE :mail");
@@ -57,5 +57,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Erreur: ".$e->getMessage();
     }
     $connexion = null;
-    echo "Connexion fermé";
+    #echo "Connexion fermé";
 }
