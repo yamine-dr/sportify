@@ -50,13 +50,6 @@ h1 {
     right: 10px;
 }
 
-#about-images {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
 @media (max-width: 1090px) {
     h1 {
         font-size: 40px;

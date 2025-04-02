@@ -48,21 +48,21 @@
         </section>
 
         <section id="about-section" class="container d-md-flex">
-            <div id="about-images" class="row row-cols-2 border border-4 border-danger">
-                    <div class="col">
-                        <img src="assets/gym-img1.jpg" alt="Etage de la salle de sport" id="about-img1" class="img-fluid w-25">
-                    </div>
-                    <div class="col">
-                        <img src="assets/gym-img1.jpg" alt="Etage de la salle de sport" id="about-img1" class="img-fluid w-25">
-                    </div>
-                    <div class="col">
-                        <img src="assets/gym-img1.jpg" alt="Etage de la salle de sport" id="about-img1" class="img-fluid w-25">
-                    </div>
-                    <div class="col">
-                        <img src="assets/gym-img1.jpg" alt="Etage de la salle de sport" id="about-img1" class="img-fluid w-25">
-                    </div>
+            <div id="about-images" class="row row-cols-2 w-50 me-2 border border-2 border-danger">
+                <div class="col">
+                    <img src="assets/gym-img1.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="col">
+                    <img src="assets/gym-img1.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="col">
+                    <img src="assets/gym-img1.jpg" alt="" class="img-fluid">
+                </div>
+                <div class="col">
+                    <img src="assets/gym-img1.jpg" alt="" class="img-fluid">
+                </div>
             </div>
-            <div id="about-text" class="col border border-4 border-danger">
+            <div id="about-text" class="col w-50 ms-2 border border-2 border-danger">
                 <h2>Description</h2>
             </div>
         </section>
