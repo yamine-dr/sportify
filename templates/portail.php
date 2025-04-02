@@ -45,16 +45,16 @@
 
 					<form method = "POST" action = "verification.php" class="mt-4 vstack gap-4">
 						<div>
-							<label class="form-label" for="email">Email</label>
-							<input type="email" class="form-control" id="email" placeholder="Votre email">
+							<label class="form-label" for="inputEmail">Email</label>
+							<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Votre email">
 						</div>
 
 						<div>
 							<div class="d-flex align-items-center mb-2">
-								<label class="form-label mb-0" for="password">Mot de passe</label>
+								<label class="form-label mb-0" for="inputPassword">Mot de passe</label>
 								<a href="#" class="ms-auto d-inline-block text-sm border-bottom border-dotted text-muted text-primary-hover">Mot de passe oublié ?</a>
 							</div>
-							<input type="password" class="form-control" id="password" placeholder="Password" autocomplete="current-password">
+							<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" autocomplete="current-password">
 						</div>
 						
 						<div>
@@ -67,7 +67,7 @@
 						</div>
 
 						<div>
-							<button class="btn btn-primary w-100">
+							<button type="submit" class="btn btn-primary w-100">
 								Connexion
 							</button>
 						</div>
