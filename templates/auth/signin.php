@@ -77,8 +77,6 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 			</div>
 		</div>
 	</div>
-
-	<script src="../styles/bootstrap.js"></script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("../layout.php"); ?>
