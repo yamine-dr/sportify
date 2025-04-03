@@ -1,15 +1,15 @@
 <?php
-    $bootstrapCSSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
-        === 'on' ? "https" : "http") . "://" . 
-        $_SERVER['HTTP_HOST'] . "/sportify/styles/bootstrap.css";
-        
-    $stylesCSSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
-        === 'on' ? "https" : "http") . "://" . 
-        $_SERVER['HTTP_HOST'] . "/sportify/styles/styles.css";
-        
-    $bootstrapJSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
-        === 'on' ? "https" : "http") . "://" . 
-        $_SERVER['HTTP_HOST'] . "/sportify/styles/bootstrap.js";
+$bootstrapCSSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
+    === 'on' ? "https" : "http") . "://" . 
+    $_SERVER['HTTP_HOST'] . "/sportify/templates/styles/bootstrap.css";
+    
+$stylesCSSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
+    === 'on' ? "https" : "http") . "://" . 
+    $_SERVER['HTTP_HOST'] . "/sportify/templates/styles/styles.css";
+    
+$bootstrapJSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
+    === 'on' ? "https" : "http") . "://" . 
+    $_SERVER['HTTP_HOST'] . "/sportify/templates/styles/bootstrap.js";
 ?>
 
 <!DOCTYPE html>

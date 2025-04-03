@@ -1,5 +1,11 @@
 <?php $title = "Sportify - connexion"; ?>
 
+<?php 
+$verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
+	=== 'on' ? "https" : "http") . "://" . 
+	$_SERVER['HTTP_HOST'] . "/sportify/src/verification.php";
+?>
+
 <?php ob_start(); ?>
 	<!-- AUTH -->
 	<div class="min-vh-100 position-relative d-flex justify-content-center overflow-x-hidden p-5 p-lg-0 bg-body">
@@ -17,6 +23,7 @@
 				</div>
 			</div>
 		</div>
+
 		<!-- right part of the AUTH -->
 		<div class="pt-lg-16 px-lg-16 col-12 col-md-9 col-lg-7 offset-xl-7 offset-lg-5 d-flex flex-column justify-content-center position-relative">
 			<div class="row">
@@ -29,7 +36,9 @@
 							Bon retour parmi nous!
 						</p>
 					</div>
-					<form method = "POST" action = "verification.php" class="mt-4 vstack gap-4">
+
+					<!-- FORM -->
+					<form method="POST" action="<?= $verificationLink ?>" class="mt-4 vstack gap-4">
 						<div>
 							<label class="form-label" for="inputEmail">Email</label>
 							<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Votre email" required>
@@ -64,7 +73,6 @@
 						<small>Pas de compte ?</small>
 						<a href="#" class="text-primary text-sm fw-semibold">Inscription</a>
 					</div>
-
 				</div>
 			</div>
 		</div>
