@@ -1,16 +1,18 @@
-@media screen and (min-width: 768px) {
-    .nav-link {
-        border-right: 2px solid #AAA;
-    }
+h1 {
+    font-size: 60px;
+    margin: 0;
+    font-weight: 900;
+}
 
-    .nav-link:last-child {
-        border-right: none;
+@media (max-width: 1090px) {
+    h1 {
+        font-size: 40px;
     }
 }
 
+/* homepage.php */
 #hero-section {
     position: relative;
-    background-image: url("../../assets/hero-image.jpg");
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -24,12 +26,6 @@
     left: 4%;
     transform: translate(0%, -50%);
     transition: all ease 0.3s;
-}
-
-h1 {
-    font-size: 60px;
-    margin: 0;
-    font-weight: 900;
 }
 
 .hero-btn {
@@ -50,11 +46,16 @@ h1 {
     right: 10px;
 }
 
-@media (max-width: 1090px) {
-    h1 {
-        font-size: 40px;
+@media screen and (min-width: 768px) {
+    .nav-link {
+        border-right: 2px solid #AAA;
+    }
+
+    .nav-link:last-child {
+        border-right: none;
     }
 }
+
 @media (max-width: 700px) {
     .hero_content {
         background-color: #ffedde;

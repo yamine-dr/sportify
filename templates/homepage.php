@@ -2,15 +2,19 @@
 
 <?php ob_start(); ?>
     <main>
-        <section id="hero-section">
+        <section id="hero-section" style="background-image: url('assets/hero-image.jpg');">
             <div class="hero-content">
                 <h1>Le sport,</br> comme vous l'aimez!</h1>
                 <div>
                     <button class="hero-btn">
-                        Inscription
+                    <a href="index.php?action=signup" class="link-underline link-underline-opacity-0">
+                            Inscription
+                        </a>
                     </button>
                     <button class="hero-btn">
-                        Connexion
+                        <a href="index.php?action=signin" class="link-underline link-underline-opacity-0">
+                            Connexion
+                        </a>
                     </button>
                 </div>
             </div>

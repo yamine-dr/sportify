@@ -1,26 +1,13 @@
-<?php
-$bootstrapCSSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
-    === 'on' ? "https" : "http") . "://" . 
-    $_SERVER['HTTP_HOST'] . "/sportify/templates/styles/bootstrap.css";
-    
-$stylesCSSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
-    === 'on' ? "https" : "http") . "://" . 
-    $_SERVER['HTTP_HOST'] . "/sportify/templates/styles/styles.css";
-    
-$bootstrapJSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
-    === 'on' ? "https" : "http") . "://" . 
-    $_SERVER['HTTP_HOST'] . "/sportify/templates/styles/bootstrap.js";
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="templates/styles/bootstrap.css">
-    <link rel="stylesheet" href="templates/styles/styles.css">
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+    <!-- navbar -->
     <header>
         <nav id="nav" class="navbar navbar-expand-md bg-body-tertiary">
             <div class="container-fluid">
@@ -43,6 +30,7 @@ $bootstrapJSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 
     <?= $content ?>
 
-    <script src="<?= $bootstrapJSLink ?>"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

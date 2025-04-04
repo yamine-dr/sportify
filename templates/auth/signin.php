@@ -3,13 +3,12 @@
 <?php 
 $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 	=== 'on' ? "https" : "http") . "://" . 
-	$_SERVER['HTTP_HOST'] . "/sportify/src/verification.php";
+	$_SERVER['HTTP_HOST'] . "/sportify/src/models/verification.php";
 ?>
 
 <?php ob_start(); ?>
-	<!-- AUTH -->
 	<div class="min-vh-100 position-relative d-flex justify-content-center overflow-x-hidden p-5 p-lg-0 bg-body">
-		<!-- Lelft part of the AUTH -->
+		<!-- Lelft part of sign-in page -->
 		<div class="h-100 col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 d-none d-lg-block bg-body-secondary border-end-lg">
 			<div class="h-100 px-1 d-flex flex-column">
 				<a class="d-block" href="#">
@@ -24,7 +23,7 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 			</div>
 		</div>
 
-		<!-- right part of the AUTH -->
+		<!-- right part of sign-in page -->
 		<div class="pt-lg-16 px-lg-16 col-12 col-md-9 col-lg-7 offset-xl-7 offset-lg-5 d-flex flex-column justify-content-center position-relative">
 			<div class="row">
 				<div class="col-lg-10 col-md-9 col-xl-8 col-xxl-7 mx-auto ms-xl-0">
@@ -79,4 +78,4 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 	</div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once("../layout.php"); ?>
+<?php require_once("templates/layout.php"); ?>
