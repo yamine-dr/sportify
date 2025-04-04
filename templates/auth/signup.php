@@ -17,7 +17,7 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 				
 				<div class="mt-auto mb-5 w-lg-75">
 					<h1 class="ls-tight">
-						La meilleure salle de Limoges!
+						La meilleure salle de Limoges !
 					</h1>
 				</div>
 			</div>
@@ -29,10 +29,10 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 				<div class="col-lg-10 col-md-9 col-xl-8 col-xxl-7 mx-auto ms-xl-0">
 					<div class="mb-12">
 						<h2 class="ls-tight fw-bolder">
-							Connexion
+							Inscription
 						</h2>
 						<p class="text-sm mt-2 text-body-secondary">
-							Bon retour parmi nous!
+							Bienvenue chez nous !
 						</p>
 					</div>
 
@@ -44,34 +44,16 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 						</div>
 
 						<div>
-							<div class="d-flex align-items-center mb-2">
-								<label class="form-label mb-0" for="inputPassword">Mot de passe</label>
-								<a href="#" class="ms-auto d-inline-block text-sm border-bottom border-dotted text-muted text-primary-hover">Mot de passe oublié ?</a>
-							</div>
+							<label class="form-label mb-0" for="inputPassword">Mot de passe</label>
 							<input type="password" class="form-control" id="inputPassword" name="inputPassword" autocomplete="current-password" required>
 						</div>
 						
 						<div>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" name="check_example" id="check_example">
-								<label class="form-check-label" for="check_example">
-									Rester connecter
-								</label>
-							</div>
-						</div>
-
-						<div>
 							<button type="submit" class="btn btn-primary w-100">
-								Connexion
+								Valider
 							</button>
 						</div>
 					</form>
-
-
-					<div class="mt-3 mb-4">
-						<small>Pas de compte ?</small>
-						<a href="#" class="text-primary text-sm fw-semibold">Inscription</a>
-					</div>
 				</div>
 			</div>
 		</div>

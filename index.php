@@ -7,7 +7,7 @@ require_once("src/controllers/quotation.php");
 
 use App\Controllers\Homepage\Homepage;
 use App\Controllers\Auth\Signin\Signin;
-use App\Controllers\Auth\Signin\Signup;
+use App\Controllers\Auth\Signup\Signup;
 use App\Controllers\Quotation\Quotation;
 
 try {

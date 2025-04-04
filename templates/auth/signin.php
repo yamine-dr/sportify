@@ -17,7 +17,7 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 				
 				<div class="mt-auto mb-5 w-lg-75">
 					<h1 class="ls-tight">
-						La meilleure salle de Limoges!
+						La meilleure salle de Limoges !
 					</h1>
 				</div>
 			</div>
@@ -32,7 +32,7 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 							Connexion
 						</h2>
 						<p class="text-sm mt-2 text-body-secondary">
-							Bon retour parmi nous!
+							Bon retour parmi nous !
 						</p>
 					</div>
 
@@ -62,15 +62,14 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 
 						<div>
 							<button type="submit" class="btn btn-primary w-100">
-								Connexion
+								Valider
 							</button>
 						</div>
 					</form>
 
-
 					<div class="mt-3 mb-4">
 						<small>Pas de compte ?</small>
-						<a href="#" class="text-primary text-sm fw-semibold">Inscription</a>
+						<a href="index.php?action=signup" class="text-primary text-sm fw-semibold">Inscription</a>
 					</div>
 				</div>
 			</div>
