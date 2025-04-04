@@ -12,9 +12,9 @@ try {
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
         if ($_GET["action"] == "signin") {
             (new Signin())->execute();
-        }
-    } elseif ($_GET["action"] == "signup") {
+        } elseif ($_GET["action"] == "signup") {
             (new Signup())->execute();
+        }
     } else {
         (new Homepage())->execute();
     }
