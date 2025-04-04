@@ -17,8 +17,8 @@ $bootstrapJSLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 <head>
     <meta charset="utf-8" />
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="<?= $bootstrapCSSLink ?>">
-    <link rel="stylesheet" href="<?= $stylesCSSLink ?>">
+    <link rel="stylesheet" href="templates/styles/bootstrap.css">
+    <link rel="stylesheet" href="templates/styles/styles.css">
 </head>
 <body>
     <header>
