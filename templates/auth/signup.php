@@ -39,6 +39,15 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 					<!-- FORM -->
 					<form method="POST" action="<?= $verificationLink ?>" class="mt-4 vstack gap-4">
 						<div>
+							<label class="form-label" for="inputLastName">Nom</label>
+							<input type="texte" class="form-control" id="inputLastName" name="inputLastName" placeholder="Votre nom" required>
+						</div>
+						<div>
+							<label class="form-label" for="inputFirstName">Prénom</label>
+							<input type="texte" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="Votre prénom" required>
+						</div>
+						
+						<div>
 							<label class="form-label" for="inputEmail">Email</label>
 							<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Votre email" required>
 						</div>
