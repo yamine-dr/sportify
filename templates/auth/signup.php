@@ -1,9 +1,9 @@
 <?php $title = "Sportify - Inscription"; ?>
 
 <?php 
-$verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
+$inscriptionLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 	=== 'on' ? "https" : "http") . "://" . 
-	$_SERVER['HTTP_HOST'] . "/sportify/src/models/verification.php";
+	$_SERVER['HTTP_HOST'] . "/sportify/src/models/inscription.php";
 ?>
 
 <?php ob_start(); ?>
@@ -37,7 +37,7 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 					</div>
 
 					<!-- FORM -->
-					<form method="POST" action="<?= $verificationLink ?>" class="mt-4 vstack gap-4">
+					<form method="POST" action="<?= $inscriptionLink ?>" class="mt-4 vstack gap-4">
 						<div>
 							<label class="form-label" for="inputLastName">Nom</label>
 							<input type="texte" class="form-control" id="inputLastName" name="inputLastName" placeholder="Votre nom" required>
