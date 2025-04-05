@@ -1,9 +1,9 @@
 <?php $title = "Sportify - Inscription"; ?>
 
 <?php 
-$verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
+$inscriptionLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 	=== 'on' ? "https" : "http") . "://" . 
-	$_SERVER['HTTP_HOST'] . "/sportify/src/models/verification.php";
+	$_SERVER['HTTP_HOST'] . "/sportify/src/models/inscription.php";
 ?>
 
 <?php ob_start(); ?>
