@@ -1,5 +1,5 @@
 <header>
-    <nav id="nav" class="navbar navbar-expand-lg fixed-top bg-light border-bottom border-dark border-opacity-50">
+    <nav id="nav" class="navbar navbar-expand-lg fixed-top bg-body shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.php">Sportify</a>
             <button

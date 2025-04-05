@@ -31,7 +31,7 @@ h1 {
 }
 
 /*----------------------------------
-navbar
+header.php (contains the navbar)
 ------------------------------------*/
 .navbar-brand {
     transition: transform 0.3s ease;
@@ -86,7 +86,7 @@ homepage.php
 
 @media (max-width: 700px) {
     #homepage .hero-content {
-        background-color: #ffedde;
+        background-color: #b3794a;
         width: 400px;
         padding: 20px;
         top: 50%;
@@ -96,6 +96,11 @@ homepage.php
     #homepage .cta-btn {
         text-align: center;
     }
+}
+
+#homepage .testimonial-headshot {
+    width: 48px !important;
+    height: 48px !important;
 }
 
 /*---------------------------------- 

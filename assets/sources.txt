@@ -3,4 +3,7 @@ images/homepage-about2.jpg -> https://unsplash.com/photos/a-man-wearing-a-red-sh
 images/homepage-about3.jpg -> https://www.pexels.com/photo/a-man-using-barbell-while-sitting-on-the-wheelchair-7294687/
 
 images/homepage-features1.jpg -> https://unsplash.com/photos/gym-equipment-inside-room-20jX9b35r_M
-      
+images/homepage-features1.jpg -> https://unsplash.com/photos/a-gym-filled-with-lots-of-machines-and-weights-1RNQ11ZODJM
+
+images/homepage-testimonials1.jpg -> https://unsplash.com/illustrations/a-black-and-white-picture-of-a-mans-face-8AAc9VdLZ84
+images/homepage-testimonials2.jpg -> https://unsplash.com/illustrations/a-black-and-white-picture-of-a-woman-with-a-hairdow-1tm-YagTU58
