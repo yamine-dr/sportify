@@ -7,28 +7,11 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <!-- navbar -->
-    <header>
-        <nav id="nav" class="navbar navbar-expand-md bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Sportify</a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto">
-                        <a class="nav-link active" aria-current="page" href="index.php">Acceuil</a>
-                        <a class="nav-link" href="index.php?action=signin">Inscription/Connexion</a>
-                        <a class="nav-link" href="#">Ateliers</a>
-                        <a class="nav-link" href="#">Contacts</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
+    <?php require_once("templates/header.php") ?>
+    
     <?= $content ?>
+
+    <!-- add footer here -->
 
     <script src="scripts/bootstrap.js"></script>
     <script src="scripts/script.js"></script>

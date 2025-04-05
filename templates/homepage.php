@@ -1,30 +1,36 @@
 <?php $title = "Sportify"; ?>
 
 <?php ob_start(); ?>
-    <main>
-        <section id="hero-section" style="background-image: url('assets/hero-image.jpg');">
+    <main id="homepage">
+        <section id="homepageHeroSection" style="background-image: url('assets/hero-image.jpg');">
             <div class="hero-content">
                 <h1>Le sport,</br> comme vous l'aimez!</h1>
-                <div>
-                    <button class="hero-btn">
-                    <a href="index.php?action=signup" class="text-light link-underline link-underline-opacity-0">
-                            Inscription
-                        </a>
-                    </button>
-                    <button class="hero-btn">
-                        <a href="index.php?action=signin" class="text-light link-underline link-underline-opacity-0">
-                            Connexion
-                        </a>
-                    </button>
+                <div class="d-flex gap-3 mt-3">
+                    <a
+                    role="button"
+                    id="navBtn"
+                    href="index.php?action=signin"
+                    class="btn hero-btn link-light d-flex justify-content-center align-items-center"
+                    >
+                        Inscription
+                    </a>
+                    <a
+                    role="button"
+                    id="navBtn"
+                    href="index.php?action=signin"
+                    class="btn hero-btn link-light d-flex justify-content-center align-items-center"
+                    >
+                        Connexion
+                    </a>
                 </div>
             </div>
 
-            <div id="hero-img-credit">
+            <div id="heroImgCredit">
                 <p>Picture by <a href="https://unsplash.com/" target="_blank">someone</a>
             </div>
         </section>
 
-        <div class="container py-5 d-flex gap-4 border border-3 border-danger">
+        <section id="homepageDescription" class="container py-5 d-flex gap-4 border border-3 border-danger">
             <div class="w-50 border border-2">
                 <img src="assets/hero-image.jpg" alt="" class="img-fluid rounded-5">
             </div>
@@ -35,7 +41,7 @@
                     Quaerat voluptates suscipit in, porro officia eum voluptatibus.
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 <?php $content = ob_get_clean(); ?>
 
