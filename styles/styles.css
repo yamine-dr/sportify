@@ -1,3 +1,9 @@
+:root {
+    --cta-color1: #ff4f19;
+    --cta-color2: #fff;
+    --cta-color3: #cc3000;
+}
+
 h1 {
     font-size: 60px;
     margin: 0;
@@ -15,13 +21,13 @@ h1 {
     cursor: pointer;
     letter-spacing: 1px;
     border: none;
-    background-color: #ff4f19;
+    background-color: var(--cta-color1);
     border-radius: 30px;
     width: 120px;
     height: 40px;
 }
 .cta-btn:hover {
-    background-color: #cc3000;
+    background-color: var(--cta-color3);
 }
 
 /*----------------------------------
@@ -43,9 +49,9 @@ navbar
 }
 
 #navBtnSignin {
-    color: #ff4f19;
-    background-color: #fff;
-    border: 1px solid #ff4f19;
+    color: var(--cta-color1);
+    background-color: var(--cta-color2);
+    border: 1px solid var(--cta-color1);
 }
 
 /*---------------------------------- 
@@ -64,26 +70,12 @@ homepage.php
     color: #fff;
 }
 
-.hero-content {
+#homepage .hero-content {
     position: absolute;
     top: 50%;
     left: 4%;
     transform: translate(0%, -50%);
     transition: all ease 0.3s;
-}
-
-.hero-btn {
-    margin: 1rem;
-    cursor: pointer;
-    letter-spacing: 1px;
-    border: none;
-    background-color: #ff4f19;
-    border-radius: 30px;
-    width: 120px;
-    height: 40px;
-}
-.hero-btn:hover {
-    background-color: #cc3000;
 }
 
 #heroImgCredit {
@@ -93,7 +85,7 @@ homepage.php
 }
 
 @media (max-width: 700px) {
-    .hero-content {
+    #homepage .hero-content {
         background-color: #ffedde;
         width: 400px;
         padding: 20px;
@@ -101,7 +93,7 @@ homepage.php
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    #hero-btn {
+    #homepage .cta-btn {
         text-align: center;
     }
 }
