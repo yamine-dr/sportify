@@ -18,7 +18,15 @@ $inscriptionLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 			<div class="col-md-10 mx-auto col-lg-5">
 				<div class="p-4 p-md-5 border rounded-3 bg-light">
 					<!-- FORM -->
-					<form method="POST" action="<?= $verificationLink ?>">
+					<form method="POST" action="<?= $inscriptionLink ?>">
+						<div class="form-floating mb-3">
+							<input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="" required>
+							<label for="inputLastName" class="">Nom</label>
+						</div>
+						<div class="form-floating mb-3">
+							<input type="text" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="" required>
+							<label for="inputFirstName">Prénom</label>
+						</div>
 						<div class="form-floating mb-3">
 							<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="jaime@sportify.com" required>
 							<label for="inputEmail">Email</label>

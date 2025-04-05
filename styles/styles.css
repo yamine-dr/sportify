@@ -10,6 +10,20 @@ h1 {
     }
 }
 
+.cta-btn {
+    margin: 1rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+    border: none;
+    background-color: #ff4f19;
+    border-radius: 30px;
+    width: 120px;
+    height: 40px;
+}
+.cta-btn:hover {
+    background-color: #cc3000;
+}
+
 /*----------------------------------
 navbar
 ------------------------------------*/
@@ -24,8 +38,14 @@ navbar
     text-decoration: underline;
 }
 
-#navBtn {
+.nav-btn {
     margin: 0;
+}
+
+#navBtnSignin {
+    color: #ff4f19;
+    background-color: #fff;
+    border: 1px solid #ff4f19;
 }
 
 /*---------------------------------- 
@@ -84,10 +104,6 @@ homepage.php
     #hero-btn {
         text-align: center;
     }
-}
-
-#homepageDescription {
-    height: 1000px;
 }
 
 /*---------------------------------- 

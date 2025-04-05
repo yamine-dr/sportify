@@ -33,7 +33,6 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 							</label>
 						</div>
 						<button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
-						<!-- <small class="text-muted">En cliquant sur "S'inscrire", vous acceptez les conditions d'utilisation.</small> -->
 					</form>
 					
 					<hr class="my-4">

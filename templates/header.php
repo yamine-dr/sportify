@@ -26,11 +26,18 @@
                     </li>
                     <a
                     role="button"
-                    id="navBtn"
-                    href="index.php?action=signin"
-                    class="btn hero-btn link-light d-flex justify-content-center align-items-center"
+                    href="index.php?action=signup"
+                    class="btn nav-btn cta-btn link-light d-flex justify-content-center align-items-center"
                     >
                         S'inscrire
+                    </a>
+                    <a
+                    role="button"
+                    id="navBtnSignin"
+                    href="index.php?action=signin"
+                    class="btn nav-btn cta-btn d-flex justify-content-center align-items-center"
+                    >
+                        Connexion
                     </a>
                 </ul>
             </div>

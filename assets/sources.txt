@@ -1,0 +1,2 @@
+images/gym1.jpg: https://unsplash.com/photos/gym-equipment-inside-room-20jX9b35r_M
+      
