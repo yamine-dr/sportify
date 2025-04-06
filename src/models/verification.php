@@ -14,6 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         #echo "Connexion sql reussie\n";
         
+        #creer une sous table dans testSportiy
+        $codesql = "
+                    CREATE TABLE IF NOT EXISTS login_user( 
+                        mail VARCHAR(50),
+                        mdp VARCHAR(50)
+                    )";
+        $connexion->exec($codesql);
+
         # test if email is already in the DB 
         $mail_exist = $connexion->prepare("SELECT COUNT(*) FROM login_user WHERE mail LIKE :mail");
         $mail_exist->execute(['mail' => $userMail]);
@@ -31,27 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "CONNEXION LEGIT";  
             }
         }
-        /*INSCRIPTION
-        #voir si l'email existe deja
-        $mail_exist = $connexion->prepare("SELECT COUNT(*) FROM login_user WHERE mail LIKE :mail");
-        $mail_exist->execute(['mail' => $userMail]);
-        if($mail_exist->fetchColumn() == 0){
-            $insertion = $connexion->prepare("INSERT INTO login_user(mail, mdp) VALUES (:mail, :mdp)");
-            $insertion->execute(['mail' => $userMail, 'mdp' => $userPassword]);   
-        }
-        else{
-            echo "mail existe deja";
-        }
-            
-        */    
-        /*
-            #CREATE DATABASE testSportiy
-        $codesql = "
-                    CREATE TABLE login_user( 
-                        mail VARCHAR(50),
-                        mdp VARCHAR(50)
-                    )";
-        $connexion->exec($codesql);*/
+         
+        
+        
     }
     catch(PDOException $e){
         echo "Erreur: ".$e->getMessage();
@@ -59,3 +49,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connexion = null;
     #echo "Connexion fermé";
 }
+?>
