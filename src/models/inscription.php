@@ -54,5 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $connexion = null;
     #echo "Connexion fermé";
+
+    //header("Location: ../../index.php");
+    exit(); // très important pour arrêter le script après redirection
 }
 ?>
