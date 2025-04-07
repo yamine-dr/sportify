@@ -4,11 +4,13 @@ require_once("src/controllers/homepage.php");
 require_once("src/controllers/auth/signin.php");
 require_once("src/controllers/auth/signup.php");
 require_once("src/controllers/quotation.php");
+require_once("src/controllers/courses.php");
 
 use App\Controllers\Homepage\Homepage;
 use App\Controllers\Auth\Signin\Signin;
 use App\Controllers\Auth\Signup\Signup;
 use App\Controllers\Quotation\Quotation;
+use App\Controllers\Courses\Courses;
 
 try {
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
@@ -18,6 +20,8 @@ try {
             (new Signup())->execute();
         } elseif ($_GET["action"] == "quotation") {
             (new Quotation())->execute();
+        } elseif ($_GET["action"] == "courses") {
+            (new Courses())->execute();
         }
     } else {
         (new Homepage())->execute();
