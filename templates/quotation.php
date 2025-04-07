@@ -2,9 +2,39 @@
 
 <?php ob_start(); ?>
 
-<div class="container my-5">
+<!-- <style>
+        body {
+            background-color:rgb(54, 49, 49); /* Fond noir */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            background-color:rgb(26, 207, 89) !important; /* Vert Spotify  */
+            color: black;
+        }
+
+
+        textarea.form-control,
+        input.form-check-input {
+            background-color:rgb(187, 246, 182); /* fond gris clair des champs */
+            color: black;
+        }
+
+        textarea::placeholder {
+            color: #666;
+        }
+
+        h1 {
+            font-weight: bold;  
+        }
+    </style> -->
+    
+
+<div class="container mt-5 pt-5">
     <!-- Début du formulaire -->
-    <form action="traitement.php" method="POST" class="border p-4 rounded bg-light shadow-sm"> <!--envoie les données a "traitement.php" avec POST -->
+    <form action="traitement.php" method="POST" class="border p-4 rounded shadow-sm"> <!--envoie les données a "traitement.php" avec POST -->
         <h1 class="mb-4">Demande de devis personnalisé</h1>
 
         <div class="mb-3">
@@ -19,14 +49,16 @@
                 <input class="form-check-input" type="radio" name="type_seance" value="individuel" id="radioIndividuel">
                 <label class="form-check-label" for="radioIndividuel">Individuel</label>
             </div>
+
         </div>
+       
 
 
 
         <div class="mb-3">
             <!-- Label avec classe Bootstrap -->
             <label for="besoinsParticuliers" class="form-label">Vos besoins particuliers :</label>
-            <!-- Ajout de la classe Bootstrap pour styliser le textarea -->
+            <!-- style du textarea -->
             <textarea class="form-control" name="besoins_particuliers" id="besoinsParticuliers" rows="6" placeholder="Décrivez ici vos besoins..."></textarea>
         </div>
 
