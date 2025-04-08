@@ -1,57 +1,12 @@
 <?php $title = "Sportify - cours"; ?>
 
-<?php
-$signinBtn = '<p class="mb-3 small text-muted">Connectez vous d\'abord pour vous inscrire</p>'
-             . '<a href="index.php?action=signin" class="btn btn-primary" role="button">Connexion</a>';
-
-$courses1 = [
-    [
-        "title" => "Yoga",
-        "coach" => "Michelle Legrand",
-        "duration" => "1 h",
-        "places" => "5",
-    ],
-    [
-        "title" => "Pilates",
-        "coach" => " Marion May",
-        "duration" => "1 h",
-        "places" => "3",
-    ],
-    [
-        "title" => "Renforcement musculaire",
-        "coach" => "Camille Lemont",
-        "duration" => "45 min",
-        "places" => "5",
-    ],
-];
-
-$courses2 = [
-    [
-        "title" => "Cycling",
-        "coach" => " Amy Taylor",
-        "duration" => "45 min",
-        "places" => "3",
-    ],
-    [
-        "title" => "Fitness",
-        "coach" => "Laura Jones",
-        "duration" => "45 min",
-        "places" => "5",
-    ],
-    [
-        "title" => "Programme personnalisé",
-        "coach" => "Laura Marins",
-        "duration" => "variable",
-        "places" => "5",
-    ],
-];
-
-function replaceTite($str): string {
-    $res = strtolower($str);
-    $res = preg_replace(['/ /', '/é/'], ['-', 'e'], $res);
-    return $res;
-}
-?>
+<!-- 
+    variables from the controller:
+    - $isConnected (boolean): if the user is connected
+    - $signinBtn (HTML string): button to display if user is not connected
+    - $courses1, $courses2 (array)
+    - function titleInURL(string): string -> turn a course title in URL format
+-->
 
 <?php ob_start(); ?>
     <main id="courses" class="mt-5">
@@ -74,7 +29,7 @@ function replaceTite($str): string {
                             </div>
                             <?=
                             $isConnected ? 
-                                '<a href="index.php?action=courses-register&course=' . replaceTite($course["title"]) . '" class="btn btn-primary" role="button">' 
+                                '<a href="index.php?action=courses-register&course=' . titleInURL($course["title"]) . '" class="btn btn-primary" role="button">' 
                                     . 'S\'inscrire' 
                                 . '</a>' 
                                 : $signinBtn;
@@ -99,7 +54,7 @@ function replaceTite($str): string {
                             </div>
                             <?=
                             $isConnected ? 
-                                '<a href="index.php?action=courses-register&course=' . replaceTite($course["title"]) . '" class="btn btn-primary" role="button">' 
+                                '<a href="index.php?action=courses-register&course=' . titleInURL($course["title"]) . '" class="btn btn-primary" role="button">' 
                                     . 'S\'inscrire' 
                                 . '</a>' 
                                 : $signinBtn;
