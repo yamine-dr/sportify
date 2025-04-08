@@ -8,6 +8,14 @@
     - function titleInURL(string): string -> turn a course title in URL format
 -->
 
+<?php
+function titleInURL($str): string {
+    $res = strtolower($str);
+    $res = str_replace(' ', '-', $res);
+    return $res;
+}
+?>
+
 <?php ob_start(); ?>
     <main id="courses" class="mt-5">
         <h1 class="mb-4 text-center">Cours</h1>
