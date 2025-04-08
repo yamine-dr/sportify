@@ -2,34 +2,31 @@
 
 <?php ob_start(); ?>
 
-<!-- <style>
-        body {
-            background-color:rgb(54, 49, 49); /* Fond noir */
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+<!-- body {
+    background-color: rgb(54, 49, 49); /* Fond noir */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-        form {
-            background-color:rgb(26, 207, 89) !important; /* Vert Spotify  */
-            color: black;
-        }
+form {
+    background-color: rgb(26, 207, 89) !important; /* Vert Spotify */
+    color: black;
+}
 
+textarea.form-control,
+input.form-check-input {
+    background-color: rgb(187, 246, 182); /* fond gris clair des champs */
+    color: black;
+}
 
-        textarea.form-control,
-        input.form-check-input {
-            background-color:rgb(187, 246, 182); /* fond gris clair des champs */
-            color: black;
-        }
+textarea::placeholder {
+    color: #666;
+}
 
-        textarea::placeholder {
-            color: #666;
-        }
-
-        h1 {
-            font-weight: bold;  
-        }
-    </style> -->
+h1 {
+    font-weight: bold;
+} -->
     
 
 <div class="container mt-5 pt-5">
@@ -41,18 +38,31 @@
             <label class="form-label">Format de la séance :</label>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="type_seance" value="collectif" id="radioCollectif">
+                <input class="form-check-input" type="radio" name="type_seance" value="collectif" id="radioCollectif" required>
                 <label class="form-check-label" for="radioCollectif">Collectif</label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="type_seance" value="individuel" id="radioIndividuel">
+                <input class="form-check-input" type="radio" name="type_seance" value="individuel" id="radioIndividuel" required>
                 <label class="form-check-label" for="radioIndividuel">Individuel</label>
             </div>
 
         </div>
        
+        <div class="mb-3">
+            <label class="form-label">Lieu de la séance dans une salle :</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="lieu_seance" value="prive" id="radioPrive" required>
+                <label class="form-check-label" for="radioPrive">Privé</label>
+            </div>
 
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="lieu_seance" value="publique" id="radioPublique" required>
+                <label class="form-check-label" for="radioPublique">Publique</label>
+            </div>
+
+            
+        </div>
 
 
         <div class="mb-3">
@@ -61,6 +71,14 @@
             <!-- style du textarea -->
             <textarea class="form-control" name="besoins_particuliers" id="besoinsParticuliers" rows="6" placeholder="Décrivez ici vos besoins..."></textarea>
         </div>
+
+
+        <!-- champ pour saisir l'adresse mail -->
+        <div class="mb-3">
+            <label for="email" class="form-label">À quelle adresse mail souhaitez-vous recevoir une estimation du prix ?</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="exemple@domaine.com" required>
+        </div>
+
 
         <div>
             <!-- Bouton pour envoyer le formulaire -->
