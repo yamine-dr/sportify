@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
     <main id="homepage">
         <!-- HERO SECTION -->
-        <section id="homepageHeroSection" class="mb-5" style="background-image: url('assets/images/hero.jpg');">
+        <section class="mb-5 hero-section" style="background-image: url('assets/images/hero.jpg');">
             <div class="hero-content">
                 <h1>Le sport,</br> comme vous l'aimez!</h1>
                 <a
@@ -488,4 +488,4 @@
     </main>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once("templates/layout.php"); ?>
+<?php require_once("templates/layout/layout.php"); ?>

@@ -4,11 +4,16 @@
     --cta-color3: #cc3000;
 }
 
+main {
+    margin-top: 55px; /* margin top to display below navbar */
+}
+
 h1 {
     font-size: 60px;
     margin: 0;
     font-weight: 900;
 }
+
 
 @media (max-width: 1090px) {
     h1 {
@@ -33,22 +38,22 @@ h1 {
 /*----------------------------------
 header.php (contains the navbar)
 ------------------------------------*/
-.navbar-brand {
+#header .navbar-brand {
     transition: transform 0.3s ease;
 }
-.navbar-brand:hover {
+#header .navbar-brand:hover {
     transform: scale(1.1);
 }
 
-.nav-link:hover {
+#header .nav-link:hover {
     text-decoration: underline;
 }
 
-.nav-btn {
+#header .nav-btn {
     margin: 0;
 }
 
-#navBtnSignin {
+#header #navBtnSignin {
     color: var(--cta-color1);
     background-color: var(--cta-color2);
     border: 1px solid var(--cta-color1);
@@ -57,11 +62,7 @@ header.php (contains the navbar)
 /*---------------------------------- 
 homepage.php
 ------------------------------------*/
-#homepage {
-    margin-top: 55px; /* margin top for the navbar */
-}
-
-#homepageHeroSection {
+#homepage .hero-section {
     position: relative;
     background-size: cover;
     background-position: center;
@@ -101,25 +102,4 @@ homepage.php
 #homepage .testimonial-headshot {
     width: 48px !important;
     height: 48px !important;
-}
-
-/*---------------------------------- 
-signin.php
-------------------------------------*/
-#signin {
-    margin-top: 55px; /* margin top for the navbar */
-}
-
-/*---------------------------------- 
-signup.php
-------------------------------------*/
-#signup {
-    margin-top: 55px; /* margin top for the navbar */
-}
-
-/*---------------------------------- 
-courses.php
-------------------------------------*/
-#courses {
-    margin-top: 55px; /* margin top for the navbar */
 }

@@ -45,4 +45,4 @@ $inscriptionLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 	</main>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once("templates/layout.php"); ?>
+<?php require_once("templates/layout/layout.php"); ?>

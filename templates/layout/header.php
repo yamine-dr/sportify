@@ -1,4 +1,4 @@
-<header>
+<header id="header">
     <nav id="nav" class="navbar navbar-expand-lg fixed-top bg-body shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.php">Sportify</a>
