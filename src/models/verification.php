@@ -7,9 +7,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $host = 'localhost';
     $login = 'root';
     $dbPassword = '';
-    $dbName = 'testSportiy';
+    $dbName = 'SportiyDataBase';
 
-    try{ # test if DB already exists
+    try{ # test if DB already exists.
+    $connexion = new PDO("mysql:host=localhost", $login, $dbPassword);
+    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+    // Requête pour créer la base de données si elle n'existe pas
+    $nomBDD = "ma_nouvelle_base";
+    $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
+    $connexion->exec($sql);
+
+
+
         $connexion = new PDO("mysql:host=$host;dbname=$dbName", $login, $dbPassword);
         $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         #echo "Connexion sql reussie\n";
@@ -39,6 +49,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "CONNEXION LEGIT";  
             }
         }
+        /*
+        password_hash()
+        password_verify
+        */
          
         
         
