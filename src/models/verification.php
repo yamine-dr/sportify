@@ -35,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail_exist = $connexion->prepare("SELECT COUNT(*) FROM login_user WHERE mail LIKE :mail");
         $mail_exist->execute(['mail' => $userMail]);
         if ($mail_exist->fetchColumn() == 0) {
-            echo "Mail inexistant";   
+            header('location: ../../index.php?action=signin&error=mail-error');
+            exit();
         } else {
             # if mail is in DB, test if the password matches
             $password_true = $connexion->prepare(
