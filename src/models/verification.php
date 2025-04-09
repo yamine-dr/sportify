@@ -44,7 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             $password_true->execute(['mail' => $userMail, 'mdp' => $userPassword]);
             if ($password_true->fetchColumn() == 0) {
-                echo "Mot de passe erronée";   
+                header('location: ../../index.php?action=signin&error=wrong-password');
+                exit();
             } else {
                 echo "CONNEXION LEGIT ";
                 $_SESSION["user"] = [

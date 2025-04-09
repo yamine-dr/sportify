@@ -51,10 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insertion->execute(['mail' => $userMail, 'mdp' => $userPassword]);   
 
             $insertion = $connexion->prepare("INSERT INTO info_user(mail, nom, prenom) VALUES (:mail, :nom, :prenom)");
-            $insertion->execute(['mail' => $userMail, 'nom' => $userLastName, 'prenom' => $userFirstName]);  
+            $insertion->execute(['mail' => $userMail, 'nom' => $userLastName, 'prenom' => $userFirstName]);
+            header('location: ../../index.php');
+            exit();
         }
         else{
-            echo "mail existe deja";
+            header('location: ../../index.php?action=signup&error=mail-exist');
+            exit();
         }
             
         
