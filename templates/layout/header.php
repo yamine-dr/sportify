@@ -24,6 +24,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=contact">Contacts</a>
                     </li>
+                    <?php if (isset($_SESSION["user"])): ?>
+                    <a
+                    role="button"
+                    href="src/models/logout.php"
+                    class="btn nav-btn cta-btn link-light d-flex justify-content-center align-items-center"
+                    >
+                        Déconnexion
+                    </a>
+                    <?php else: ?>        
                     <a
                     role="button"
                     href="index.php?action=signup"
@@ -39,6 +48,7 @@
                     >
                         Connexion
                     </a>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

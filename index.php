@@ -2,6 +2,10 @@
 
 session_start();
 
+if (isset($_SESSION["user"])) {
+    echo "connected";
+}
+
 require_once("src/controllers/homepage.php");
 require_once("src/controllers/auth/signin.php");
 require_once("src/controllers/auth/signup.php");
