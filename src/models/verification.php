@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userMail = htmlspecialchars($_POST["inputEmail"]);
     $userPassword = htmlspecialchars($_POST["inputPassword"]);
@@ -49,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "password" => $userPassword,
                 ];
                 if (isset($_SESSION["user"]["mail"])) {
-                    echo "true";
+                    echo "mail: {$_SESSION["user"]["mail"]} - paswd: {$_SESSION["user"]["password"]}";
                 };
                 header('location: ../../index.php');
                 exit();

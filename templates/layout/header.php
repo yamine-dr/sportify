@@ -24,7 +24,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=contact">Contacts</a>
                     </li>
-                    <?php if (isset($_SESSION["user"])): ?>
+                    <?php if (isset($_SESSION["user"]["mail"])): ?>
                     <a
                     role="button"
                     href="src/models/logout.php"
@@ -32,7 +32,7 @@
                     >
                         Déconnexion
                     </a>
-                    <?php else: ?>        
+                    <?php else: ?>    
                     <a
                     role="button"
                     href="index.php?action=signup"
