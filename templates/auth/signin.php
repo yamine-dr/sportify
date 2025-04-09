@@ -1,11 +1,5 @@
 <?php $title = "Sportify - connexion"; ?>
 
-<?php 
-$verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
-	=== 'on' ? "https" : "http") . "://" . 
-	$_SERVER['HTTP_HOST'] . "/sportify/src/models/verification.php";
-?>
-
 <?php ob_start(); ?>
 	<main id="signin" class="container col-xl-10 col-xxl-8 px-4 py-5">
 		<div class="row align-items-center g-lg-5 py-5">
@@ -18,7 +12,7 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 			<div class="col-md-10 mx-auto col-lg-5">
 				<div class="p-4 p-md-5 border rounded-3 bg-light">
 					<!-- FORM -->
-					<form method="POST" action="<?= $verificationLink ?>">
+					<form method="POST" action="src/models/verification.php">
 						<div class="form-floating mb-3">
 							<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="jaime@sportify.com" required>
 							<label for="inputEmail">Email</label>
