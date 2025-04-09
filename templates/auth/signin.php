@@ -32,6 +32,7 @@ $verificationLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 								<input type="checkbox" value="remember-me"> Se souvenir de moi
 							</label>
 						</div>
+						<p class="text-danger">info blabla</p>
 						<button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
 					</form>
 					
