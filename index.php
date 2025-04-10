@@ -2,10 +2,6 @@
 
 session_start();
 
-if (isset($_SESSION["user"])) {
-    echo "connected";
-}
-
 require_once("src/controllers/homepage.php");
 require_once("src/controllers/auth/signin.php");
 require_once("src/controllers/auth/signup.php");
@@ -23,6 +19,8 @@ use App\Controllers\CoursesRegister\CoursesRegister;
 use App\Controllers\Contact\Contact;
 
 try {
+    $isConnected = isset($_SESSION["user"]);
+
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
         if ($_GET["action"] == "signin") {
             (new Signin())->execute();
@@ -31,9 +29,9 @@ try {
         } elseif ($_GET["action"] == "quotation") {
             (new Quotation())->execute();
         } elseif ($_GET["action"] == "courses") {
-            (new Courses())->execute();
+            (new Courses())->execute($isConnected);
         } elseif ($_GET["action"] == "courses-register") {
-            (new CoursesRegister())->execute();
+            (new CoursesRegister())->execute($isConnected);
         } elseif ($_GET["action"] == "contact") {
             (new Contact())->execute();
         }

@@ -3,9 +3,7 @@
 namespace App\Controllers\Courses;
 
 class Courses {
-    public function execute(): void {
-        $isConnected = true;
-
+    public function execute(bool $isConnected): void {
         $signinBtn = '<p class="mb-3 small text-muted">Connectez vous d\'abord pour vous inscrire</p>'
              . '<a href="index.php?action=signin" class="btn btn-primary" role="button">Connexion</a>';
 

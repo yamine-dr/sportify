@@ -3,9 +3,7 @@
 namespace App\Controllers\CoursesRegister;
 
 class CoursesRegister {
-    public function execute(): void {
-        $isConnected = true;
-
+    public function execute(bool $isConnected): void {
         $course = str_replace('-', ' ', htmlspecialchars($_GET["course"]));
         $coursesWithLevel = ["yoga", "pilates"];
         $courseHasLevel = in_array($course, $coursesWithLevel);
@@ -13,7 +11,8 @@ class CoursesRegister {
         if ($isConnected && $course !== "programme personnalisé") {
             require_once("templates/courses-register.php");
         } else {
-            require_once("templates/courses.php");
+            header("location: index.php?action=courses");
+            exit();
         }
     } 
 }

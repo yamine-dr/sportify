@@ -38,6 +38,10 @@ h1 {
 /*----------------------------------
 header.php (contains the navbar)
 ------------------------------------*/
+#header #navbar {
+    height: 55px;
+}
+
 #header .navbar-brand {
     transition: transform 0.3s ease;
 }
