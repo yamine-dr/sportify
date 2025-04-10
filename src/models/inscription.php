@@ -4,10 +4,10 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userMail = htmlspecialchars($_POST["inputEmail"]);
-    $userPassword = htmlspecialchars($_POST["inputPassword"]);
+    $userPassword = password_hash(htmlspecialchars($_POST["inputPassword"]),PASSWORD_DEFAULT);
     $userLastName = htmlspecialchars($_POST["inputLastName"]);
     $userFirstName = htmlspecialchars($_POST["inputFirstName"]);
-
+    echo $userPassword ;
     $host = 'localhost';
     $login = 'root';
     $dbPassword = '';
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $codesql1 = "
                     CREATE TABLE IF NOT EXISTS login_user( 
                     mail VARCHAR(50),
-                    mdp VARCHAR(50)
+                    mdp VARCHAR(60)
                     )";
 
         $codesql2 = "

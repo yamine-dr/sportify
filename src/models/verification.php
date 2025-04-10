@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $codesql = "
                     CREATE TABLE IF NOT EXISTS login_user( 
                         mail VARCHAR(50),
-                        mdp VARCHAR(50)
+                        mdp VARCHAR(60)
                     )";
         $connexion->exec($codesql);
 
@@ -37,36 +37,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($mail_exist->fetchColumn() == 0) {
             header('location: ../../index.php?action=signin&error=mail-error');
             exit();
-        } else {
+        } 
+        else {
             # if mail is in DB, test if the password matches
-            $password_true = $connexion->prepare(
-                "SELECT COUNT(*) FROM login_user WHERE mail LIKE :mail AND mdp LIKE :mdp"
+            $passwordRequest = $connexion->prepare(
+                "SELECT mdp FROM login_user WHERE mail LIKE :mail "
             );
-            $password_true->execute(['mail' => $userMail, 'mdp' => $userPassword]);
-            if ($password_true->fetchColumn() == 0) {
-                header('location: ../../index.php?action=signin&error=wrong-password');
-                exit();
-            } else {
+            $passwordRequest->execute(['mail' => $userMail]);
+            $passwordHash = $passwordRequest->fetchColumn();
+            //echo (password_verify($userPassword, $passwordHash)) ? 'true' : 'false';
+            
+            if (password_verify($userPassword, $passwordHash)) {
                 echo "CONNEXION LEGIT ";
+
                 $_SESSION["user"] = [
                     "mail" => $userMail,
                     "password" => $userPassword,
                 ];
-                if (isset($_SESSION["user"]["mail"])) {
-                    echo "mail: {$_SESSION["user"]["mail"]} - paswd: {$_SESSION["user"]["password"]}";
-                };
                 header('location: ../../index.php');
                 exit();
+            } else {
+                
+                header('location: ../../index.php?action=signin&error=wrong-password');
+                exit();
             }
-        }
         /*
         password_hash()
         password_verify
-        */
-         
-        
-        
+        */ 
     }
+}
     catch(PDOException $e){
         echo "Erreur: ".$e->getMessage();
     }
