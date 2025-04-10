@@ -23,20 +23,20 @@ try {
 
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
         if ($_GET["action"] == "signin") {
-            (new Signin())->execute();
+            (new Signin())->execute($isConnected);
         } elseif ($_GET["action"] == "signup") {
-            (new Signup())->execute();
+            (new Signup())->execute($isConnected);
         } elseif ($_GET["action"] == "quotation") {
-            (new Quotation())->execute();
+            (new Quotation())->execute($isConnected);
         } elseif ($_GET["action"] == "courses") {
             (new Courses())->execute($isConnected);
         } elseif ($_GET["action"] == "courses-register") {
             (new CoursesRegister())->execute($isConnected);
         } elseif ($_GET["action"] == "contact") {
-            (new Contact())->execute();
+            (new Contact())->execute($isConnected);
         }
     } else {
-        (new Homepage())->execute();
+        (new Homepage())->execute($isConnected);
     }
 } catch (Exception $error) {
     die("Erreur : " . $error->getMessage());

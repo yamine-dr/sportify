@@ -18,15 +18,26 @@
                     </ul>
                 </div>
                 <div>
-                    <h2 class="fw-semibold">Horaires du bureau</h2>
-                    <ul>
-                        <li>
-                            Lundi au Vendredi : 7 h - 19 h 45
-                        </li>
-                        <li>
-                            Samedi - Dimanche : 11 h - 17 h
-                        </li>
-                    </ul>
+                    <h2 class="fw-semibold">Horaires</h2>
+                    <div>
+                        <h5>Bureau :</h5>
+                        <ul>
+                            <li>
+                                Lundi au vendredi : 7 h - 19 h 30
+                            </li>
+                            <li>
+                                Samedi - dimanche : 11 h - 17 h
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Salles :</h5>
+                        <ul>
+                            <li>
+                                Lundi au dimanche : 7 h - 22 h
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div>
                     <h2 class="fw-semibold">Adresses</h2>

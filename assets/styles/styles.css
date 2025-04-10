@@ -27,7 +27,6 @@ h1 {
     letter-spacing: 1px;
     border: none;
     background-color: var(--cta-color1);
-    border-radius: 30px;
     width: 120px;
     height: 40px;
 }

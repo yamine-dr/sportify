@@ -47,9 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $passwordHash = $passwordRequest->fetchColumn();
             //echo (password_verify($userPassword, $passwordHash)) ? 'true' : 'false';
             
-            if (password_verify($userPassword, $passwordHash)) {
-                echo "CONNEXION LEGIT ";
-
+            // if (password_verify($userPassword, $passwordHash))
+            if ($userPassword === $passwordHash) {
                 $_SESSION["user"] = [
                     "mail" => $userMail,
                     "password" => $userPassword,
@@ -57,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('location: ../../index.php');
                 exit();
             } else {
-                
                 header('location: ../../index.php?action=signin&error=wrong-password');
                 exit();
             }

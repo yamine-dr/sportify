@@ -30,7 +30,7 @@
                     </select>
                 </div>
                 <?php endif; ?>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Confirmer</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Confirmer l'inscription</button>
             </form>
         </div>
     </main>

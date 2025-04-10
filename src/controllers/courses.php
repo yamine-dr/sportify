@@ -4,10 +4,10 @@ namespace App\Controllers\Courses;
 
 class Courses {
     public function execute(bool $isConnected): void {
-        $signinBtn = '<p class="mb-3 small text-muted">Connectez vous d\'abord pour vous inscrire</p>'
-             . '<a href="index.php?action=signin" class="btn btn-primary" role="button">Connexion</a>';
+        $signinBtn = '<p class="mb-3 small text-muted">Connectez vous d\'abord pour vous inscrire</p>' . 
+                     '<a href="index.php?action=signin" class="btn btn-primary" role="button">Connexion</a>';
 
-        $courses1 = [
+        $courses = [
             [
                 "title" => "Yoga",
                 "coach" => "Michelle Legrand",
@@ -26,8 +26,6 @@ class Courses {
                 "duration" => "45 min",
                 "places" => "5",
             ],
-        ];
-        $courses2 = [
             [
                 "title" => "Cycling",
                 "coach" => " Amy Taylor",
@@ -47,11 +45,6 @@ class Courses {
                 "places" => "5",
             ],
         ];
-        function titleInURL($str): string {
-            $res = strtolower($str);
-            $res = str_replace(' ', '-', $res);
-            return $res;
-        }
 
         require_once("templates/courses.php");
     } 

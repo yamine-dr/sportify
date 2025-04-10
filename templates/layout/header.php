@@ -1,3 +1,5 @@
+<?php $userIsConnected = isset($_SESSION["user"]); ?>
+
 <header id="header">
     <nav id="nav" class="navbar navbar-expand-lg fixed-top bg-body shadow-sm">
         <div class="container">
@@ -24,30 +26,38 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=contact">Contacts</a>
                     </li>
-                    <?php if (isset($_SESSION["user"]["mail"])): ?>
-                    <a
-                    role="button"
-                    href="src/models/logout.php"
-                    class="btn nav-btn cta-btn link-light d-flex justify-content-center align-items-center"
-                    >
-                        Déconnexion
-                    </a>
+
+                    <?php if ($userIsConnected): ?>
+                        <a
+                        role="button"
+                        href="index.php?action=quotation"
+                        class="btn nav-btn btn-primary rounded-pill d-flex justify-content-center align-items-center"
+                        >
+                            Devis
+                        </a>
+                        <a
+                        role="button"
+                        href="src/models/logout.php"
+                        class="btn nav-btn cta-btn rounded-pill link-light d-flex justify-content-center align-items-center"
+                        >
+                            Déconnexion
+                        </a>
                     <?php else: ?>    
-                    <a
-                    role="button"
-                    href="index.php?action=signup"
-                    class="btn nav-btn cta-btn link-light d-flex justify-content-center align-items-center"
-                    >
-                        S'inscrire
-                    </a>
-                    <a
-                    role="button"
-                    id="navBtnSignin"
-                    href="index.php?action=signin"
-                    class="btn nav-btn cta-btn d-flex justify-content-center align-items-center"
-                    >
-                        Connexion
-                    </a>
+                        <a
+                        role="button"
+                        href="index.php?action=signup"
+                        class="btn nav-btn cta-btn rounded-pill link-light d-flex justify-content-center align-items-center"
+                        >
+                            S'inscrire
+                        </a>
+                        <a
+                        role="button"
+                        id="navBtnSignin"
+                        href="index.php?action=signin"
+                        class="btn nav-btn cta-btn rounded-pill d-flex justify-content-center align-items-center"
+                        >
+                            Connexion
+                        </a>
                     <?php endif; ?>
                 </ul>
             </div>
