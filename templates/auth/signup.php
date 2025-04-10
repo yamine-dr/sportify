@@ -35,6 +35,9 @@ $inscriptionLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']
 							<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="" required>
 							<label for="inputPassword">Mot de passe</label>
 						</div>
+						<?php if (isset($_GET["error"]) && $_GET["error"] == "mail-exist"):?>
+								<p id="info1" class="text-danger">Erreur : Mail déjà existant</p>
+						<?php endif; ?>
 						<button class="w-100 btn btn-lg btn-primary" type="submit">Inscription</button>
 						<hr class="my-4">
 						<small class="text-muted">En cliquant sur "Inscription", vous acceptez les conditions d'utilisation.</small>

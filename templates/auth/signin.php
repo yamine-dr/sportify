@@ -21,12 +21,13 @@
 							<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="" required>
 							<label for="inputPassword">Mot de passe</label>
 						</div>
-						<div class="checkbox mb-3">
-							<label>
-								<input type="checkbox" value="remember-me"> Se souvenir de moi
-							</label>
-						</div>
-						<p class="text-danger">info blabla</p>
+						<?php if (isset($_GET["error"])):?>
+							<?php if ($_GET["error"] == "mail-error"):?>
+								<p id="info1" class="text-danger">Erreur : Mail inexistant</p>
+							<?php elseif ($_GET["error"] == "wrong-password"):?>
+								<p id="info1" class="text-danger">Erreur : Mot de passe erroné</p>
+							<?php endif; ?>
+						<?php endif; ?>
 						<button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
 					</form>
 					

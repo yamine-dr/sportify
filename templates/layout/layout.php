@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 <body>
-    <?php require_once("templates/layout/header.php") ?>
+    <?php require_once("templates/layout/header.php"); ?>
     
     <?= $content ?>
 

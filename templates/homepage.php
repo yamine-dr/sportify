@@ -77,7 +77,7 @@
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                             Nunc et metus id ligula malesuada placerat sit amet quis enim. 
-                            Aliquam erat volutpat.&nbsp;
+                            Aliquam erat volutpat.
                         </p>
                         <p>
                             In pellentesque scelerisque auctor. Ut porta lacus eget nisi fermentum lobortis. 

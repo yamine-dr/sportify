@@ -1,34 +1,36 @@
 <?php
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userMail = htmlspecialchars($_POST["inputEmail"]);
-    $userPassword = htmlspecialchars($_POST["inputPassword"]);
+    $userPassword = password_hash(htmlspecialchars($_POST["inputPassword"]),PASSWORD_DEFAULT);
     $userLastName = htmlspecialchars($_POST["inputLastName"]);
     $userFirstName = htmlspecialchars($_POST["inputFirstName"]);
-
+    echo $userPassword ;
     $host = 'localhost';
     $login = 'root';
     $dbPassword = '';
-    $dbName = 'SportiyDataBase';
+    $dbName = 'sportify';
 
-    try{ # test if DB already exists
-    $connexion = new PDO("mysql:host=localhost", $login, $dbPassword);
-    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try{ 
+        # test if DB already exists
+        $connexion = new PDO("mysql:host=localhost", $login, $dbPassword);
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-    // Requête pour créer la base de données si elle n'existe pas
-    $nomBDD = "ma_nouvelle_base";
-    $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
-    $connexion->exec($sql);
+        // Requête pour créer la base de données si elle n'existe pas
+        $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
+        $connexion->exec($sql);
 
         $connexion = new PDO("mysql:host=$host;dbname=$dbName", $login, $dbPassword);
         $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         #echo "Connexion sql reussie\n";
         
-        #CREATE DATABASE testSportiy
+        #CREATE DATABASE sportiy
         $codesql1 = "
                     CREATE TABLE IF NOT EXISTS login_user( 
                     mail VARCHAR(50),
-                    mdp VARCHAR(50)
+                    mdp VARCHAR(60)
                     )";
 
         $codesql2 = "
@@ -49,10 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insertion->execute(['mail' => $userMail, 'mdp' => $userPassword]);   
 
             $insertion = $connexion->prepare("INSERT INTO info_user(mail, nom, prenom) VALUES (:mail, :nom, :prenom)");
-            $insertion->execute(['mail' => $userMail, 'nom' => $userLastName, 'prenom' => $userFirstName]);  
+            $insertion->execute(['mail' => $userMail, 'nom' => $userLastName, 'prenom' => $userFirstName]);
+            header('location: ../../index.php');
+            exit();
         }
         else{
-            echo "mail existe deja";
+            header('location: ../../index.php?action=signup&error=mail-exist');
+            exit();
         }
             
         
