@@ -46,7 +46,7 @@
         }
         ?>
         <!-- Début du formulaire -->
-        <form method="POST" action="src/models/mail-quotation.php" class="border p-4 rounded shadow-sm">
+        <form method="POST" action="src/models/quotation.php" class="border p-4 rounded shadow-sm">
             <h1 class="mb-4">Demande de devis personnalisé</h1>
 
             <div class="mb-3">
@@ -75,19 +75,10 @@
                     <input class="form-check-input" type="radio" name="lieu_seance" value="publique" id="radioPublique" required>
                     <label class="form-check-label" for="radioPublique">Publique</label>
                 </div>
-
-                
             </div>
-
-
             <div class="mb-3">
                 <label for="besoinsParticuliers" class="form-label">Vos besoins particuliers :</label>
                 <textarea class="form-control" name="besoinsParticuliers" id="besoinsParticuliers" rows="6" placeholder="Décrivez ici vos besoins..."></textarea>
-            </div>
-            <!-- champ pour saisir l'adresse mail -->
-            <div class="mb-3">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="exemple@domaine.com" required>
             </div>
             <div>
                 <!-- Bouton pour envoyer le formulaire -->
