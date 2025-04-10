@@ -2,6 +2,103 @@
 
 <?php ob_start(); ?>
 
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Inclure les fichiers de PHPMailer
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+require 'phpmailer/Exception.php';
+
+// Traitement du formulaire
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $type_seance = $_POST['type_seance'];
+    $lieu_seance = $_POST['lieu_seance'];
+    $besoins = $_POST['besoins_particuliers'];
+    $email = $_POST['email'];
+
+    // Calcul du prix de base
+    $prix = 0;
+
+    //prix en fct du type d la séance
+    if($type_seance === 'individuel'){
+        $prix += 30;
+    } elseif ($type_seance === 'collectif'){
+        $prix += 20;
+    }
+
+    // prix en fct du lieu
+    if($lieu_seance === 'prive'){
+        $prix += 15;
+    } elseif ($type_seance === 'publique'){
+        $prix += 0;
+    }
+    
+
+    // Initialiser PHPMailer
+    $mail = new PHPMailer(true);
+
+    try {
+        // Paramètres SMTP pour Gmail
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+
+        // info pour l'expediteur du mail 
+        $mail->Username = '87projetwebl2@gmail.com';         // notre adresse Gmail
+        $mail->Password = 'kdfa bqzw zztw npbv';     //  mot de passe d’application
+
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Expéditeur et destinataire
+        $mail->setFrom('87projetwebl2@gmail.com', 'Sportify');
+        $mail->addAddress($email); // destinataire
+
+        // Contenu de l'e-mail
+        $mail->isHTML(true); //Permet contenu du mail en HTML
+        $mail->Subject = 'Sportify - Estimation du prix du devis'; //objet du mail
+        $mail->Body = "
+            <p>Bonjour,</p>
+
+            <p>Voici l'estimation de votre séance personnalisée:</p>
+
+            <ul>
+                <li><strong>Type de séance :</strong> $type_seance</li>
+                <li><strong>Lieu de séance :</strong> $lieu_seance</li>
+                <li><strong>Besoins :</strong> $besoins</li>
+                <li><strong> Coût estimé :</strong> $prix €</li>
+                
+
+            </ul>
+            <p>Nous vous répondrons rapidement.</p>
+            <p>Cordialement,<br>L'équipe Sportify</p>
+        ";
+
+        // Envoi
+        $mail->send();
+        $message_confirmation = [
+            'type' => 'success',
+            'text' => "E-mail envoyé avec succès à $email."
+        ];
+    } catch (Exception $e) {
+        $message_confirmation = [
+            'type' => 'error',
+            'text' => "L'envoi de l'e-mail a échoué. Erreur : " . $mail->ErrorInfo
+        ];
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
 <!-- body {
     background-color: rgb(54, 49, 49); /* Fond noir */
     margin: 0;
@@ -30,8 +127,17 @@ h1 {
     
 
 <div class="container mt-5 pt-5">
-    <!-- Début du formulaire -->
-    <form action="traitement.php" method="POST" class="border p-4 rounded shadow-sm"> <!--envoie les données a "traitement.php" avec POST -->
+    <!-- Mon code pour le  formulaire -->
+    <!--petit message confirmation ou non de l'envoi du mail  -->
+    <?php if (isset($message_confirmation)): ?>
+        <div class="alert <?= $message_confirmation['type'] === 'success' ? 'alert-success' : 'alert-danger' ?>">
+            <?= htmlspecialchars($message_confirmation['text']) ?>
+        </div>  
+    <?php endif; ?>
+
+
+   <!-- Début du formulaire -->
+    <form method="POST" class="border p-4 rounded shadow-sm"> <!--envoie les données a "traitement.php" avec POST -->
         <h1 class="mb-4">Demande de devis personnalisé</h1>
 
         <div class="mb-3">
