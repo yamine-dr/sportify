@@ -13,35 +13,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dbPassword = '';
     $dbName = 'sportify';
 
-    #CREATE DATABASE Registration
-    $codeRegistration = "
-        CREATE TABLE IF NOT EXISTS registration(
-        id INT AUTO_INCREMENT PRIMARY KEY, 
-        idClient VARCHAR(50),
-        idCourse VARCHAR(50),
-        courseLevel VARCHAR(50),
-        date DATETIME DEFAULT CURRENT_TIMESTAMP
-        )";
-    $connexion->exec($codeRegistration);
-
-    if ($courseHasLevel){
-        
-        $insertion = $connexion->prepare("INSERT INTO registration(idClient , idCourse, courseLevel) VALUES (:idClient, :idCourse, :courseLevel)");
-        $insertion->execute(['idClient' => $_SESSION['user']['id'], 'idCourse' => $, 'courseLevel' => $courseLevel]); 
-
-
-    }
-    else {
-        $insertion = $connexion->prepare("INSERT INTO registration(idClient , idCourse) VALUES (:idClient, :idCourse)");
-        $insertion->execute(['idClient' => $_SESSION['user']['id'], 'idCourse' => $, ]); 
-    }
-
-    
-
     try{
-            
         $connexion = new PDO("mysql:host=$host;dbname=$dbName", $login, $dbPassword);
         $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        #CREATE DATABASE Registration
+        $codeRegistration = "
+            CREATE TABLE IF NOT EXISTS registration(
+            id INT AUTO_INCREMENT PRIMARY KEY, 
+            idClient VARCHAR(50),
+            idCourse VARCHAR(50),
+            courseLevel VARCHAR(50),
+            date DATETIME DEFAULT CURRENT_TIMESTAMP
+            )";
+        $connexion->exec($codeRegistration);
+
+        if ($courseHasLevel){
+            
+            $insertion = $connexion->prepare("INSERT INTO registration(idClient , idCourse, courseLevel) VALUES (:idClient, :idCourse, :courseLevel)");
+            $insertion->execute(['idClient' => $_SESSION['user']['id'], 'idCourse' => 0, 'courseLevel' => $courseLevel]); 
+
+
+        }
+        else {
+            $insertion = $connexion->prepare("INSERT INTO registration(idClient , idCourse) VALUES (:idClient, :idCourse)");
+            $insertion->execute(['idClient' => $_SESSION['user']['id'], 'idCourse' => 0, ]); 
+  
+        }
 
 
     }
@@ -51,5 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 // add +1 user in the course selected ($_POST["course"]) in the DB
 
-header("location: ../../index.php?action=courses-register&registered=success");
-exit();
+//header("location: ../../index.php?action=courses-register&registered=success");
+//exit();
+?>
