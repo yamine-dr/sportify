@@ -12,24 +12,24 @@ require "../../phpmailer/Exception.php";
 
 // Traitement du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $format = htmlspecialchars($_POST['type_seance']);
-    $location = htmlspecialchars($_POST['lieu_seance']);
-    $userNeeds = htmlspecialchars($_POST['besoins_particuliers']);
-    $userMail = $_SESSION["user"]['mail'];
+    $sessionType = htmlspecialchars($_POST["sessionType"]);
+    $location = htmlspecialchars($_POST['location']);
+    $userNeeds = htmlspecialchars($_POST['userNeeds']);
+    $userMail = $_SESSION["user"]["mail"];
 
     // set price
     $price = 0;
-    // $price = ($format === "individuel") ? $price + 30 : $price + 20;
-    if ($format === 'individuel') {
+    // $price = ($sessionType === "individuel") ? $price + 30 : $price + 20;
+    if ($sessionType === 'individuel') {
         $price += 30;
-    } elseif ($format === 'collectif') {
+    } elseif ($sessionType === 'collectif') {
         $price += 20;
     }
 
     // $price = ($location === "prive") ? $price + 15 : $price;
     if ($location === 'prive') {
         $price += 15;
-    } elseif ($format === 'publique') {
+    } elseif ($sessionType === 'publique') {
         $price += 0;
     }
     
@@ -40,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phpMailer->Host = 'smtp.gmail.com';
         $phpMailer->SMTPAuth = true;
 
-        // info pour l'expediteur du mail
-        $phpMailer->Username = '87projetwebl2@gmail.com'; // notre adresse Gmail
-        $phpMailer->Password = 'kdfa bqzw zztw npbv';     //  mot de passe d’application
+        // info of the sender
+        $phpMailer->Username = '87projetwebl2@gmail.com'; // mail adresse
+        $phpMailer->Password = 'kdfa bqzw zztw npbv';     // mot de passe d’application
 
         $phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $phpMailer->Port = 587;
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Voici l'estimation de votre séance personnalisée:</p>
 
             <ul>
-                <li><strong>Type de séance :</strong> $format</li>
+                <li><strong>Type de séance :</strong> $sessionType</li>
                 <li><strong>Lieu de séance :</strong> $location</li>
                 <li><strong>Besoins :</strong> $userNeeds</li>
                 <li><strong> Coût estimé :</strong> $price €</li>
@@ -74,12 +74,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Envoi
         $phpMailer->send();
-        $outcome = "succes";
+        $outcome = "success";
     } catch (Exception $e) {
         $outcome = "error";
     } finally {
         // to redirect to quotation.php
-        header("location: ../../index.php?action=quotation&confirmation={$outcome}");
+        header("location: ../../index.php?action=quotation&outcome={$outcome}");
         exit();
     }
 }
