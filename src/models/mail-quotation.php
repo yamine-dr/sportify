@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //on le recup ici avec la méthode p
     $format = $_POST['type_seance']; //on met les info recup dans des variables
     $location = $_POST['lieu_seance'];
     $customerNeeds = $_POST['besoins_particuliers'];
-    $email = $_POST['email'];
+    $email = $_POST['email']; //$_SESSION["user"]['mail'];
 
     // Calcul du prix de base
     $price = 0;
