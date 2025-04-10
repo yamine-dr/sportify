@@ -45,31 +45,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             $passwordRequest->execute(['mail' => $userMail]);
             $passwordHash = $passwordRequest->fetchColumn();
-            
-            #recuperation de l'id
-            $idRequest = $connexion->prepare(
-                "SELECT id FROM login_user WHERE mail LIKE :mail "
-            );
-            $idRequest->execute(['mail' => $userMail]);
-            $userId = $idRequest->fetchColumn();
+            if (password_verify($userPassword, $passwordHash)){
+                #recuperation de l'id
+                $idRequest = $connexion->prepare(
+                    "SELECT id FROM login_user WHERE mail LIKE :mail "
+                );
+                $idRequest->execute(['mail' => $userMail]);
+                $userId = $idRequest->fetchColumn();
 
-            $_SESSION["user"] = [
-                "mail" => $userMail,
-                "password" => $userPassword,
-                "id" => $userId,
+                $_SESSION["user"] = [
+                    "mail" => $userMail,
+                    "password" => $userPassword,
+                    "id" => $userId,
 
-            ];
-            
-            header('location: ../../index.php');
-            exit();
+                ];
+                
+                header('location: ../../index.php');
+                exit();
         } else {
             header('location: ../../index.php?action=signin&error=wrong-password');
             exit();
         }
-        /*
-        password_hash()
-        password_verify
-        */ 
     }
 }
     catch(PDOException $e){
