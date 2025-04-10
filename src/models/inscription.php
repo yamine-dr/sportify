@@ -53,9 +53,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $insertion = $connexion->prepare("INSERT INTO info_user(mail, nom, prenom) VALUES (:mail, :nom, :prenom)");
             $insertion->execute(['mail' => $userMail, 'nom' => $userLastName, 'prenom' => $userFirstName]);
+
+            #recuperation de l'id
+            $idRequest = $connexion->prepare(
+                "SELECT id FROM login_user WHERE mail LIKE :mail "
+            );
+            $idRequest->execute(['mail' => $userMail]);
+            $userId = $idRequest->fetchColumn();
+
             $_SESSION["user"] = [
                 "mail" => $userMail,
                 "password" => $userPassword,
+                "id" => $userId,
+
             ];
             header('location: ../../index.php');
             exit();

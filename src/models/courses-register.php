@@ -4,7 +4,8 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $course = htmlspecialchars($_POST["course"]);
-    if ($courseHasLevel):   $level = htmlspecialchars($_POST["level"]);
+    $courseHasLevel = htmlspecialchars($_POST["courseHasLevel"]);
+    if ($courseHasLevel): $courseLevel = $_POST["level"];
 
     
     $host = 'localhost';
@@ -26,7 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($courseHasLevel){
         
         $insertion = $connexion->prepare("INSERT INTO registration(idClient , idCourse, courseLevel) VALUES (:idClient, :idCourse, :courseLevel)");
-        $insertion->execute(['idClient' => $, 'idCourse' => $, 'courseLevel' => $]); 
+        $insertion->execute(['idClient' => $_SESSION['user']['id'], 'idCourse' => $, 'courseLevel' => $courseLevel]); 
+
+
     }
 
     

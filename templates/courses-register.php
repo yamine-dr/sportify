@@ -21,16 +21,17 @@
                                 <input type="text" id="course" name="course" class="form-control" value="<?= $course ?>">
                             </div>
                         </fieldset>
+                        <input type="text" name="courseHasLevel" id="courseHasLevel" value="<?= $courseHasLevel ? 1 : 0 ?>" class="d-none" disabled>
                         <?php if ($courseHasLevel): ?>
-                        <div class="mb-3">
-                            <label for="level" class="form-label">Choisissez le niveau</label>
-                            <select id="level" class="form-select" aria-label="Selection du niveau" required>
-                                <option value="" selected>Niveau choisi</option>
-                                <option value="easy">Débutant</option>
-                                <option value="medium">Intermédiare</option>
-                                <option value="hard">Avancé</option>
-                            </select>
-                        </div>
+                            <div class="mb-3">
+                                <label for="level" class="form-label">Choisissez le niveau</label>
+                                <select id="level" name="level" class="form-select" aria-label="Selection du niveau" required>
+                                    <option value="" selected>Niveau choisi</option>
+                                    <option value="easy">Débutant</option>
+                                    <option value="medium">Intermédiare</option>
+                                    <option value="hard">Avancé</option>
+                                </select>
+                            </div>
                         <?php endif; ?>
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Confirmer l'inscription</button>
                     </form>
