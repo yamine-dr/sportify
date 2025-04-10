@@ -5,7 +5,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $course = htmlspecialchars($_POST["course"]);
     $courseHasLevel = htmlspecialchars($_POST["courseHasLevel"]);
-    if ($courseHasLevel): $courseLevel = $_POST["level"];
+    if ($courseHasLevel) $courseLevel = $_POST["level"];
 
     
     $host = 'localhost';
@@ -41,8 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
 
-    }
-    catch(PDOException $e){
+    } catch(PDOException $e) {
         echo "Erreur: ".$e->getMessage();
     }
 }
@@ -50,4 +49,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //header("location: ../../index.php?action=courses-register&registered=success");
 //exit();
-?>
