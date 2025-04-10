@@ -31,6 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     }
+    else {
+        $insertion = $connexion->prepare("INSERT INTO registration(idClient , idCourse) VALUES (:idClient, :idCourse)");
+        $insertion->execute(['idClient' => $_SESSION['user']['id'], 'idCourse' => $, ]); 
+    }
 
     
 
