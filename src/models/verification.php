@@ -45,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             $passwordRequest->execute(['mail' => $userMail]);
             $passwordHash = $passwordRequest->fetchColumn();
-            //echo (password_verify($userPassword, $passwordHash)) ? 'true' : 'false';
             
             if (password_verify($userPassword, $passwordHash)) {
                 $_SESSION["user"] = [

@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dbName = 'sportify';
 
     try{ 
-        # test if DB already exists
         $connexion = new PDO("mysql:host=localhost", $login, $dbPassword);
         $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
@@ -52,6 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $insertion = $connexion->prepare("INSERT INTO info_user(mail, nom, prenom) VALUES (:mail, :nom, :prenom)");
             $insertion->execute(['mail' => $userMail, 'nom' => $userLastName, 'prenom' => $userFirstName]);
+            $_SESSION["user"] = [
+                "mail" => $userMail,
+                "password" => $userPassword,
+            ];
             header('location: ../../index.php');
             exit();
         }
