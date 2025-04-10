@@ -2,18 +2,19 @@
 
 <?php ob_start(); ?>
 
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
+
+<?php //traitement php du formulaire après l'envoi
+use PHPMailer\PHPMailer\PHPMailer; //méthode utiliser pour php mailer
 use PHPMailer\PHPMailer\Exception;
 
 // Inclure les fichiers de PHPMailer
 require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
+require 'phpmailer/SMTP.php'; //on config le serv pour pouvoir envoyé des mail
 require 'phpmailer/Exception.php';
 
 // Traitement du formulaire
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $type_seance = $_POST['type_seance'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //on le recup ici avec la méthode post
+    $type_seance = $_POST['type_seance']; //on met les info recup dans des variables
     $lieu_seance = $_POST['lieu_seance'];
     $besoins = $_POST['besoins_particuliers'];
     $email = $_POST['email'];
