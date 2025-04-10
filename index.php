@@ -21,6 +21,45 @@ use App\Controllers\Contact\Contact;
 try {
     $isConnected = isset($_SESSION["user"]);
 
+    $courses = [
+        [
+            "title" => "Yoga",
+            "coach" => "Michelle Legrand",
+            "duration" => "1 h",
+            "places" => "5",
+        ],
+        [
+            "title" => "Pilates",
+            "coach" => " Marion May",
+            "duration" => "1 h",
+            "places" => "3",
+        ],
+        [
+            "title" => "Renforcement musculaire",
+            "coach" => "Camille Lemont",
+            "duration" => "45 min",
+            "places" => "5",
+        ],
+        [
+            "title" => "Cycling",
+            "coach" => " Amy Taylor",
+            "duration" => "45 min",
+            "places" => "3",
+        ],
+        [
+            "title" => "Fitness",
+            "coach" => "Laura Jones",
+            "duration" => "45 min",
+            "places" => "5",
+        ],
+        [
+            "title" => "Programme personnalisé",
+            "coach" => "Laura Marins",
+            "duration" => "variable",
+            "places" => "5",
+        ],
+    ];
+
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
         if ($_GET["action"] == "signin") {
             (new Signin())->execute($isConnected);
@@ -29,9 +68,9 @@ try {
         } elseif ($_GET["action"] == "quotation") {
             (new Quotation())->execute($isConnected);
         } elseif ($_GET["action"] == "courses") {
-            (new Courses())->execute($isConnected);
+            (new Courses())->execute($isConnected, $courses);
         } elseif ($_GET["action"] == "courses-register") {
-            (new CoursesRegister())->execute($isConnected);
+            (new CoursesRegister())->execute($isConnected, $courses);
         } elseif ($_GET["action"] == "contact") {
             (new Contact())->execute($isConnected);
         }
