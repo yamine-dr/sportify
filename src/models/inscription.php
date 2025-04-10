@@ -27,13 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         #CREATE DATABASE sportiy
         $codesql1 = "
-                    CREATE TABLE IF NOT EXISTS login_user( 
+                    CREATE TABLE IF NOT EXISTS login_user(
+                    id INT AUTO_INCREMENT PRIMARY KEY, 
                     mail VARCHAR(50),
                     mdp VARCHAR(60)
                     )";
 
         $codesql2 = "
-                    CREATE TABLE IF NOT EXISTS info_user( 
+                    CREATE TABLE IF NOT EXISTS info_user(
+                    id INT AUTO_INCREMENT PRIMARY KEY, 
                     mail VARCHAR(50),
                     nom VARCHAR(50),
                     prenom VARCHAR(50)
