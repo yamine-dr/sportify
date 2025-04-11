@@ -64,45 +64,68 @@
         </div>
 
         <!-- form group -->
-        <div class="container mb-5 p-4 p-md-5 border rounded-3 bg-light">
-            <h3 class="mb-3 display-6 fw-medium">Contactez-nous</h3>
-            <form method="POST" action="">
-                <div class="d-flex justify-content-between gap-4">
-                    <div class="mb-3 w-100">
-                        <label for="name" class="form-label ms-1">Nom et prénom</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="" required>
-                    </div>
-                    <div class="mb-3 w-100">
-                        <label for="email" class="form-label ms-1">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="jaime@sportify.com" required>
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <label for="textarea" class="form-label ms-1">Commentaire</label>
-                    <textarea class="form-control" placeholder="Laissez-nous un commentaire" id="textarea"></textarea>
-                </div>
-                <button class="btn btn-primary w-25 rounded-3" type="submit">Envoyer</button>
-            </form>
+        <div class="container mt-5 pt-5">
+            <?php if (!isset($_GET["contact"])): // si le formulaire de contact n'a pas encore été envoyé ?>
+                <form method="POST" action="src/models/contact.php" class="border p-4 rounded shadow-sm">
+                    <h1 class="mb-4">Espace questions</h1>
 
-            <small class="text-muted">Nous répondons à toutes les questions !</small>
+                    <!-- nom -->
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Nom :</label>
+                        <input type="text" class="form-control" name="lastName" id="lastName" required>
+                    </div>
+
+                    <!-- prénom -->
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">Prénom :</label>
+                        <input type="text" class="form-control" name="firstName" id="firstName" required>
+                    </div>
+
+                    <!-- commentaire / questions -->
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Posez-nous vos questions :</label>
+                        <textarea class="form-control" name="message" id="message" rows="6" placeholder="Laissez votre commentaire ou votre question ici..." required></textarea>
+                    </div>
+
+
+                    <!-- Bouton d'envoi -->
+                    <div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </form>
+            <?php else: ?>
+                <?php
+                    switch (htmlspecialchars($_GET["contact"])) {
+                        case "success": //msg succè
+                            echo (
+                                '<div class="alert alert-success">'.
+                                    'Votre message a bien été envoyé. Merci de nous avoir contactés !'.
+                                '</div>'
+                            );
+                            break;
+                        case "error": //msg erreur
+                            echo (
+                                '<div class="alert alert-danger">'.
+                                    'Une erreur est survenue lors de l\'envoi. Veuillez réessayer plus tard.'.
+                                '</div>'
+                            );
+                            break;
+                    }
+                ?>
+            <?php endif; ?>
         </div>
+        <!-- fin du form group/formulaire -->
 
-        <!-- Formulaire de contact de Ryad -->
-        <form action="traitement.php" method="POST" class="mb-5 border p-4 rounded shadow-sm"> <!--envoie les données a "traitement.php" avec POST -->
-            <h1 class="mb-4">Espace questions</h1>
-            <div class="mb-3">
-                <!-- Label avec classe Bootstrap -->
-                <label for="espaceQuestions" class="form-label">Espace questions :</label>
-                <!-- style du textarea -->
-                <textarea class="form-control" name="espace_questions" id="espaceQuestions" rows="6" placeholder="Posez ici toutes vos questions..."></textarea>
-            </div>
-            <div>
-                <!-- Bouton pour envoyer le formulaire -->
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-            </div>
-        </form>
+
+        <small class="text-muted">Nous répondons à toutes les questions !</small>
+    </div>                                                      
 
     </main>
+
+
+
+    
 <?php $content = ob_get_clean(); ?>
+
 
 <?php require_once("templates/layout/layout.php"); ?>
