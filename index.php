@@ -18,26 +18,21 @@ use App\Controllers\CourseRegistration\CourseRegistration;
 use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
 
+use App\Lib\Database\Database;
 try {
     /*
-    $host = 'localhost';
-    $dbname = 'nom_de_ta_base';
-    $user = 'root';
-    $pass = '';
+    $ServerConnection = (new Server())->getConnection();
 
-
-    // Connexion sans sélectionner la base de données
-    $pdo = new PDO("mysql:host=$host", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Vérifie si la base existe déjà
-    $stmt = $pdo->query("SHOW DATABASES LIKE '$dbname'");
+    // vérifier si la base existe
+    $dbName = 'sportify';
+    $stmt = $ServerConnection->query("SHOW DATABASES LIKE '$dbName'");
     $dbExists = $stmt->fetch();
 
     if (!$dbExists) {
         // Lire et exécuter le fichier SQL
         $sql = file_get_contents('../models/create-database.sql');
-        $pdo->exec($sql);}
+        $pdo->exec($sql);
+        }
  
 
     */
