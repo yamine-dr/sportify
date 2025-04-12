@@ -1,4 +1,4 @@
-<?php $title = "Sportify - inscription au cours"; ?>
+<?php $title = "Sportify - Inscription au cours"; ?>
 
 <!-- 
     variables from the controller:
@@ -40,24 +40,24 @@
                         case "success":
                             echo(
                                 <<<HTML
-                                    <div class="alert alert-success">
-                                        L'inscription est validée !
-                                    </div>
-                                    <a href="index.php" class="btn btn-primary">
-                                        Retourner à l'acceuil
-                                    </a>
+                                <div class="alert alert-success">
+                                    L'inscription est validée !
+                                </div>
+                                <a href="index.php" class="btn btn-primary">
+                                    Retourner à l'acceuil
+                                </a>
                                 HTML
                             );
                             break;
                         case "error":
                             echo(
                                 <<<HTML
-                                    <div class="alert alert-danger">
-                                        Erreur lors de l'inscription
-                                    </div>
-                                    <a href="index.php?action=courses" class="btn btn-primary">
-                                        Voir les cours
-                                    </a>
+                                <div class="alert alert-danger">
+                                    Erreur lors de l'inscription
+                                </div>
+                                <a href="index.php?action=courses" class="btn btn-primary">
+                                    Voir les cours
+                                </a>
                                 HTML
                             );
                             break;

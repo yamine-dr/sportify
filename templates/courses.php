@@ -1,4 +1,4 @@
-<?php $title = "Sportify - cours"; ?>
+<?php $title = "Sportify - Cours"; ?>
 
 <?php
 // variables from the controller:

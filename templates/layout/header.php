@@ -24,7 +24,7 @@
                         <a class="nav-link" href="index.php?action=courses">Cours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=contact">Contacts</a>
+                        <a class="nav-link" href="index.php?action=contact">Contact</a>
                     </li>
 
                     <?php if ($isClientConnected): ?>
