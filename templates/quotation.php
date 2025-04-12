@@ -70,6 +70,29 @@
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                 </div>
             </form>
+
+
+            <!-- script JS pour animé le formulaire-->
+        <script>
+            //Sélectionne tous les éléments <input> et <textarea> dans la page
+            const inputs = document.querySelectorAll("input, textarea");
+
+            //Quand l'utilisateur clique dans le champ (focus)
+            inputs.forEach((input) => {
+                input.addEventListener("focus", () => {
+                input.style.transition = "0.3s"; //On applique une transition douce pour que l'effet soit fluide
+                input.style.borderColor = "#4CAF50"; //bordure couleur vert
+                input.style.boxShadow = "0 0 5px #4CAF50"; //ajoute ombre autour du champ
+                });
+                //quand l'utilisateur quitte le champ
+                input.addEventListener("blur", () => {
+                input.style.borderColor = "#ccc"; //On remet la bordure en gris clair
+                input.style.boxShadow = "none"; //On supprime l’ombre autour du champ
+                });
+            });
+        </script>
+        <!--  fin du script JS pour animé le formulaire-->
+
         <?php else: // if the form has been sent ?> 
             <?php
                 // après l'envoi du formulaire, on test si le mail à bien été envoyé            
