@@ -19,6 +19,7 @@ use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
 
 try {
+    /*
     $host = 'localhost';
     $dbname = 'nom_de_ta_base';
     $user = 'root';
@@ -39,7 +40,7 @@ try {
         $pdo->exec($sql);}
  
 
-    
+    */
     
     $isClientConnected = isset($_SESSION["client"]);
 
