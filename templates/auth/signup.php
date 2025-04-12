@@ -1,5 +1,10 @@
 <?php $title = "Sportify - Inscription"; ?>
 
+<!--
+	variables from the controller:
+    - $isConnected (boolean): if the user is connected
+-->
+
 <?php ob_start(); ?>
 	<main id="signup" class="container col-xl-10 col-xxl-8 px-4 py-5">
 		<div class="row align-items-center g-lg-5 py-5">
@@ -12,7 +17,7 @@
 			<div class="col-md-10 mx-auto col-lg-5">
 				<div class="p-4 p-md-5 border rounded-3 bg-light">
 					<!-- FORM -->
-					<?php if (!isset($_GET["outcome"]) && !$isConnected): ?>
+					<?php if (!isset($_GET["outcome"])): ?>
 						<form method="POST" action="index.php?action=signup&form=completed">
 							<div class="form-floating mb-3">
 								<input type="text" class="form-control" name="firstname" placeholder="" required>
@@ -34,39 +39,36 @@
 							<hr class="my-4">
 							<small class="text-muted">En cliquant sur "Inscription", vous acceptez les conditions d'utilisation.</small>
 						</form>
-					<?php elseif (isset($_GET["outcome"])): ?>
+					<?php else: ?>
 						<?php
 						switch (htmlspecialchars($_GET["outcome"])) {
 							case "success":
-								echo(<<<HTML
-									<div class="alert alert-success text-center"> 
-										Inscription réussie
-									</div>
-									<a href="index.php?action=courses" class="btn btn-primary w-100" role="button"> 
-										Voir les cours 
-									</a>
-								HTML);
+								echo(
+									<<<HTML
+										<div class="alert alert-success text-center"> 
+											Inscription réussie
+										</div>
+										<a href="index.php?action=courses" class="btn btn-primary w-100" role="button"> 
+											Voir les cours 
+										</a>
+									HTML
+								);
 								break;
 							case "error":
-								echo(<<<HTML
-									<div class="alert alert-danger text-center"> 
-										Erreur : cet e-mail a déjà un compte,
-										<br> veuillez réessayer
-									</div>
-									<a href="index.php?action=signup" class="btn btn-primary w-100" role="button"> 
-										Inscription 
-									</a>
-								HTML);
+								echo(
+									<<<HTML
+										<div class="alert alert-danger text-center"> 
+											Erreur : cet e-mail a déjà un compte,
+											<br> veuillez réessayer
+										</div>
+										<a href="index.php?action=signup" class="btn btn-primary w-100" role="button"> 
+											Inscription 
+										</a>
+									HTML
+								);
 								break;
 						}	
 						?>
-					<?php elseif ($isConnected): ?>
-						<div class="alert alert-info text-center">
-							Vous êtes déjà connecté
-						</div>
-						<a href="index.php?action=courses" class="btn btn-primary w-100" role="button"> 
-							Voir les cours 
-						</a>
 					<?php endif; ?>
 				</div>
 			</div>

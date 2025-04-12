@@ -1,4 +1,4 @@
-<?php $userIsConnected = isset($_SESSION["user"]); ?>
+<?php $isClientConnected = isset($_SESSION["client"]); ?>
 
 <header id="header">
     <nav id="nav" class="navbar navbar-expand-lg fixed-top bg-body shadow-sm">
@@ -27,7 +27,7 @@
                         <a class="nav-link" href="index.php?action=contact">Contacts</a>
                     </li>
 
-                    <?php if ($userIsConnected): ?>
+                    <?php if ($isClientConnected): ?>
                         <a
                         role="button"
                         href="index.php?action=quotation"

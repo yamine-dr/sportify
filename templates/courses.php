@@ -3,14 +3,13 @@
 <?php
 // variables from the controller:
 // - $isConnected (boolean): if the user is connected
-// - $signinBtn (HTML string): button to display if user is not connected
 // - $courses (array)
 
-function titleInURL(string $str): string { // turn a course title in URL format
-    $res = strtolower($str);
-    $res = str_replace(' ', '-', $res);
-    return $res;
-}
+// function titleInURL(string $str): string { // turn a course title in URL format
+//     $res = strtolower($str);
+//     $res = str_replace(' ', '-', $res);
+//     return $res;
+// }
 ?>
 
 <?php ob_start(); ?>
@@ -30,24 +29,25 @@ function titleInURL(string $str): string { // turn a course title in URL format
                                     <ul>
                                         <li>Coach : <?= $course["coach"] ?></li>
                                         <li>Durée : <?= $course["duration"] ?></li>
-                                        <li><?= $course["places"] ?> places</li>
+                                        <li><?= $course["nbPlacesRemaining"] ?> places</li>
                                     </ul>
                                 </div>
-                                <?=
-                                $isConnected ? 
-                                    '<a href="index.php?action=courses-register&course=' . titleInURL($course["title"]) . '" class="btn btn-primary" role="button">' . 
-                                        'Réserver' . 
-                                    '</a>'
-                                    : 
-                                    <<<HTML
-                                        <div class="mb-3 small alert alert-danger">
-                                            Connectez vous d'abord pour vous inscrire
-                                        </div> 
-                                        <a href="index.php?action=signin" class="btn btn-primary" role="button">
-                                            Connexion
-                                        </a>
-                                    HTML
-                                ?>
+                                <?php if ($isConnected): ?>
+                                    <a
+                                    href="index.php?action=course-registration&course=<?= str_replace(' ', '-', $course["title"]) ?>"
+                                    class="btn btn-primary"
+                                    role="button"
+                                    > 
+                                        Réserver 
+                                    </a>
+                                <?php else: ?>
+                                    <div class="mb-3 small alert alert-danger">
+                                        Connectez vous d'abord pour vous inscrire
+                                    </div>
+                                    <a href="index.php?action=signin" class="btn btn-primary" role="button">
+                                        Connexion
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

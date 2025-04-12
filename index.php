@@ -3,62 +3,23 @@
 session_start();
 
 require_once("src/controllers/homepage.php");
-require_once("src/controllers/auth/signin.php");
 require_once("src/controllers/auth/signup.php");
-require_once("src/controllers/quotation.php");
+require_once("src/controllers/auth/signin.php");
 require_once("src/controllers/courses.php");
-require_once("src/controllers/courses-register.php");
+require_once("src/controllers/course-registration.php");
+require_once("src/controllers/quotation.php");
 require_once("src/controllers/contact.php");
 
 use App\Controllers\Homepage\Homepage;
-use App\Controllers\Auth\Signin\Signin;
 use App\Controllers\Auth\Signup\Signup;
-use App\Controllers\Quotation\Quotation;
+use App\Controllers\Auth\Signin\Signin;
 use App\Controllers\Courses\Courses;
-use App\Controllers\CoursesRegister\CoursesRegister;
+use App\Controllers\CourseRegistration\CourseRegistration;
+use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
 
 try {
-    $isConnected = isset($_SESSION["user"]);
-
-    $courses = [
-        [
-            "title" => "Yoga",
-            "coach" => "Michelle Legrand",
-            "duration" => "1 h",
-            "places" => "5",
-        ],
-        [
-            "title" => "Pilates",
-            "coach" => " Marion May",
-            "duration" => "1 h",
-            "places" => "3",
-        ],
-        [
-            "title" => "Renforcement musculaire",
-            "coach" => "Camille Lemont",
-            "duration" => "45 min",
-            "places" => "5",
-        ],
-        [
-            "title" => "Cycling",
-            "coach" => " Amy Taylor",
-            "duration" => "45 min",
-            "places" => "3",
-        ],
-        [
-            "title" => "Fitness",
-            "coach" => "Laura Jones",
-            "duration" => "45 min",
-            "places" => "5",
-        ],
-        [
-            "title" => "Programme personnalisé",
-            "coach" => "Laura Marins",
-            "duration" => "variable",
-            "places" => "5",
-        ],
-    ];
+    $isClientConnected = isset($_SESSION["client"]);
 
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
         $action = htmlspecialchars($_GET["action"]);
@@ -68,42 +29,46 @@ try {
             case "signup":
                 if ($formCompleted) {
                     (new Signup())->signup($_POST);
-                } else {
-                    (new Signup())->display($isConnected);
+                } elseif (!$isClientConnected || isset($_GET["outcome"])) {
+                    (new Signup())->display();
                 }
                 break;
             
             case "signin":
                 if ($formCompleted) {
                     (new Signin())->signin($_POST);
-                } else {
-                    (new Signin())->display($isConnected);
+                } elseif (!$isClientConnected || isset($_GET["outcome"])) {
+                    (new Signin())->display();
+                }
+                break;
+            
+            case "courses":
+                (new Courses())->display($isClientConnected);
+                break;
+            
+            case "course-registration":
+                if ($formCompleted) {
+                    (new CourseRegistration())->register($_POST);
+                } elseif ($isClientConnected) {
+                    (new CourseRegistration())->display();
                 }
                 break;
             
             case "quotation":
-                (new Quotation())->display($isConnected);
-                break;
-            
-            case "courses":
-                (new Courses())->display($isConnected, $courses);
-                break;
-            
-            case "courses-register":
-                (new CoursesRegister())->display($isConnected, $courses);
+                (new Quotation())->display($isClientConnected);
                 break;
             
             case "contact":
-                (new Contact())->display($isConnected);
+                (new Contact())->display($isClientConnected);
                 break;
             
             default:
-                (new Homepage())->display($isConnected);
+                throw new Exception("Erreur 404 : la page que vous recherchez n'existe pas");
                 break;
         }
     } else {
-        (new Homepage())->display($isConnected);
+        (new Homepage())->display($isClientConnected);
     }
 } catch (Exception $error) {
-    die("Erreur : " . $error->getMessage());
+    die(    $error->getMessage());
 }

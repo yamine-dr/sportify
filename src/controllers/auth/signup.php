@@ -7,7 +7,7 @@ require_once("src/models/clients.php");
 use App\Models\Clients\ClientsRepository;
 
 class Signup {
-    public function display(bool $isConnected): void {
+    public function display(): void {
         require_once("templates/auth/signup.php");
     }
 

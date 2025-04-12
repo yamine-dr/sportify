@@ -7,14 +7,8 @@ require_once("src/lib/database.php");
 use App\Lib\Database\Database;
 
 class ClientsRepository {
-    private ?\PDO $dbConnection;
-
-    function __construct() {
-        $this->dbConnection = (new Database())->getConnection();
-    }
-
     public function clientRegistration(string $firstname, string $lastname, string $mail, string $password): bool {
-        $dbConnection = $this->dbConnection;
+        $dbConnection = (new Database())->getConnection();
 
         // test if there's already a client registered with the $mail
         $statementGetMail = $dbConnection->prepare("SELECT COUNT(*) FROM clients_infos WHERE mail = :mail");
@@ -51,7 +45,7 @@ class ClientsRepository {
         $userId = (int) ($statementGetId->fetchColumn());
         
         // initialise the session
-        $_SESSION["user"] = [
+        $_SESSION["client"] = [
             "mail" => $mail,
             "password" => $password,
             "id" => $userId,
@@ -60,7 +54,7 @@ class ClientsRepository {
     }
 
     public function clientConnection(string $mail, string $password): bool {
-        $dbConnection = $this->dbConnection;
+        $dbConnection = (new Database())->getConnection();
 
         // test if there's a user that matches the $mail and $password in the database
         // 1) test the $mail
@@ -83,7 +77,7 @@ class ClientsRepository {
             $userId = (int) ($statementGetId->fetchColumn());
             
             // initialise the session
-            $_SESSION["user"] = [
+            $_SESSION["client"] = [
                 "mail" => $mail,
                 "password" => $password,
                 "id" => $userId,

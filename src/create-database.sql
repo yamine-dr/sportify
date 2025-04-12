@@ -24,17 +24,18 @@ CREATE TABLE IF NOT EXISTS courses (
     title VARCHAR(50),
     coach VARCHAR(50), 
     duration TIME,
+    has_levels BOOLEAN,
     nb_places_remaining INT
 );
 -- fill table "courses"
-INSERT INTO courses(title, coach, duration, nb_places_remaining) 
+INSERT INTO courses(title, coach, duration, has_levels, nb_places_remaining) 
 VALUES 
-("Yoga", "Michelle Legrand", "1:00:00", 5),
-("Pilates", "Marion May", "1:00:00", 3),
-("Renforcement musculaire", "Camille Lemont", "0:45:00", 5),
-("Cycling", "Amy Taylor", "0:45:00", 3),
-("Fitness", "Laura Jones", "0:45:00", 5),
-("Programme personnalisé", "Laura Marins", NULL, 5);
+("Yoga", "Michelle Legrand", "1:00:00", TRUE, 5),
+("Pilates", "Marion May", "1:00:00", TRUE, 3),
+("Renforcement musculaire", "Camille Lemont", "0:45:00", FALSE, 5),
+("Cycling", "Amy Taylor", "0:45:00", FALSE, 3),
+("Fitness", "Laura Jones", "0:45:00", FALSE, 5),
+("Programme personnalisé", "Laura Marins", NULL, FALSE, 5);
 
 -- create table "registrations"
 CREATE TABLE IF NOT EXISTS registrations (

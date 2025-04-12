@@ -11,8 +11,8 @@
 			<!-- RIGHT PART -->
 			<div class="col-md-10 mx-auto col-lg-5">
 				<div class="p-4 p-md-5 border rounded-3 bg-light">
-					<!-- FORM -->
-					 <?php if (!isset($_GET["outcome"]) && !$isConnected): ?>
+					<?php if (!isset($_GET["outcome"])): ?>
+						<!-- FORM -->
 						<form method="POST" action="index.php?action=signin&form=completed">
 							<div class="form-floating mb-3">
 								<input type="email" class="form-control" name="mail" placeholder="jaime@sportify.com" required>
@@ -31,39 +31,36 @@
 							<small>Pas de compte ?</small>
 							<a href="index.php?action=signup" class="text-primary text-sm fw-semibold">Inscription</a>
 						</div>
-					<?php elseif (isset($_GET["outcome"])): ?>
+					<?php else: ?>
 						<?php
 						switch (htmlspecialchars($_GET["outcome"])) {
 							case "success":
-								echo(<<<HTML
-									<div class="alert alert-success text-center"> 
-										Connexion réussie
-									</div>
-									<a href="index.php?action=courses" class="btn btn-primary w-100" role="button"> 
-										Voir les cours
-									</a>
-								HTML);
+								echo(
+									<<<HTML
+										<div class="alert alert-success text-center"> 
+											Connexion réussie
+										</div>
+										<a href="index.php?action=courses" class="btn btn-primary w-100" role="button"> 
+											Voir les cours
+										</a>
+									HTML
+								);
 								break;
 							case "error":
-								echo(<<<HTML
-									<div class="alert alert-danger text-center"> 
-										Erreur : e-mail et/ou mot de passe incorrects,
-										<br> veuillez réessayer
-									</div>
-									<a href="index.php?action=signin" class="btn btn-primary w-100" role="button"> 
-										Connexion
-									</a>
-								HTML);
+								echo(
+									<<<HTML
+										<div class="alert alert-danger text-center"> 
+											Erreur : e-mail et/ou mot de passe incorrects,
+											<br> veuillez réessayer
+										</div>
+										<a href="index.php?action=signin" class="btn btn-primary w-100" role="button"> 
+											Connexion
+										</a>
+									HTML
+								);
 								break;
 						}	
 						?>
-					<?php elseif ($isConnected): ?>
-						<div class="alert alert-info text-center">
-							Vous êtes déjà connecté
-						</div>
-						<a href="index.php?action=courses" class="btn btn-primary w-100" role="button"> 
-							Voir les cours 
-						</a>
 					<?php endif; ?>
 				</div>
 			</div>
