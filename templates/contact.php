@@ -4,7 +4,7 @@
     <main id="contact" class="mb-5">
         <h1 class="mb-5 text-center">Contact</h1>
 
-        <div class="container mb-5 d-flex flex-column flex-lg-row gap-3 gap-lg-0 align-items-center">
+        <section class="container mb-5 d-flex flex-column flex-lg-row gap-3 gap-lg-0 align-items-center">
             <!-- LEFT PART -->
             <div class="col-lg-6 p-4">
                 <div>
@@ -62,10 +62,10 @@
                 </figure>
                 <figcaption class="small text-muted">Adresse du bureau</figcaption>
             </div>
-        </div>
+        </section>
 
-        <!-- FORM GROUP -->
-        <div class="container mt-5 pt-5">
+        <!-- FORM SECTION -->
+        <section class="container mt-5 pt-5">
             <?php if (!isset($_GET["outcome"])): // si le formulaire de contact n'a pas encore été envoyé ?>
                 <h3 class="mb-4">Contactez-nous</h3>
                 <form method="POST" action="index.php?action=contact" class="border p-4 rounded shadow-sm">
@@ -114,8 +114,7 @@
                 ?>
             <?php endif; ?>
             <small class="text-muted">Nous répondons à toutes les questions !</small>
-        </div>
-        <!-- fin du form group/formulaire -->
+        </section>
 
         <!-- script JS pour animé le formulaire-->
         <script>
@@ -136,11 +135,6 @@
                 });
             });
         </script>
-
-
-        <small class="text-muted">Nous répondons à toutes les questions !</small>
-    </div>                                                      
-
     </main>
 <?php $content = ob_get_clean(); ?>
 
