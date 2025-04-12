@@ -19,6 +19,28 @@ use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
 
 try {
+    $host = 'localhost';
+    $dbname = 'nom_de_ta_base';
+    $user = 'root';
+    $pass = '';
+
+
+    // Connexion sans sélectionner la base de données
+    $pdo = new PDO("mysql:host=$host", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Vérifie si la base existe déjà
+    $stmt = $pdo->query("SHOW DATABASES LIKE '$dbname'");
+    $dbExists = $stmt->fetch();
+
+    if (!$dbExists) {
+        // Lire et exécuter le fichier SQL
+        $sql = file_get_contents('../models/create-database.sql');
+        $pdo->exec($sql);}
+ 
+
+    
+    
     $isClientConnected = isset($_SESSION["client"]);
 
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
