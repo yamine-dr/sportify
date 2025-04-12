@@ -1,85 +1,77 @@
 <?php
 
-session_start();
+namespace App\Models\Quotation;
+
+require_once("src/phpmailer/phpmailer.php");
+require_once("src/phpmailer/exception.php");
+require_once("src/phpmailer/SMTP.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Inclure les fichiers de PHPMailer
-require "../../phpmailer/PHPMailer.php";
-require "../../phpmailer/SMTP.php"; //on config le serv pour pouvoir envoyé des mail
-require "../../phpmailer/Exception.php";
-
-// Traitement du formulaire
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sessionType = htmlspecialchars($_POST["sessionType"]);
-    $location = htmlspecialchars($_POST['location']);
-    $userNeeds = htmlspecialchars($_POST['userNeeds']);
-    $userMail = $_SESSION["user"]["mail"];
-
-    // set price
-    $price = 0;
-    // $price = ($sessionType === "individuel") ? $price + 30 : $price + 20;
-    if ($sessionType === 'individuel') {
-        $price += 30;
-    } elseif ($sessionType === 'collectif') {
-        $price += 20;
-    }
-
-    // $price = ($location === "prive") ? $price + 15 : $price;
-    if ($location === 'prive') {
-        $price += 15;
-    } elseif ($sessionType === 'publique') {
-        $price += 0;
-    }
-    
-    $phpMailer = new PHPMailer(true);
-    try {
+class QuotationModel {
+    public function sendMail(string $userMail, string $sessionType, string $location, string $userNeeds): bool {
+        // set price
+        $price = 0;
+        if ($sessionType === "collective") {
+            $sessionTypeFr = "collective";
+            $price += 30;
+        } elseif ($sessionType === "individual") {
+            $sessionTypeFr = "individuelle";
+            $price += 20;
+        }
+        if ($location === "private") {
+            $locationFr = "privé";
+            $price += 15;
+        } elseif ($sessionType === "public") {
+            $locationFr = "public";
+            $price += 0;
+        }
+        
+        $phpMailer = new PHPMailer(true);
         // SMTP settings for Gmail
         $phpMailer->isSMTP();
         $phpMailer->Host = 'smtp.gmail.com';
         $phpMailer->SMTPAuth = true;
-
-        // info of the sender
-        $phpMailer->Username = '87projetwebl2@gmail.com'; // mail adresse
-        $phpMailer->Password = 'kdfa bqzw zztw npbv';     // mot de passe d’application
-
-        $phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; //Utilisation de STARTTLS pour sécuriser la connexion avec le serveur SMTP
-        $phpMailer->Port = 587; //numéro de port utilisé pour la connexion SMTP
-
+        // infos of the sender
+        $phpMailer->Username = '87projetwebl2@gmail.com';
+        $phpMailer->Password = 'kdfa bqzw zztw npbv';
+        // encryption to secure the connection with the SMTP server
+        $phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        // port used for the SMTP connection
+        $phpMailer->Port = 587;
+    
         // sender of the mail
         $phpMailer->setFrom('87projetwebl2@gmail.com', 'Sportify');
         // receiver of the mail
         $phpMailer->addAddress($userMail);
-
-        // Contenu de l'e-mail
-        $phpMailer->isHTML(true); //Permet contenu du mail en HTML
-        $phpMailer->Subject = 'Sportify - Estimation du prix du devis'; //objet du mail
+    
+        // mail content
+        $phpMailer->isHTML(true); // to write the mail in HTML
+        $phpMailer->Subject = 'Sportify - Devis';
         $phpMailer->Body = "
             <p>Bonjour,</p>
-
+    
             <p>Voici l'estimation de votre séance personnalisée:</p>
-
+    
             <ul>
-                <li><strong>Type de séance :</strong> $sessionType</li>
-                <li><strong>Lieu de séance :</strong> $location</li>
-                <li><strong>Besoins :</strong> $userNeeds</li>
-                <li><strong> Coût estimé :</strong> $price €</li>
-                
-
+                <li><strong>Type de séance :</strong> {$sessionTypeFr}</li>
+                <li><strong>Lieu de la séance :</strong> {$locationFr}</li>
+                <li><strong>Besoins :</strong> {$userNeeds}</li>
+                <li><strong> Coût estimé :</strong> {$price} €</li>
             </ul>
+    
             <p>Nous vous répondrons rapidement.</p>
             <p>Cordialement,<br>L'équipe Sportify</p>
         ";
-
-        // Envoi
-        $phpMailer->send();
-        $outcome = "success";
-    } catch (Exception $e) {
-        $outcome = "error";
-    } finally {
-        // redirect to quotation.php
-        header("location: ../../index.php?action=quotation&outcome={$outcome}");
-        exit();
+    
+        // send the mail
+        $isMailSent = $phpMailer->send();
+        if (!$isMailSent) {
+            return false; // mail sending failed
+            throw new Exception($phpMailer->ErrorInfo);
+        } else {
+            return true; // mail sending succeeded
+        }
     }
 }

@@ -55,11 +55,19 @@ try {
                 break;
             
             case "quotation":
-                (new Quotation())->display($isClientConnected);
+                if ($formCompleted) {
+                    (new Quotation())->send($_POST);
+                } elseif ($isClientConnected) {
+                    (new Quotation())->display();
+                }
                 break;
             
             case "contact":
-                (new Contact())->display($isClientConnected);
+                if ($formCompleted) {
+                    (new Contact())->send($isClientConnected);
+                } else {
+                    (new Contact())->display($isClientConnected);
+                }
                 break;
             
             default:
