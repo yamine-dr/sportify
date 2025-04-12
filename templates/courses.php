@@ -4,12 +4,6 @@
 // variables from the controller:
 // - $isConnected (boolean): if the user is connected
 // - $courses (array)
-
-// function titleInURL(string $str): string { // turn a course title in URL format
-//     $res = strtolower($str);
-//     $res = str_replace(' ', '-', $res);
-//     return $res;
-// }
 ?>
 
 <?php ob_start(); ?>
@@ -29,17 +23,29 @@
                                     <ul>
                                         <li>Coach : <?= $course["coach"] ?></li>
                                         <li>Durée : <?= $course["duration"] ?></li>
-                                        <li><?= $course["nbPlacesRemaining"] ?> places</li>
+                                        <?php if ($course["nbPlacesRemaining"] > 0): ?>
+                                            <li class="text-primary">
+                                                <?= $course["nbPlacesRemaining"] ?> places disponibles
+                                            </li>
+                                        <?php else: ?>
+                                            <li class="text-danger">COMPLET</li>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                                 <?php if ($isConnected): ?>
-                                    <a
-                                    href="index.php?action=course-registration&course=<?= str_replace(' ', '-', $course["title"]) ?>"
-                                    class="btn btn-primary"
-                                    role="button"
-                                    > 
-                                        Réserver 
-                                    </a>
+                                    <?php if ($course["nbPlacesRemaining"] > 0): ?>
+                                        <a
+                                        href="index.php?action=course-registration&course=<?= str_replace(' ', '-', $course["title"]) ?>"
+                                        class="btn btn-primary"
+                                        role="button"
+                                        > 
+                                            Réserver 
+                                        </a>
+                                    <?php else: ?>
+                                        <button class="btn btn-primary" disabled> 
+                                            Réserver 
+                                        </button>
+                                    <?php endif; ?>
                                 <?php else: ?>
                                     <div class="mb-3 small alert alert-danger">
                                         Connectez vous d'abord pour vous inscrire
