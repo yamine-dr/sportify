@@ -11,7 +11,7 @@ class Signin {
         require_once("templates/auth/signin.php");
     }
 
-    public function signin(array $formInputs): void {
+    public function submitForm(array $formInputs): void {
         $mail = htmlspecialchars($formInputs["mail"]);
         $password = htmlspecialchars($formInputs["password"]);
 

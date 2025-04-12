@@ -50,7 +50,7 @@ try {
         switch ($action) {
             case "signup":
                 if ($formCompleted) {
-                    (new Signup())->signup($_POST);
+                    (new Signup())->submitForm($_POST);
                 } elseif (!$isClientConnected || isset($_GET["outcome"])) {
                     (new Signup())->display();
                 }
@@ -58,7 +58,7 @@ try {
             
             case "signin":
                 if ($formCompleted) {
-                    (new Signin())->signin($_POST);
+                    (new Signin())->submitForm($_POST);
                 } elseif (!$isClientConnected || isset($_GET["outcome"])) {
                     (new Signin())->display();
                 }
@@ -70,7 +70,7 @@ try {
             
             case "course-registration":
                 if ($formCompleted) {
-                    (new CourseRegistration())->register($_POST);
+                    (new CourseRegistration())->submitForm($_POST);
                 } elseif ($isClientConnected) {
                     (new CourseRegistration())->display();
                 }
@@ -78,7 +78,7 @@ try {
             
             case "quotation":
                 if ($formCompleted) {
-                    (new Quotation())->send($_POST);
+                    (new Quotation())->submitForm($_POST);
                 } elseif ($isClientConnected) {
                     (new Quotation())->display();
                 }
@@ -86,7 +86,7 @@ try {
             
             case "contact":
                 if ($formCompleted) {
-                    (new Contact())->send($isClientConnected);
+                    (new Contact())->submitForm($isClientConnected, $_POST);
                 } else {
                     (new Contact())->display($isClientConnected);
                 }

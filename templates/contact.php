@@ -68,21 +68,21 @@
         <section class="container mt-5 pt-5">
             <?php if (!isset($_GET["outcome"])): // si le formulaire de contact n'a pas encore été envoyé ?>
                 <h3 class="mb-4">Contactez-nous</h3>
-                <form method="POST" action="index.php?action=contact" class="border p-4 rounded shadow-sm">
-                    <!-- prénom -->
+                <form method="POST" action="index.php?action=contact&form=completed" class="border p-4 rounded shadow-sm">
+                    <!-- first name -->
                     <div class="mb-3">
-                        <label for="firstName" class="form-label">Prénom :</label>
-                        <input type="text" class="form-control" name="firstName" id="firstName" required>
+                        <label for="firstname" class="form-label">Prénom :</label>
+                        <input type="text" class="form-control" name="firstname" required>
                     </div>
-                    <!-- nom -->
+                    <!-- last name -->
                     <div class="mb-3">
-                        <label for="lastName" class="form-label">Nom :</label>
-                        <input type="text" class="form-control" name="lastName" id="lastName" required>
+                        <label for="lastname" class="form-label">Nom :</label>
+                        <input type="text" class="form-control" name="lastname" required>
                     </div>
                     <!-- comment/question(s) -->
                     <div class="mb-3">
                         <label for="message" class="form-label">Posez-nous vos questions :</label>
-                        <textarea class="form-control" name="message" id="message" rows="6" placeholder="Laissez votre commentaire ou vos questions ici..." required></textarea>
+                        <textarea class="form-control" name="message" rows="6" placeholder="Laissez votre commentaire ou vos questions ici..." required></textarea>
                     </div>
 
                     <div>
@@ -105,7 +105,7 @@
                             echo (
                                 <<<HTML
                                 <div class="alert alert-danger">
-                                    Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard
+                                    Une erreur est survenue lors de l'envoi, veuillez réessayer plus tard
                                 </div>
                                 HTML
                             );
