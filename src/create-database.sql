@@ -49,15 +49,13 @@ CREATE TABLE IF NOT EXISTS registrations (
 );
 
 -- update the number of places remaining
-DELIMITER $$
-
 CREATE TRIGGER decrement_nb_places
 AFTER INSERT ON registrations
 FOR EACH ROW
 BEGIN
-    UPDATE courses
-    SET nb_places_remaining = nb_places_remaining - 1
-    WHERE id = NEW.course_id AND place_dispo > 0;
-END$$
-
-DELIMITER ;
+    IF (SELECT nb_places_remaining FROM courses WHERE id = NEW.course_id) > 0 THEN
+        UPDATE courses
+        SET nb_places_remaining = nb_places_remaining - 1
+        WHERE id = NEW.course_id;
+    END IF;
+END;
