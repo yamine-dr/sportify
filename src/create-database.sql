@@ -57,7 +57,7 @@ FOR EACH ROW
 BEGIN
     UPDATE courses
     SET nb_places_remaining = nb_places_remaining - 1
-    WHERE id = NEW.course_id;
+    WHERE id = NEW.course_id AND place_dispo > 0;
 END$$
 
 DELIMITER ;
