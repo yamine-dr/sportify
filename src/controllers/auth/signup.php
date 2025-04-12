@@ -11,7 +11,7 @@ class Signup {
         require_once("templates/auth/signup.php");
     }
 
-    public function signup(array $formInputs): void {
+    public function submitForm(array $formInputs): void {
         $firstname = htmlspecialchars($formInputs["firstname"]);
         $lastname = htmlspecialchars($formInputs["lastname"]);
         $mail = htmlspecialchars($formInputs["mail"]);

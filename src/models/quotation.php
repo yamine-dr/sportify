@@ -46,8 +46,9 @@ class QuotationModel {
         // receiver of the mail
         $phpMailer->addAddress($userMail);
     
+        // write the mail in HTML
+        $phpMailer->isHTML(true);
         // mail content
-        $phpMailer->isHTML(true); // to write the mail in HTML
         $phpMailer->Subject = 'Sportify - Devis';
         $phpMailer->Body = "
             <p>Bonjour,</p>
@@ -55,14 +56,14 @@ class QuotationModel {
             <p>Voici l'estimation de votre séance personnalisée:</p>
     
             <ul>
-                <li><strong>Type de séance :</strong> {$sessionTypeFr}</li>
-                <li><strong>Lieu de la séance :</strong> {$locationFr}</li>
-                <li><strong>Besoins :</strong> {$userNeeds}</li>
-                <li><strong> Coût estimé :</strong> {$price} €</li>
+                <li>Type de séance : <strong>{$sessionTypeFr}</strong></li>
+                <li>Lieu de la séance : <strong>{$locationFr}</strong></li>
+                <li>Besoins : <strong>{$userNeeds}</strong></li>
+                <li> Coût estimé : <strong>{$price} €</strong></li>
             </ul>
     
             <p>Nous vous répondrons rapidement.</p>
-            <p>Cordialement,<br>L'équipe Sportify</p>
+            <p>Sportivement,<br>L'équipe Sportify</p>
         ";
     
         // send the mail

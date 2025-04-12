@@ -13,7 +13,7 @@ class CourseRegistration {
         require_once("templates/course-registration.php");
     }
 
-    public function register(array $formInputs): void {
+    public function submitForm(array $formInputs): void {
         $courseTitle = htmlspecialchars($formInputs["course"]);
         $courseLevel = htmlspecialchars($formInputs["courseHasLevel"]) ? $formInputs["level"] : '';
         

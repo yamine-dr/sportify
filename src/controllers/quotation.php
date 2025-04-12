@@ -11,9 +11,11 @@ class Quotation {
         require_once("templates/quotation.php");
     }
 
-    public function send(array $formInputs) {
-        ["session-type" => $sessionType, "location" => $location, "user-needs" => $userNeeds] = $formInputs;
+    public function submitForm(array $formInputs) {
         $mail = $_SESSION["client"]["mail"];
+        $sessionType = htmlspecialchars($formInputs["session-type"]);
+        $location = htmlspecialchars($formInputs["location"]);
+        $userNeeds = htmlspecialchars($formInputs["user-needs"]);
 
         $isSent = (new QuotationModel())->sendMail($mail, $sessionType, $location, $userNeeds);
         if (!$isSent) {
