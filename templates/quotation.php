@@ -1,4 +1,4 @@
-<?php $title = "Quotation"; ?>
+<?php $title = "Sportify - Devis"; ?>
 
 <?php ob_start(); ?>
     <!-- style css de la page
@@ -28,44 +28,40 @@
             font-weight: bold;
         } 
     -->
-    
-
-    <div class="container mt-5 pt-5">
+    <main id="quotation" class="container mb-5">
         <?php if (!isset($_GET["outcome"])): // if the form has not been sent yet ?>
-            <form method="POST" action="src/models/quotation.php" class="border p-4 rounded shadow-sm">
+            <form method="POST" action="index.php?action=quotation&form=completed" class="border p-4 rounded shadow-sm">
                 <h1 class="mb-4">Demande de devis personnalisé</h1>
 
                 <div class="mb-3">
                     <label class="form-label">Format de la séance :</label>
-
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sessionType" value="collectif" id="radioCollectif" required>
-                        <label class="form-check-label" for="radioCollectif">Collectif</label>
+                        <input class="form-check-input" type="radio" name="session-type" value="collective" id="radio-collective" required>
+                        <label class="form-check-label" for="radio-collective">Collectif</label>
                     </div>
-
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sessionType" value="individuel" id="radioIndividuel" required>
-                        <label class="form-check-label" for="radioIndividuel">Individuel</label>
+                        <input class="form-check-input" type="radio" name="session-type" value="individual" id="radio-individual">
+                        <label class="form-check-label" for="radio-individual">Individuel</label>
                     </div>
-
                 </div>
             
                 <div class="mb-3">
                     <label for="location" class="form-label">Lieu de la séance dans une salle :</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="location" value="prive" id="radioPrive" required>
-                        <label class="form-check-label" for="radioPrive">Privé</label>
+                        <input class="form-check-input" type="radio" name="location" value="private" id="radio-private" required>
+                        <label class="form-check-label" for="radio-private">Privé</label>
                     </div>
-
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="location" value="publique" id="radioPublique" required>
-                        <label class="form-check-label" for="radioPublique">Publique</label>
+                        <input class="form-check-input" type="radio" name="location" value="public" id="radio-public">
+                        <label class="form-check-label" for="radio-public">Publique</label>
                     </div>
                 </div>
+
                 <div class="mb-3">
-                    <label for="userNeeds" class="form-label">Vos besoins particuliers :</label>
-                    <textarea class="form-control" name="userNeeds" rows="6" placeholder="Décrivez vos besoins ici..."></textarea>
+                    <label for="user-needs" class="form-label">Vos besoins particuliers :</label>
+                    <textarea class="form-control" name="user-needs" rows="6" placeholder="Décrivez vos besoins ici..."></textarea>
                 </div>
+
                 <div>
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                 </div>
@@ -95,26 +91,28 @@
 
         <?php else: // if the form has been sent ?> 
             <?php
-                // après l'envoi du formulaire, on test si le mail à bien été envoyé            
-                switch (htmlspecialchars($_GET["outcome"])) {
-                    case "success": // envoi réussi
-                        echo(
-                            '<div class="alert alert-success">'.
-                                'E-mail envoyé avec succès à l\'adresse : '. $_SESSION["user"]["mail"] .
-                            '</div>'
-                        );
-                        break;
-                    case "error": // envoi échoué
-                        echo(
-                            '<div class="alert alert-danger">' .
-                                'L\'envoi de l\'e-mail a échoué' . 
-                            '</div>'
-                        );
-                        break;
-                };
+            // test if the mail was successfully sent            
+            switch (htmlspecialchars($_GET["outcome"])) {
+                case "success": // sending succeeded
+                    echo(
+                        '<div class="alert alert-success">'.
+                            'E-mail envoyé avec succès à l\'adresse : '. $_SESSION["client"]["mail"] .
+                        '</div>'
+                    );
+                    break;
+                case "error": // sending failed
+                    echo(
+                        <<<HTML
+                        <div class="alert alert-danger">
+                            L'envoi de l'e-mail a échoué 
+                        </div>
+                        HTML
+                    );
+                    break;
+            };
             ?>
         <?php endif; ?>
-    </div>
+    </main>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("templates/layout/layout.php"); ?>
