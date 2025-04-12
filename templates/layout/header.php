@@ -21,7 +21,7 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Acceuil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="src/models/create-table-courses.php">Cours</a>
+                        <a class="nav-link" href="index.php?action=courses">Cours</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=contact">Contacts</a>

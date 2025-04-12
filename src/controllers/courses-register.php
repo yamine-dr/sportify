@@ -3,7 +3,7 @@
 namespace App\Controllers\CoursesRegister;
 
 class CoursesRegister {
-    public function execute(bool $isConnected, array $courses): void {
+    public function display(bool $isConnected, array $courses): void {
         // course selected
         $course = str_replace('-', ' ', htmlspecialchars($_GET["course"]));
         $coursesWithLevel = ["yoga", "pilates"];

@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (Exception $e) {
         $outcome = "error";
     } finally {
-        // to redirect to quotation.php
+        // redirect to quotation.php
         header("location: ../../index.php?action=quotation&outcome={$outcome}");
         exit();
     }

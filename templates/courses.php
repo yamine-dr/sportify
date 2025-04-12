@@ -37,8 +37,16 @@ function titleInURL(string $str): string { // turn a course title in URL format
                                 $isConnected ? 
                                     '<a href="index.php?action=courses-register&course=' . titleInURL($course["title"]) . '" class="btn btn-primary" role="button">' . 
                                         'Réserver' . 
-                                    '</a>' 
-                                    : $signinBtn
+                                    '</a>'
+                                    : 
+                                    <<<HTML
+                                        <div class="mb-3 small alert alert-danger">
+                                            Connectez vous d'abord pour vous inscrire
+                                        </div> 
+                                        <a href="index.php?action=signin" class="btn btn-primary" role="button">
+                                            Connexion
+                                        </a>
+                                    HTML
                                 ?>
                             </div>
                         </div>

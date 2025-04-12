@@ -61,21 +61,48 @@ try {
     ];
 
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
-        if ($_GET["action"] == "signin") {
-            (new Signin())->execute($isConnected);
-        } elseif ($_GET["action"] == "signup") {
-            (new Signup())->execute($isConnected);
-        } elseif ($_GET["action"] == "quotation") {
-            (new Quotation())->execute($isConnected);
-        } elseif ($_GET["action"] == "courses") {
-            (new Courses())->execute($isConnected, $courses);
-        } elseif ($_GET["action"] == "courses-register") {
-            (new CoursesRegister())->execute($isConnected, $courses);
-        } elseif ($_GET["action"] == "contact") {
-            (new Contact())->execute($isConnected);
+        $action = htmlspecialchars($_GET["action"]);
+        $formCompleted = (isset($_GET["form"]) && $_GET["form"] === "completed");
+
+        switch ($action) {
+            case "signup":
+                if ($formCompleted) {
+                    (new Signup())->signup($_POST);
+                } else {
+                    (new Signup())->display($isConnected);
+                }
+                break;
+            
+            case "signin":
+                if ($formCompleted) {
+                    (new Signin())->signin($_POST);
+                } else {
+                    (new Signin())->display($isConnected);
+                }
+                break;
+            
+            case "quotation":
+                (new Quotation())->display($isConnected);
+                break;
+            
+            case "courses":
+                (new Courses())->display($isConnected, $courses);
+                break;
+            
+            case "courses-register":
+                (new CoursesRegister())->display($isConnected, $courses);
+                break;
+            
+            case "contact":
+                (new Contact())->display($isConnected);
+                break;
+            
+            default:
+                (new Homepage())->display($isConnected);
+                break;
         }
     } else {
-        (new Homepage())->execute($isConnected);
+        (new Homepage())->display($isConnected);
     }
 } catch (Exception $error) {
     die("Erreur : " . $error->getMessage());
