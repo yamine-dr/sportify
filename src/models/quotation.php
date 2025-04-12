@@ -44,8 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phpMailer->Username = '87projetwebl2@gmail.com'; // mail adresse
         $phpMailer->Password = 'kdfa bqzw zztw npbv';     // mot de passe d’application
 
-        $phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $phpMailer->Port = 587;
+        $phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; //Utilisation de STARTTLS pour sécuriser la connexion avec le serveur SMTP
+        $phpMailer->Port = 587; //numéro de port utilisé pour la connexion SMTP
 
         // sender of the mail
         $phpMailer->setFrom('87projetwebl2@gmail.com', 'Sportify');
