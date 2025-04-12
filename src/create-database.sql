@@ -46,3 +46,17 @@ CREATE TABLE IF NOT EXISTS registrations (
     FOREIGN KEY (client_id) REFERENCES clients_infos(id),
     FOREIGN KEY (course_id) REFERENCES courses(id)
 );
+
+-- update the number of places remaining
+DELIMITER $$
+
+CREATE TRIGGER decrement_nb_places
+AFTER INSERT ON registrations
+FOR EACH ROW
+BEGIN
+    UPDATE courses
+    SET nb_places_remaining = nb_places_remaining - 1
+    WHERE id = NEW.course_id;
+END$$
+
+DELIMITER ;
