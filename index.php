@@ -20,20 +20,19 @@ use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
 use App\Lib\MySQL\Server;
 
-try {
-    if (!isset($_SESSION["database-available"])) {
-        $dbName = "sportify";
-        $sqlFileCreateDb = "./src/create-database.sql";
-
-        $server = new Server();
-        if ($server->dbExists($dbName)) {
-            $_SESSION["database-available"] = true;
-        } else {
-            $server->createDb($sqlFileCreateDb);
-            $_SESSION["database-available"] = true;
-        }
+function testDb(string $dbName, string $sqlFileCreateDb): void {
+    $dbName = "sportify";
+    $sqlFileCreateDb = "./src/create-database.sql";
+    $server = new Server();
+    if ($server->dbExists($dbName)) {
+        return;
+    } else {
+        $server->createDb($sqlFileCreateDb);
+        return;
     }
+}
 
+try {
     $isClientConnected = isset($_SESSION["client"]);
 
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
@@ -96,7 +95,8 @@ try {
                 throw new Exception("Erreur 404 : la page que vous recherchez n'existe pas");
                 break;
         }
-    } else {
+    } else {    
+        testDb("sportify", "./src/create-database.sql");
         (new Homepage())->display($isClientConnected);
     }
 } catch (Exception $error) {
