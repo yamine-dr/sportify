@@ -1,9 +1,12 @@
 <?php $isClientConnected = isset($_SESSION["client"]); ?>
 
 <header id="header">
-    <nav id="nav" class="navbar navbar-expand-lg fixed-top bg-body shadow-sm">
+    <nav id="nav" class="navbar navbar-expand-lg fixed-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.php">Sportify</a>
+            <a class="navbar-brand fw-bold" href="index.php">
+                <img src="assets/images/logo.png" alt="logo de Sportify" width="30" class="d-inline-block align-text-top">
+                Sportify
+            </a>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -46,7 +49,7 @@
                         <a
                         role="button"
                         href="index.php?action=signup"
-                        class="btn nav-btn cta-btn rounded-pill link-light d-flex justify-content-center align-items-center"
+                        class="btn nav-btn cta-btn rounded-pill d-flex justify-content-center align-items-center"
                         >
                             S'inscrire
                         </a>

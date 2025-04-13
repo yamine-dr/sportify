@@ -2,6 +2,13 @@
     --cta-color1: #ff4f19;
     --cta-color2: #fff;
     --cta-color3: #cc3000;
+
+    /* COLOR PALETTE */
+    --color-primary: #14ff5a; /* text */
+    --color-secondary: #258441;
+    --color3: #15e653;
+    --color-bg: #03541b; /* body */
+    --color5: #76b087;
 }
 
 main {
@@ -23,43 +30,54 @@ h1 {
 
 .cta-btn {
     margin: 1rem;
-    cursor: pointer;
-    letter-spacing: 1px;
-    border: none;
-    background-color: var(--cta-color1);
     width: 120px;
     height: 40px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #fff;
+    background-color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
 }
 .cta-btn:hover {
-    background-color: var(--cta-color3);
+    color: var(--color-bg);
+    background-color: var(--color-primary);
 }
 
-/*----------------------------------
-header.php (contains the navbar)
-------------------------------------*/
-#header #navbar {
-    height: 55px;
-}
+/* header.php (contains the navbar) */
+#header {
+    & nav {
+        height: 55px;
+        background-color: var(--color-bg);
+    }
+    
+    @media (max-width: 991.5px) {
+        & ul {
+            padding: 1rem;
+            background-color: var(--color-bg);
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+    }
 
-#header .navbar-brand {
-    transition: transform 0.3s ease;
-}
-#header .navbar-brand:hover {
-    transform: scale(1.1);
-}
-
-#header .nav-link:hover {
-    text-decoration: underline;
-}
-
-#header .nav-btn {
-    margin: 0;
-}
-
-#header #navBtnSignin {
-    color: var(--cta-color1);
-    background-color: var(--cta-color2);
-    border: 1px solid var(--cta-color1);
+    & .nav-link {
+        color: #fff;
+    }
+    & .nav-link:hover {
+        text-decoration: underline;
+    }
+    
+    & .navbar-brand {
+        color: #fff;
+        transition: transform 0.3s ease;
+    }
+    & .navbar-brand:hover {
+        transform: scale(1.1);
+    }
+    
+    
+    & .nav-btn {
+        margin: 0;
+    }
 }
 
 /*---------------------------------- 
