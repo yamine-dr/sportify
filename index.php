@@ -78,5 +78,5 @@ try {
         (new Homepage())->display($isClientConnected);
     }
 } catch (Exception $error) {
-    die(    $error->getMessage());
+    die($error->getMessage());
 }
