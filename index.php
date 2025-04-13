@@ -10,6 +10,8 @@ require_once("src/controllers/course-registration.php");
 require_once("src/controllers/quotation.php");
 require_once("src/controllers/contact.php");
 
+require_once("src/lib/database.php");
+
 use App\Controllers\Homepage\Homepage;
 use App\Controllers\Auth\Signup\Signup;
 use App\Controllers\Auth\Signin\Signin;
@@ -18,7 +20,23 @@ use App\Controllers\CourseRegistration\CourseRegistration;
 use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
 
+use App\Lib\Database\Server;
 try {
+    
+    $ServerConnection = (new Server())->getConnection();
+
+    // vérifier si la base existe
+    $dbName = 'sportify';
+    $stmt = $ServerConnection->query("SHOW DATABASES LIKE '$dbName'");
+    $dbExists = $stmt->fetch();
+
+    if (!$dbExists) {
+        // Lire et exécuter le fichier SQL
+        $sql = file_get_contents('./src/create-database.sql');
+        $ServerConnection->exec($sql);
+        }
+    
+    
     $isClientConnected = isset($_SESSION["client"]);
 
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
