@@ -34,14 +34,14 @@
                         <a
                         role="button"
                         href="index.php?action=quotation"
-                        class="btn nav-btn btn-primary rounded-pill d-flex justify-content-center align-items-center"
+                        class="btn nav-btn cta-btn"
                         >
                             Devis
                         </a>
                         <a
                         role="button"
                         href="index.php?action=logout"
-                        class="btn nav-btn cta-btn rounded-pill link-light d-flex justify-content-center align-items-center"
+                        class="btn nav-btn cta-btn"
                         >
                             Déconnexion
                         </a>
@@ -49,7 +49,7 @@
                         <a
                         role="button"
                         href="index.php?action=signup"
-                        class="btn nav-btn cta-btn rounded-pill d-flex justify-content-center align-items-center"
+                        class="btn nav-btn cta-btn"
                         >
                             S'inscrire
                         </a>
@@ -57,7 +57,7 @@
                         role="button"
                         id="navBtnSignin"
                         href="index.php?action=signin"
-                        class="btn nav-btn cta-btn rounded-pill d-flex justify-content-center align-items-center"
+                        class="btn nav-btn cta-btn"
                         >
                             Connexion
                         </a>

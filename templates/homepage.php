@@ -3,21 +3,17 @@
 <?php ob_start(); ?>
     <main id="homepage">
         <!-- HERO SECTION -->
-        <section class="mb-5 hero-section" style="background-image: url('assets/images/hero.jpg');">
+        <section class="mb-5 hero-section" style="background-image: url('assets/images/homepage-hero1.jpg');">
             <div class="hero-content">
                 <h1>Le sport,</br> comme vous l'aimez!</h1>
                 <a
                 role="button"
                 id="navBtn"
                 href="index.php?action=signin"
-                class="btn cta-btn link-light d-flex justify-content-center align-items-center"
+                class="mt-3 btn cta-btn d-flex justify-content-center align-items-center w-25"
                 >
                     S'inscrire
                 </a>
-            </div>
-
-            <div id="heroImgCredit">
-                <p>Picture by <a href="https://unsplash.com/" target="_blank">someone</a>
             </div>
         </section>
 
