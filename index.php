@@ -9,8 +9,7 @@ require_once("src/controllers/courses.php");
 require_once("src/controllers/course-registration.php");
 require_once("src/controllers/quotation.php");
 require_once("src/controllers/contact.php");
-
-require_once("src/lib/database.php");
+require_once("src/lib/mysql.php");
 
 use App\Controllers\Homepage\Homepage;
 use App\Controllers\Auth\Signup\Signup;
@@ -19,24 +18,22 @@ use App\Controllers\Courses\Courses;
 use App\Controllers\CourseRegistration\CourseRegistration;
 use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
+use App\Lib\MySQL\Server;
 
-use App\Lib\Database\Server;
 try {
-    
-    $ServerConnection = (new Server())->getConnection();
+    if (!isset($_SESSION["database-available"])) {
+        $dbName = "sportify";
+        $sqlFileCreateDb = "./src/create-database.sql";
 
-    // vérifier si la base existe
-    $dbName = 'sportify';
-    $stmt = $ServerConnection->query("SHOW DATABASES LIKE '$dbName'");
-    $dbExists = $stmt->fetch();
-
-    if (!$dbExists) {
-        // Lire et exécuter le fichier SQL
-        $sql = file_get_contents('./src/create-database.sql');
-        $ServerConnection->exec($sql);
+        $server = new Server();
+        if ($server->dbExists($dbName)) {
+            $_SESSION["database-available"] = true;
+        } else {
+            $server->createDb($sqlFileCreateDb);
+            $_SESSION["database-available"] = true;
         }
-    
-    
+    }
+
     $isClientConnected = isset($_SESSION["client"]);
 
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
@@ -44,6 +41,13 @@ try {
         $formCompleted = (isset($_GET["form"]) && $_GET["form"] === "completed");
 
         switch ($action) {
+            case "logout":
+                session_unset();
+                session_destroy();
+                $isClientConnected = false;
+                (new Homepage())->display($isClientConnected);
+                break;
+            
             case "signup":
                 if ($formCompleted) {
                     (new Signup())->submitForm($_POST);

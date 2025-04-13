@@ -2,22 +2,26 @@
 
 namespace App\Models\Clients;
 
-require_once("src/lib/database.php");
+require_once("src/lib/mysql.php");
 
-use App\Lib\Database\Database;
+use App\Lib\MySQL\Database;
 
 class ClientsRepository {
-    public function clientRegistration(string $firstname, string $lastname, string $mail, string $password): bool {
-        $dbConnection = (new Database())->getConnection();
+    private ?\PDO $dbConnection;
 
+    function __construct() {
+        $this->dbConnection = (new Database("sportify"))->getConnection();
+    }
+
+    public function clientRegistration(string $firstname, string $lastname, string $mail, string $password): bool {
         // test if there's already a client registered with the $mail
-        $statementGetMail = $dbConnection->prepare("SELECT COUNT(*) FROM clients_infos WHERE mail = :mail");
+        $statementGetMail = $this->dbConnection->prepare("SELECT COUNT(*) FROM clients_infos WHERE mail = :mail");
         $statementGetMail->execute(["mail" => $mail]);
         $isMailInDb = ($statementGetMail->fetchColumn() === 1);
         if ($isMailInDb) return false; // there's already a client with this mail -> registration failed
 
         // there isn't a client with that mail -> insert new client
-        $statement1InsertClient = $dbConnection->prepare(
+        $statement1InsertClient = $this->dbConnection->prepare(
             "INSERT INTO clients_infos(firstname, lastname, mail) VALUES (:firstname, :lastname, :mail)"
         );
         $statement1InsertClient->execute([
@@ -26,7 +30,7 @@ class ClientsRepository {
             "mail" => $mail
         ]);
         
-        $statement2InsertClient = $dbConnection->prepare(
+        $statement2InsertClient = $this->dbConnection->prepare(
             "INSERT INTO clients_credentials(id, mail, client_password) 
             VALUES (LAST_INSERT_ID(), :mail, :client_password)"
         );
@@ -38,7 +42,7 @@ class ClientsRepository {
         // client insertion finished
 
         // get the id of the client
-        $statementGetId = $dbConnection->prepare(
+        $statementGetId = $this->dbConnection->prepare(
             "SELECT id FROM clients_credentials WHERE mail LIKE :mail"
         );
         $statementGetId->execute(["mail" => $mail]);
@@ -54,11 +58,9 @@ class ClientsRepository {
     }
 
     public function clientConnection(string $mail, string $password): bool {
-        $dbConnection = (new Database())->getConnection();
-
         // test if there's a user that matches the $mail and $password in the database
         // 1) test the $mail
-        $statementGetUser = $dbConnection->prepare(
+        $statementGetUser = $this->dbConnection->prepare(
             "SELECT mail, client_password FROM clients_credentials 
             WHERE mail = :mail"
         );
@@ -70,7 +72,7 @@ class ClientsRepository {
         if (password_verify($password, $row["client_password"])) {
             // it's the right password -> connect the client
             // get the id of the client
-            $statementGetId = $dbConnection->prepare(
+            $statementGetId = $this->dbConnection->prepare(
                 "SELECT id FROM clients_credentials WHERE mail LIKE :mail"
             );
             $statementGetId->execute(["mail" => $mail]);

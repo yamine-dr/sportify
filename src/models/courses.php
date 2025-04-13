@@ -2,15 +2,15 @@
 
 namespace App\Models\Courses;
 
-require_once("src/lib/database.php");
+require_once("src/lib/mysql.php");
 
-use App\Lib\Database\Database;
+use App\Lib\MySQL\Database;
 
 class CoursesRepository {
     private ?\PDO $dbConnection;
 
     function __construct() {
-        $this->dbConnection = (new Database())->getConnection();
+        $this->dbConnection = (new Database("sportify"))->getConnection();
     }
 
     public function getCourse(string $title): array {

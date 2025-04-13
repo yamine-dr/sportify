@@ -1,9 +1,5 @@
 <?php $title = "Sportify"; ?>
 
-<?php 
-$passwordTest = "123";
-?>
-
 <?php ob_start(); ?>
     <main id="homepage">
         <!-- HERO SECTION -->
@@ -487,13 +483,6 @@ $passwordTest = "123";
                 </div>
             </div>
         </section>
-
-        <!-- test password hach -->
-        <div class="container mb-5">
-            <?= 'Mot de passe non haché : ' . $passwordTest ?>
-        </div>
-
-        <!-- add footer here -->
     </main>
 <?php $content = ob_get_clean(); ?>
 

@@ -37,7 +37,7 @@
                         </a>
                         <a
                         role="button"
-                        href="src/models/logout.php"
+                        href="index.php?action=logout"
                         class="btn nav-btn cta-btn rounded-pill link-light d-flex justify-content-center align-items-center"
                         >
                             Déconnexion
