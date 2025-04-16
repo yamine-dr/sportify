@@ -3,7 +3,10 @@
 <?php ob_start(); ?>
     <main id="homepage">
         <!-- HERO SECTION -->
-        <section class="mb-5 hero-section" style="background-image: url('assets/images/homepage-hero1.jpg');">
+        <section
+        class="mb-5 hero-section"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('assets/images/homepage-hero1.jpg');"
+        >
             <div class="hero-content">
                 <h1>Le sport,</br> comme vous l'aimez!</h1>
                 <a
@@ -21,12 +24,7 @@
         <section id="about" class="container mb-5">
             <div class="row align-items-md-center mb-5">
                 <div class="col-md-12">
-                    <div class=" text-center">
-                        <h2 class="mb-2 fw-bold display-5">&#193; propos de Sportify</h2>
-                        <p> 
-                            Le siège social se situe au 87 Avenue Albert Thomas à Limoges.
-                        </p>
-                    </div>
+                    <h2 class="mb-2 fw-bold display-5 text-center">&#193; propos de Sportify</h2>
                 </div>
             </div>
             <div class="row align-items-md-center mb-5">
@@ -37,49 +35,33 @@
                             <br>accompagner les limougeauds vers la meilleure forme de leur vie.
                         </h3>
                     </div>
-                    <div class="">
-
-
-                        <div class="row">
-                            <div class="col-6">
-                                <div class=" mb-4">
-                                    <p class=" m-0" style="font-size:40px;">20+</p>
-                                    <p class="small text-uppercase">Années d'expériences</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class=" mb-4">
-                                    <p class=" m-0" style="font-size:40px;">3</p>
-                                    <p class="small text-uppercase">Locations</p>
-                                </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class=" mb-4">
+                                <p class=" m-0" style="font-size:40px;">20+</p>
+                                <p class="small text-uppercase">Années d'expériences</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class=" mb-4">
-                                    <p class=" m-0" style="font-size:40px;">6</p>
-                                    <p class="small text-uppercase">Cours</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class=" mb-4">
-                                    <p class=" m-0" style="font-size:40px;">500+</p>
-                                    <p class="small text-uppercase">Adhérents</p>
-                                </div>
+                        <div class="col-6">
+                            <div class=" mb-4">
+                                <p class=" m-0" style="font-size:40px;">3</p>
+                                <p class="small text-uppercase">Locations</p>
                             </div>
                         </div>
                     </div>
-                    <div class=" text-muted">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Nunc et metus id ligula malesuada placerat sit amet quis enim. 
-                            Aliquam erat volutpat.
-                        </p>
-                        <p>
-                            In pellentesque scelerisque auctor. Ut porta lacus eget nisi fermentum lobortis. 
-                            Vestibulum facilisis tempor ipsum, ut rhoncus magna ultricies laoreet. 
-                            Proin vehicula erat eget libero accumsan iaculis.
-                        </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class=" mb-4">
+                                <p class=" m-0" style="font-size:40px;">6</p>
+                                <p class="small text-uppercase">Cours</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class=" mb-4">
+                                <p class=" m-0" style="font-size:40px;">500+</p>
+                                <p class="small text-uppercase">Adhérents</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- About section images -->
@@ -89,8 +71,7 @@
                             <div class="card shadow-sm border-light w-75">
                                 <img src="assets/images/homepage-about1.jpg" alt="Un homme agé qui soulève 2 haltères" class="card-img-top" loading="lazy">
                                 <div class="card-body">
-                                    <h4 class="card-title text-uppercase fs-5">Santé</h4>
-                                    <p class="card-text">petit texte à mettre ici</p>
+                                    <h4 class="card-title text-uppercase fs-6">Santé</h4>
                                 </div>
                             </div>
                         </div>
@@ -98,8 +79,7 @@
                             <div class="card shadow-sm border-light w-75">
                                 <img src="assets/images/homepage-about2.jpg" alt="Un homme qui sourit dans une salle de sport" class="card-img-top" loading="lazy">
                                 <div class="card-body">
-                                    <h4 class="card-title text-uppercase fs-5">Plaisir</h4>
-                                    <p class="card-text">petit texte à mettre ici</p>
+                                    <h4 class="card-title text-uppercase fs-6">Plaisir</h4>
                                 </div>
                             </div>
                         </div>
@@ -108,8 +88,7 @@
                         <div class="card shadow-sm border-light w-75">
                             <img src="assets/images/homepage-about3.jpg" alt="Un homme en chaise roulante qui fait de la musculation" class="card-img-top" loading="lazy">
                             <div class="card-body">
-                                <h4 class="card-title text-uppercase fs-5">Accessibilité</h4>
-                                <p class="card-text">petit texte à mettre ici</p>
+                                <h4 class="card-title text-uppercase fs-6">Accessibilité</h4>
                             </div>
                         </div>
                     </div>
@@ -209,8 +188,7 @@
                             </div>
                             <div class="mt-4 text-muted">
                                 <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
+                                    <p>Super service!</p>
                                 </div>
                             </div>
                             <div class="rating mt-3 text-success">
@@ -246,8 +224,7 @@
                             </div>
                             <div class="mt-4 text-muted">
                                 <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus id ligula malesuada placerat sit amet quis enim. Aliquam erat volutpat.
-                                    </p>
+                                    <p>Super service!</p>
                                 </div>
                             </div>
                             <div class="rating mt-3 text-success">
@@ -283,8 +260,7 @@
                             </div>
                             <div class="mt-4 text-muted">
                                 <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
+                                    <p>Super service!</p>
                                 </div>
                             </div>
                             <div class="rating mt-3 text-success">
@@ -323,8 +299,7 @@
                             </div>
                             <div class="mt-4 text-muted">
                                 <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
+                                    <p>Super service!</p>
                                 </div>
                             </div>
                             <div class="rating mt-3 text-success">
@@ -360,8 +335,7 @@
                             </div>
                             <div class="mt-4 text-muted">
                                 <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus id ligula malesuada placerat sit amet quis enim. Aliquam erat volutpat.
-                                    </p>
+                                    <p>Super service!</p>
                                 </div>
                             </div>
                             <div class="rating mt-3 text-success">
@@ -397,8 +371,7 @@
                             </div>
                             <div class="mt-4 text-muted">
                                 <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
+                                    <p>Super service!</p>
                                 </div>
                             </div>
                             <div class="rating mt-3 text-success">
@@ -432,8 +405,7 @@
                     <div class="mb-4">
                         <h2 class="fw-bold display-5 mb-0">Tarifs</h2>
                         <p> 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus id
-                            <br> ligula malesuada placerat sit amet quis enim.
+                            Services basique.
                         </p>
                     </div>
                 </div>
@@ -450,12 +422,8 @@
                     </div>
                     <div class="px-4 mb-4">
                         <p>
-                            Aenean vel nisi in ipsum congue fermentum et ut arcu. Proin leo diam,
-                            vulputate eu tellus ac, mattis cursus nunc.
+                            Service basique.
                         </p>
-                    </div>
-                    <div>
-                        <a class="btn btn-outline-primary" href="#" role="button">Souscrire</a>
                     </div>
                 </div>
                 <!-- RIGHT PRICING (Premium) -->
@@ -469,12 +437,8 @@
                     </div>
                     <div class="px-4 mb-4">
                         <p>
-                            Aenean vel nisi in ipsum congue fermentum et ut arcu. Proin leo diam,
-                            vulputate eu tellus ac, mattis cursus nunc.
+                            Service premium.
                         </p>
-                    </div>
-                    <div>
-                        <a class="btn btn-outline-primary" href="#" role="button">Souscrire</a>
                     </div>
                 </div>
             </div>

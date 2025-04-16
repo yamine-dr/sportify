@@ -14,21 +14,20 @@
             <!-- courses grid -->
             <div class="mb-5 row justify-content-center align-items-center align-items-md-stretch gap-5">
                 <?php foreach ($courses as $course): ?>
-                    <div class="col-12 col-lg-3 d-flex justify-content-center">
+                    <div class="col-12 col-lg-3 d-flex justify-content-center text-center">
                         <div class="col-9 col-lg-12 card course-card">
-                            <img src="assets/images/homepage-features1.jpg" class="card-img-top" alt="">
                             <div class="card-body">
                                 <h5 class="card-title text-uppercase"><?= $course["title"] ?></h5>
                                 <div class="card-text my-3">
-                                    <ul>
+                                    <ul class="text-start">
                                         <li>Coach : <?= $course["coach"] ?></li>
-                                        <li>Durée : <?= $course["duration"] ?></li>
+                                        <li>Durée : <?= $course["duration"] ? $course["duration"] : "variable" ?></li>
                                         <?php if ($course["nbPlacesRemaining"] > 0): ?>
-                                            <li class="text-primary">
+                                            <li class="places-remaining">
                                                 <?= $course["nbPlacesRemaining"] ?> places disponibles
                                             </li>
                                         <?php else: ?>
-                                            <li class="text-danger">COMPLET</li>
+                                            <li class="places-remaining text-danger">COMPLET</li>
                                         <?php endif; ?>
                                     </ul>
                                 </div>

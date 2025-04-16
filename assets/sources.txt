@@ -1,13 +1,16 @@
-videos/hero-video.mp4 -> https://coverr.co/videos/working-out-with-battle-rope-qqauos1god
+hero-video.mp4 -> https://coverr.co/videos/working-out-with-battle-rope-qqauos1god
 
-images/homepage-hero1.jpg -> https://unsplash.com/photos/a-man-standing-in-a-gym-looking-at-the-camera-oP1a3ibpXA8
+homepage-hero1.jpg -> https://unsplash.com/photos/a-man-standing-in-a-gym-looking-at-the-camera-oP1a3ibpXA8
 
-images/homepage-about1.jpg -> https://www.pexels.com/photo/elderly-man-lifting-two-heavy-dumbbells-6922182/
-images/homepage-about2.jpg -> https://unsplash.com/photos/a-man-wearing-a-red-shirt-and-headphones-6RxiZFCneWs
-images/homepage-about3.jpg -> https://www.pexels.com/photo/a-man-using-barbell-while-sitting-on-the-wheelchair-7294687/
+homepage-about1.jpg -> https://www.pexels.com/photo/elderly-man-lifting-two-heavy-dumbbells-6922182/
+homepage-about2.jpg -> https://unsplash.com/photos/a-man-wearing-a-red-shirt-and-headphones-6RxiZFCneWs
+homepage-about3.jpg -> https://www.pexels.com/photo/a-man-using-barbell-while-sitting-on-the-wheelchair-7294687/
 
-images/homepage-features1.jpg -> https://unsplash.com/photos/gym-equipment-inside-room-20jX9b35r_M
-images/homepage-features1.jpg -> https://unsplash.com/photos/a-gym-filled-with-lots-of-machines-and-weights-1RNQ11ZODJM
+homepage-features1.jpg -> https://unsplash.com/photos/gym-equipment-inside-room-20jX9b35r_M
+homepage-features1.jpg -> https://unsplash.com/photos/a-gym-filled-with-lots-of-machines-and-weights-1RNQ11ZODJM
 
-images/homepage-testimonials1.jpg -> https://unsplash.com/illustrations/a-black-and-white-picture-of-a-mans-face-8AAc9VdLZ84
-images/homepage-testimonials2.jpg -> https://unsplash.com/illustrations/a-black-and-white-picture-of-a-woman-with-a-hairdow-1tm-YagTU58
+homepage-testimonials1.jpg -> https://unsplash.com/illustrations/a-black-and-white-picture-of-a-mans-face-8AAc9VdLZ84
+homepage-testimonials2.jpg -> https://unsplash.com/illustrations/a-black-and-white-picture-of-a-woman-with-a-hairdow-1tm-YagTU58
+
+
+courses1-yoga.jpg -> https://unsplash.com/fr/photos/silhouette-dune-personne-pratiquant-le-yoga-4InW0sYpW-M

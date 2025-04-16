@@ -29,6 +29,7 @@ class CoursesRepository {
         $statementGetCourses->execute();
 
         $courses = [];
+        $i = 0;
         while ($row = $statementGetCourses->fetch()) {
             $courses[] = [
                 "id" => $row["id"],
@@ -38,6 +39,7 @@ class CoursesRepository {
                 "nbPlacesRemaining" => $row["nb_places_remaining"],
                 "hasLevels" => $row["has_levels"],
             ];
+            $i++;
         };
 
         return $courses;
