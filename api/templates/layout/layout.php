@@ -10,8 +10,8 @@
     <?php require_once("templates/layout/header.php"); ?>
     
     <?= $content ?>
-
-    <!-- add footer here -->
+    
+    <?php require_once("templates/layout/footer.php"); ?>
 
     <script src="assets/scripts/bootstrap.js"></script>
     <script src="assets/scripts/script.js"></script>

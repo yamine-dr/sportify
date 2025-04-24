@@ -7,6 +7,10 @@
     --color5: #76b087;
 }
 
+body {
+    transition: 0.5s ease;
+}
+
 main {
     margin-top: 55px; /* margin top to display below navbar */
 }
@@ -49,6 +53,18 @@ h1 {
         height: 55px;
         background-color: var(--color-bg);
     }
+
+    & .navbar-brand {
+        color: #fff;
+        transition: transform 0.3s ease;
+    }
+    & .navbar-brand:hover {
+        transform: scale(1.1);
+    }
+
+    & #light-switch:hover {
+        cursor: pointer;
+    }
     
     @media (max-width: 991.5px) {
         & ul {
@@ -64,13 +80,18 @@ h1 {
     & .nav-link:hover {
         text-decoration: underline;
     }
-    
-    & .navbar-brand {
-        color: #fff;
+}
+/* footer.php */
+#footer {
+    & #footer-logo:hover {
         transition: transform 0.3s ease;
     }
-    & .navbar-brand:hover {
+    & #footer-logo:hover {
         transform: scale(1.1);
+    }
+
+    & .nav-item:hover {
+        text-decoration: underline;
     }
 }
 
@@ -115,6 +136,11 @@ h1 {
         width: 48px !important;
         height: 48px !important;
     }
+}
+
+/* signup.php */
+#signup {
+    background-color: var(--color-secondary) !important;
 }
 
 /* courses.php */

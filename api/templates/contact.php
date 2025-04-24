@@ -10,12 +10,8 @@
                 <div>
                     <h2 class="fw-semibold">Nos coordonnées</h2>
                     <ul>
-                        <li>
-                            Téléphone : +33 1 23 45 67 89
-                        </li>
-                        <li>
-                            Email : sportify@mail.com
-                        </li>
+                        <li>Téléphone : +33 1 23 45 67 89</li>
+                        <li>Email : sportify@mail.com</li>
                     </ul>
                 </div>
                 <div>
@@ -23,20 +19,14 @@
                     <div>
                         <h5>Bureau :</h5>
                         <ul>
-                            <li>
-                                Lundi au vendredi : 7 h - 19 h 30
-                            </li>
-                            <li>
-                                Samedi - dimanche : 11 h - 17 h
-                            </li>
+                            <li>Lundi au vendredi : 7 h - 19 h 30</li>
+                            <li>Samedi - dimanche : 11 h - 17 h</li>
                         </ul>
                     </div>
                     <div>
                         <h5>Salles :</h5>
                         <ul>
-                            <li>
-                                Lundi au dimanche : 7 h - 22 h
-                            </li>
+                            <li>Lundi au dimanche : 7 h - 22 h</li>
                         </ul>
                     </div>
                 </div>
@@ -46,12 +36,8 @@
                         <li class="fw-semibold">
                             Salle ouest (siège social) : 87 Avenue Albert Thomas, 87000 Limoges
                         </li>
-                        <li>
-                            Salle nord : 187 Boulevard Georges Clémenceau, 87100 Limoges
-                        </li>
-                        <li>
-                            Salle sud : 7 Avenue Ernest Ruben, 87000 Limoges
-                        </li>
+                        <li>Salle nord : 187 Boulevard Georges Clémenceau, 87100 Limoges</li>
+                        <li>Salle sud : 7 Avenue Ernest Ruben, 87000 Limoges</li>
                     </ul>
                 </div>
             </div>
@@ -69,20 +55,19 @@
             <?php if (!isset($_GET["outcome"])): // si le formulaire de contact n'a pas encore été envoyé ?>
                 <h3 class="mb-4">Contactez-nous</h3>
                 <form method="POST" action="index.php?action=contact&form=completed" class="border p-4 rounded shadow-sm">
-                    <!-- first name -->
                     <div class="mb-3">
                         <label for="firstname" class="form-label">Prénom :</label>
-                        <input type="text" class="form-control" name="firstname" required>
+                        <input type="text" class="form-control" name="firstname" id="firstname" required>
                     </div>
-                    <!-- last name -->
+
                     <div class="mb-3">
                         <label for="lastname" class="form-label">Nom :</label>
-                        <input type="text" class="form-control" name="lastname" required>
+                        <input type="text" class="form-control" name="lastname" id="lastname" required>
                     </div>
-                    <!-- comment/question(s) -->
+
                     <div class="mb-3">
                         <label for="message" class="form-label">Posez-nous vos questions :</label>
-                        <textarea class="form-control" name="message" rows="6" placeholder="Laissez votre commentaire ou vos questions ici..." required></textarea>
+                        <textarea class="form-control" name="message" id="message" rows="6" placeholder="Laissez votre commentaire ou vos questions ici..." required></textarea>
                     </div>
 
                     <div>
