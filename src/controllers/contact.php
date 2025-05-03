@@ -19,11 +19,11 @@ class Contact {
         $isSubmitted = (new ContactModel())->submit($firstname, $lastname, $message);
         if (!$isSubmitted) {
             // sending failed
-            header("location: index.php?action=contact&outcome=error");
+            header("location: index.php?action=contact&outcome=error#outcome");
             exit();
         }
         // sending succeeded
-        header("location: index.php?action=contact&outcome=success");
+        header("location: index.php?action=contact&outcome=success#outcome");
         exit();
     }
 }

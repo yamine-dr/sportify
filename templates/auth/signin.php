@@ -3,26 +3,26 @@
 <?php ob_start(); ?>
 	<main id="signin" class="container col-xl-10 col-xxl-8 px-4 py-5">
 		<div class="row align-items-center g-lg-5 py-5">
-			<!-- LEFT PART -->
+			<!-- TITLE PART -->
 			<div class="col-lg-7 text-center text-lg-start">
 				<h1 class="display-4 fw-bold lh-1 mb-3">
-					<img src="assets/images/logo.png" alt="logo de Sportify" width="80" class="d-inline-block align-text-top">
+					<img src="assets/images/logo.png" alt="logo de Sportify" id="logo" class="d-inline-block">
 					Sportify
 				</h1>
 				<p class="col-lg-10 fs-4">Le meilleur du sport à Limoges !</p>
 			</div>
-			<!-- RIGHT PART -->
+			<!-- FORM PART -->
 			<div class="col-md-10 mx-auto col-lg-5">
-				<div class="p-4 p-md-5 border rounded-3 bg-light">
-					<?php if (!isset($_GET["outcome"])): ?>
+				<div class="p-4 p-md-5 border rounded-3 bg-body-secondary">
+					<?php if (!isset($_GET["outcome"])): // display form if not submitted yet ?>
 						<!-- FORM -->
 						<form method="POST" action="index.php?action=signin&form=completed">
 							<div class="form-floating mb-3">
-								<input type="email" class="form-control" name="mail" placeholder="jaime@sportify.com" required>
+								<input type="email" class="form-control" name="mail" id="mail" placeholder="jaime@sportify.com" required>
 								<label for="mail">Email</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="password" class="form-control" name="password" placeholder="" required>
+								<input type="password" class="form-control" name="password" id="password" placeholder="" required>
 								<label for="password">Mot de passe</label>
 							</div>
 							<button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
@@ -34,7 +34,7 @@
 							<small>Pas de compte ?</small>
 							<a href="index.php?action=signup" class="text-primary text-sm fw-semibold">Inscription</a>
 						</div>
-					<?php else: ?>
+					<?php else: // display outcome if form submitted ?>
 						<?php
 						switch (htmlspecialchars($_GET["outcome"])) {
 							case "success":

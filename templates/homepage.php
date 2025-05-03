@@ -1,5 +1,25 @@
 <?php $title = "Sportify"; ?>
 
+<?php 
+$testimonials = [
+    [
+        "imageSrc" => "assets/images/homepage-testimonials-woman.jpg",
+        "clientName" => "Joumana Brahmi",
+        "clientTestimonial" => "Je conseille fortement !",
+    ],
+    [
+        "imageSrc" => "assets/images/homepage-testimonials-man.jpg",
+        "clientName" => "Ryad Bekheira",
+        "clientTestimonial" => "Les séances sont très amusantes, c'est très bien organisé.",
+    ],
+    [
+        "imageSrc" => "assets/images/homepage-testimonials-man.jpg",
+        "clientName" => "Yamine Daroueche",
+        "clientTestimonial" => "Des supers coachs !",
+    ],
+];
+?>
+
 <?php ob_start(); ?>
     <main id="homepage">
         <!-- HERO SECTION -->
@@ -11,9 +31,9 @@
                 <h1>Le sport,</br> comme vous l'aimez!</h1>
                 <a
                 role="button"
-                id="navBtn"
+                id="hero-cta"
                 href="index.php?action=signin"
-                class="mt-3 btn cta-btn d-flex justify-content-center align-items-center w-25"
+                class="mt-3 btn cta-btn d-flex justify-content-center align-items-center"
                 >
                     S'inscrire
                 </a>
@@ -68,7 +88,7 @@
                 <!-- <div id="aboutSectionImages"> -->
                     <div class="d-none d-md-block col-sm-6 col-lg-3">
                         <div class=" mb-4">
-                            <div class="card shadow-sm border-light w-75">
+                            <div class="card shadow-sm w-75">
                                 <img src="assets/images/homepage-about1.jpg" alt="Un homme agé qui soulève 2 haltères" class="card-img-top" loading="lazy">
                                 <div class="card-body">
                                     <h4 class="card-title text-uppercase fs-6">Santé</h4>
@@ -76,7 +96,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <div class="card shadow-sm border-light w-75">
+                            <div class="card shadow-sm w-75">
                                 <img src="assets/images/homepage-about2.jpg" alt="Un homme qui sourit dans une salle de sport" class="card-img-top" loading="lazy">
                                 <div class="card-body">
                                     <h4 class="card-title text-uppercase fs-6">Plaisir</h4>
@@ -85,7 +105,7 @@
                         </div>
                     </div>
                     <div class="d-none d-md-block col-sm-6 col-lg-3 mt-4 mt-sm-0 align-self-center">
-                        <div class="card shadow-sm border-light w-75">
+                        <div class="card shadow-sm w-75">
                             <img src="assets/images/homepage-about3.jpg" alt="Un homme en chaise roulante qui fait de la musculation" class="card-img-top" loading="lazy">
                             <div class="card-body">
                                 <h4 class="card-title text-uppercase fs-6">Accessibilité</h4>
@@ -168,41 +188,29 @@
                 <div class="col-md-12 text-center">
                     <div>
                         <h2 class="fw-bold display-5">Validé par nos adhérents</h2>
-                        <p>
-                            Voilà ce que nos clients disent de nous.
-                        </p>
+                        <p>Voilà ce que nos clients disent de nous.</p>
                     </div>
                 </div>
             </div>
-            <!-- 1st row of testimonials -->
             <div class="row justify-content-center">
                 <!-- testimonial cards -->
-                <?php for ($i=0; $i < 6; $i++): ?>
+                <?php for ($i=0; $i < 3; $i++): ?>
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card border-0 shadow">
                             <div class="card-body py-4">
                                 <div class="d-flex">
                                     <img
-                                    src="<?= ($i % 2 == 0) ? "assets/images/homepage-testimonials1.jpg" : "assets/images/homepage-testimonials2.jpg" ?>"
+                                    src="<?= $testimonials[$i]["imageSrc"] ?>"
                                     alt=""
                                     class="testimonial-headshot rounded-2 shadow"
                                     >
                                     <div class="ps-2">
-                                        <h4 class="ms-2">
-                                            <?= ($i % 2 == 0) ? "Ryad" : "Joumana Brahmi" ?>
-                                        </h4>
+                                        <h4 class="ms-2"><?= $testimonials[$i]["clientName"] ?></h4>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-muted">
                                     <div>
-                                        <p>
-                                            <?=
-                                                ($i % 2 == 0) ? 
-                                                "Super service, je recommande fortement !" 
-                                                :
-                                                "Les séances sont très amusantes, c'est très bien organisé."
-                                            ?>
-                                        </p>
+                                        <p><?= $testimonials[$i]["clientTestimonial"] ?></p>
                                     </div>
                                 </div>
                                 <div class="rating mt-3 text-success">
@@ -235,7 +243,7 @@
             </div>
             <div class="row mt-4 justify-content-center align-items-center">
                 <!-- LEFT PRICING (Basique) -->
-                <div class="text-center col-md-6 py-5 bg-light">
+                <div class="text-center col-md-6 py-5 bg-body-secondary">
                     <div>
                         <h3><strong>Basique</strong></h3>
                     </div>
@@ -250,7 +258,7 @@
                     </div>
                 </div>
                 <!-- RIGHT PRICING (Premium) -->
-                <div class="text-center col-md-6 py-5 shadow-lg">
+                <div class="text-center col-md-6 py-5 bg-body-tertiary border border-1 border-success shadow-lg">
                     <div>
                         <h3><strong>Premium</strong></h3>
                     </div>

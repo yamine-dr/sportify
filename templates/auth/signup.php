@@ -1,26 +1,21 @@
 <?php $title = "Sportify - Inscription"; ?>
 
-<!--
-	variables from the controller:
-    - $isConnected (boolean): if the user is connected
--->
-
 <?php ob_start(); ?>
 	<main id="signup" class="container col-xl-10 col-xxl-8 px-4 py-5">
 		<div class="row align-items-center g-lg-5 py-5">
-			<!-- LEFT PART -->
+			<!-- TITLE PART -->
 			<div class="col-lg-7 text-center text-lg-start">
 				<h1 class="display-4 fw-bold lh-1 mb-3">
-					<img src="assets/images/logo.png" alt="logo de Sportify" width="80" class="d-inline-block align-text-top">
+					<img src="assets/images/logo.png" alt="logo de Sportify" id="logo" class="d-inline-block">
 					Sportify
 				</h1>
 				<p class="col-lg-10 fs-4">Le meilleur du sport à Limoges !</p>
 			</div>
-			<!-- RIGHT PART -->
+			<!-- FORM PART -->
 			<div class="col-md-10 mx-auto col-lg-5">
-				<div class="p-4 p-md-5 border rounded-3 bg-light">
-					<!-- FORM -->
-					<?php if (!isset($_GET["outcome"])): ?>
+				<div class="p-4 p-md-5 border rounded-3 bg-body-secondary">
+					<?php if (!isset($_GET["outcome"])): // display form if not submitted yet ?>
+						<!-- FORM -->
 						<form method="POST" action="index.php?action=signup&form=completed">
 							<div class="form-floating mb-3">
 								<input type="text" class="form-control" name="firstname" id="firstname" placeholder="" required>
@@ -42,7 +37,7 @@
 							<hr class="my-4">
 							<small class="text-muted">En cliquant sur "Inscription", vous acceptez les conditions d'utilisation.</small>
 						</form>
-					<?php else: ?>
+					<?php else: // display outcome if form submitted ?>
 						<?php
 						switch (htmlspecialchars($_GET["outcome"])) {
 							case "success":

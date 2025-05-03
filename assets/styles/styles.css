@@ -83,6 +83,8 @@ h1 {
 }
 /* footer.php */
 #footer {
+    height: 9vh;
+
     & #footer-logo:hover {
         transition: transform 0.3s ease;
     }
@@ -119,6 +121,10 @@ h1 {
         font-size: 2.7rem;
     }
     
+    & #hero-cta {
+        width: 25%;
+    }
+
     @media (max-width: 700px) {
         & .hero-content {
             width: 400px;
@@ -127,6 +133,10 @@ h1 {
             left: 50%;
             transform: translate(-50%, -50%);
         }
+        & #hero-cta {
+            width: 35%;
+        }
+
         & .cta-btn {
             text-align: center;
         }
@@ -140,7 +150,16 @@ h1 {
 
 /* signup.php */
 #signup {
-    background-color: var(--color-secondary) !important;
+    & #logo {
+        width: 10%;
+    }
+}
+
+/* signin.php */
+#signin {
+    & #logo {
+        width: 10%;
+    }
 }
 
 /* courses.php */
@@ -149,15 +168,22 @@ h1 {
         color: #fff;
         background-color: var(--color-bg);
     }
-
+    
     & .course-img {
         aspect-ratio: 1/1;
         height: 160px;
         background-size: cover;
         background-position: center;
     }
-
+    
     & .places-remaining {
         color: var(--color-primary);
+    }
+}
+
+/* contact.php */
+#contact {
+    & #message {
+        height: 100px;
     }
 }
