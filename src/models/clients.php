@@ -10,7 +10,7 @@ class ClientsRepository {
     private ?\PDO $dbConnection;
 
     function __construct() {
-        $this->dbConnection = (new Database("sportify"))->getConnection();
+        $this->dbConnection = (new Database())->getConnection();
     }
 
     public function clientRegistration(string $firstname, string $lastname, string $mail, string $password): bool {

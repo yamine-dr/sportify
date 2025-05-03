@@ -20,13 +20,13 @@ use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
 use App\Lib\MySQL\Server;
 
-function testDb(string $dbName, string $sqlFileCreateDb): void {
+function testDb(): void {
     $server = new Server();
-    if ($server->dbExists($dbName)) {
+    if ($server->dbExists()) {
+        echo "Connected successfuly";
         return;
     } else {
-        $server->createDb($sqlFileCreateDb);
-        return;
+        echo "Problem";
     }
 }
 
@@ -94,8 +94,8 @@ try {
                 break;
         }
     } else {    
-        // testDb("sportify", "./src/create-database.sql");
         (new Homepage())->display($isClientConnected);
+        testDb();
     }
 } catch (Exception $error) {
     die($error->getMessage());

@@ -1,6 +1,6 @@
 -- use this file to create database
-CREATE DATABASE IF NOT EXISTS sportify;
-use sportify;
+CREATE DATABASE IF NOT EXISTS yamibldv_portfolio_sportify;
+use yamibldv_portfolio_sportify;
 
 -- create table "clients_infos"
 CREATE TABLE IF NOT EXISTS clients_infos (

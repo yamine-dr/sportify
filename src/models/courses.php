@@ -10,7 +10,7 @@ class CoursesRepository {
     private ?\PDO $dbConnection;
 
     function __construct() {
-        $this->dbConnection = (new Database("sportify"))->getConnection();
+        $this->dbConnection = (new Database())->getConnection();
     }
 
     public function getCourse(string $title): array {

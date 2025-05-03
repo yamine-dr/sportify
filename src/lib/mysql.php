@@ -5,8 +5,9 @@ namespace App\Lib\MySQL;
 class Server {
     // connection infos
     private string $host = "localhost";
-    private string $login = "root";
-    private string $password = '';
+    private string $username = "yamibldv_portfolio_sportify_user";
+    private string $password = "k}(z#5#sLc+q";
+    private string $dbName = "yamibldv_portfolio_sportify";
     // server connection
     private ?\PDO $connection;
     
@@ -14,14 +15,14 @@ class Server {
         // initialise server connection
         $this->connection = new \PDO(
             "mysql:host={$this->host};charset=utf8",
-            $this->login,
+            $this->username,
             $this->password,
             [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION] // to display errors
         );
     }
 
-    public function dbExists(string $dbName): bool {
-        $stmt = $this->connection->query("SHOW DATABASES LIKE '{$dbName}'");
+    public function dbExists(): bool {
+        $stmt = $this->connection->query("SHOW DATABASES LIKE '{$this->dbName}'");
         return ($stmt->fetch() !== false);
     }
 
@@ -38,12 +39,16 @@ class Server {
         return $this->host;
     }
 
-    public function getLogin(): string {
-        return $this->login;
+    public function getUsername(): string {
+        return $this->username;
     }
 
     public function getPassword(): string {
         return $this->password;
+    }
+
+    public function getDbName(): string {
+        return $this->dbName;
     }
 
     public function getConnection(): \PDO {
@@ -54,12 +59,12 @@ class Server {
 class Database {
     private ?\PDO $connection;
 
-    function __construct($dbName) {
+    function __construct() {
         $server = new Server();
         // initialise database connection
         $this->connection = new \PDO(
-            "mysql:host={$server->getHost()};dbname={$dbName};charset=utf8",
-            $server->getLogin(),
+            "mysql:host={$server->getHost()};dbname={$server->getDbName()};charset=utf8",
+            $server->getUsername(),
             $server->getPassword(),
             [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION] // to display errors
         );
