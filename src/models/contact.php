@@ -27,7 +27,7 @@ class ContactModel {
         // sender of the mail
         $phpMailer->setFrom('87projetwebl2@gmail.com', 'Sportify - Formulaire de contact');
         // receiver of the mail
-        $phpMailer->addAddress('87projetwebl2@gmail.com');
+        $phpMailer->addAddress('yamine.9000@gmail.com');
         
         // write the mail in HTML
         $phpMailer->isHTML(true);

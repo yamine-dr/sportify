@@ -18,17 +18,6 @@ use App\Controllers\Courses\Courses;
 use App\Controllers\CourseRegistration\CourseRegistration;
 use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
-use App\Lib\MySQL\Server;
-
-function testDb(): void {
-    $server = new Server();
-    if ($server->dbExists()) {
-        echo "Connected successfuly";
-        return;
-    } else {
-        echo "Problem";
-    }
-}
 
 try {
     $isClientConnected = isset($_SESSION["client"]);
@@ -95,7 +84,6 @@ try {
         }
     } else {    
         (new Homepage())->display($isClientConnected);
-        testDb();
     }
 } catch (Exception $error) {
     die($error->getMessage());
