@@ -1,14 +1,46 @@
-<footer id="footer" class="px-1 d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top border-2">
-    <p class="col-md-4 mb-0 text-body-secondary">© Yamine Daroueche 2025</p>
+<?php
+function footerNavListItem($url, $innerText) {
+  return ("
+    <li class=\"nav-item\">
+      <a 
+        href={$url}
+        class=\"nav-link p-2 text-body-secondary hover:text-underline\"
+      >{$innerText}</a>
+    </li>
+  ");
+}
+?>
 
-    <a href="index.php" id="footer-logo" class="mt-2 mt-lg-0 col-md-4 d-flex gap-1 align-items-center justify-content-center mb-3 mb-md-0 me-md-auto text-body fw-bold text-decoration-none" aria-label="Sportify">
-        <img src="assets/images/logo.png" alt="logo de Sportify" width="30" class="d-inline-block align-text-top">
-        Sportify
+<footer id="footer" class="mt-4 px-3 py-4 d-flex-between max-md:d-flex-col gap-3 fs-5 border-top border-2">
+    <p class="m-0 p-2 text-body-secondary">
+      &copy;
+      <a
+        href="https://yaminedaroueche.com/portfolio"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-body-secondary"
+      >Yamine Daroueche</a>
+      <?= date('Y') ?>
+    </p>
+
+    <a
+      id="footer-logo"
+      href="index.php"
+      class="m-0 px-2 d-flex-center gap-1 fs-4 fw-bold text-body text-decoration-none"
+      aria-label="Sportify"
+    >
+      <img
+        src="assets/images/logo.png"
+        alt="logo de Sportify"
+        width="30"
+        class="d-inline-block align-text-top"
+      >
+      Sportify
     </a>
 
-    <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="index.php" class="nav-link px-2 text-body-secondary">Acceuil</a></li>
-      <li class="nav-item"><a href="index.php?action=courses" class="nav-link px-2 text-body-secondary">Cours</a></li>
-      <li class="nav-item"><a href="index.php?action=contact" class="nav-link px-2 text-body-secondary">Contact</a></li>
+    <ul class="m-0 nav justify-content-end">
+      <?= footerNavListItem("index.php", "Acceuil") ?>
+      <?= footerNavListItem("index.php?action=courses", "Cours") ?>
+      <?= footerNavListItem("index.php?action=contact", "Contact") ?>
     </ul>
 </footer>

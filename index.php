@@ -2,6 +2,8 @@
 
 session_start();
 
+// $env = parse_ini_file(".env");
+
 require_once("src/controllers/homepage.php");
 require_once("src/controllers/auth/signup.php");
 require_once("src/controllers/auth/signin.php");
@@ -19,9 +21,10 @@ use App\Controllers\CourseRegistration\CourseRegistration;
 use App\Controllers\Quotation\Quotation;
 use App\Controllers\Contact\Contact;
 
-try {
-    $isClientConnected = isset($_SESSION["client"]);
+$_SESSION["isClientConnected"] = isset($_SESSION["client"]);
+$isClientConnected = $_SESSION["isClientConnected"];
 
+try {
     if (isset($_GET["action"]) && $_GET["action"] !== "") {
         $action = htmlspecialchars($_GET["action"]);
         $formCompleted = (isset($_GET["form"]) && $_GET["form"] === "completed");

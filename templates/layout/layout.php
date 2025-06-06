@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="assets/styles/bootstrap.css">
     <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
+
 <body>
     <?php require_once("templates/layout/header.php"); ?>
     
@@ -13,7 +14,7 @@
     
     <?php require_once("templates/layout/footer.php"); ?>
 
-    <script src="assets/scripts/bootstrap.js"></script>
+    <script src="assets/scripts/bootstrap.bundle.js"></script>
     <script src="assets/scripts/script.js"></script>
 </body>
 </html>

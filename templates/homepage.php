@@ -1,6 +1,7 @@
-<?php $title = "Sportify"; ?>
+<?php
+$title = "Sportify";
+require_once("templates/ui/buttons.php");
 
-<?php 
 $testimonials = [
     [
         "imageSrc" => "assets/images/homepage-testimonials-woman.jpg",
@@ -29,14 +30,9 @@ $testimonials = [
         >
             <div class="hero-content">
                 <h1>Le sport,</br> comme vous l'aimez!</h1>
-                <a
-                role="button"
-                id="hero-cta"
-                href="index.php?action=signin"
-                class="mt-3 btn cta-btn d-flex justify-content-center align-items-center"
-                >
-                    S'inscrire
-                </a>
+                <div class="<?= $_SESSION["isClientConnected"] ? "d-none" : "" ?> mt-3 w-fit">
+                    <?= $signupButton ?>
+                </div>
             </div>
         </section>
 

@@ -1,26 +1,20 @@
 :root {
-    /* COLOR PALETTE */
-    --color-primary: #14ff5a; /* text */
-    --color-secondary: #258441;
-    --color3: #15e653;
-    --color-bg: #03541b; /* body */
-    --color5: #76b087;
+  /* green color palette: https://coolors.co/00b837-31af57-058a2d-2f6c65 */
+  --green-100: #00b837;
+  --green-200: #31af57;
+  --green-300: #058a2d;
+  --green-400: #03541b;
 }
 
 body {
-    transition: 0.5s ease;
-}
-
-main {
-    margin-top: 55px; /* margin top to display below navbar */
+  transition: 0.25s ease;
 }
 
 h1 {
-    font-size: 60px;
-    margin: 0;
-    font-weight: 900;
+  font-size: 60px;
+  margin: 0;
+  font-weight: 900;
 }
-
 
 @media (max-width: 1090px) {
     h1 {
@@ -28,73 +22,81 @@ h1 {
     }
 }
 
-.cta-btn {
-    margin: 0;
-    padding: 0 1rem;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: 1px;
-    font-weight: 700;
-    color: #fff;
-    background-color: var(--color-secondary);
-    border: none;
-    cursor: pointer;
+/* Bootstrap-like classes: */
+/* 1. Colors  */
+.text-green-100 { color: var(--green-100); }
+.bg-green-100 { background-color: var(--green-100); }
+
+.text-green-200 { color: var(--green-200); }
+.bg-green-200 { background-color: var(--green-200); }
+
+.text-green-300 { color: var(--green-300); }
+.bg-green-300 { background-color: var(--green-300); }
+
+.text-green-400 { color: var(--green-400); }
+.bg-green-400 { background-color: var(--green-400); }
+
+/* 2. UI */
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.cta-btn:hover {
-    color: var(--color-bg);
-    background-color: var(--color-primary);
+.d-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 3. breakpoints classes (https://getbootstrap.com/docs/5.3/layout/breakpoints/#media-queries) */
+@media (max-width: 768px /* max-md */) {
+  .max-md\:d-flex-col {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 991.5px /* max-lg */) {
+  .max-lg\:p-3 { padding: 1rem !important; }
+}
+
+.w-fit {
+  width: fit-content;
+}
+.h-fit {
+  height: fit-content;
+}
+
+.btn-cta {
+  letter-spacing: 1px;
+  background-color: var(--green-200);
+  &:hover {
+    background-color: var(--green-200);
+  }
+}
+
+/* 4. Hover animations */
+.hover\:text-underline {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.hover\:scale {
+  transition: 0.25s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 /* header.php (contains the navbar) */
 #header {
-    & nav {
-        height: 55px;
-        background-color: var(--color-bg);
+  @media (max-width: 991.5px) {
+    & ul {
+      padding: 1rem;
     }
-
-    & .navbar-brand {
-        color: #fff;
-        transition: transform 0.3s ease;
-    }
-    & .navbar-brand:hover {
-        transform: scale(1.1);
-    }
-
-    & #light-switch:hover {
-        cursor: pointer;
-    }
-    
-    @media (max-width: 991.5px) {
-        & ul {
-            padding: 1rem;
-            background-color: var(--color-bg);
-            border-radius: 0 0 0.5rem 0.5rem;
-        }
-    }
-
-    & .nav-link {
-        color: #fff;
-    }
-    & .nav-link:hover {
-        text-decoration: underline;
-    }
-}
-/* footer.php */
-#footer {
-    height: 9vh;
-
-    & #footer-logo:hover {
-        transition: transform 0.3s ease;
-    }
-    & #footer-logo:hover {
-        transform: scale(1.1);
-    }
-
-    & .nav-item:hover {
-        text-decoration: underline;
-    }
+  }
 }
 
 /* homepage.php */
@@ -120,10 +122,6 @@ h1 {
     & h1 {
         font-size: 2.7rem;
     }
-    
-    & #hero-cta {
-        width: 25%;
-    }
 
     @media (max-width: 700px) {
         & .hero-content {
@@ -132,13 +130,6 @@ h1 {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-        }
-        & #hero-cta {
-            width: 35%;
-        }
-
-        & .cta-btn {
-            text-align: center;
         }
     }
     
@@ -177,7 +168,7 @@ h1 {
     }
     
     & .places-remaining {
-        color: var(--color-primary);
+        color: var(--green-100);
     }
 }
 
