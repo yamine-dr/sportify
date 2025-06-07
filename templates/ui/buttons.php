@@ -5,7 +5,7 @@ function anchorButton($url, $innerText) {
     <a
       href={$url}
       role=\"button\"
-      class=\"btn btn-cta d-flex-center px-2 h-100 text-light fs-4 fw-bold hover:scale\"
+      class=\"btn btn-cta d-flex-center px-2 ts-max-lg:p-3 h-100 text-light fs-4 ts-max-lg:fs-xl fw-bold hover:scale\"
     >{$innerText}</a>
   ");
 }

@@ -16,19 +16,19 @@ function headerNavListItem($url, $innerText) {
 ?>
 
 <header id="header">
-  <nav class="navbar navbar-expand-lg py-3 bg-green-400 shadow-sm">
+  <nav class="navbar navbar-expand-lg py-3 ts-max-lg:min-vh-10 bg-green-400 shadow-sm">
     <div class="container-xxl">
       <!-- Navbar logo -->
       <a
         href="index.php"
-        class="navbar-brand m-0 d-flex-center gap-1 text-light fs-1 fw-bold"
+        class="navbar-brand m-0 d-flex-center gap-2 text-light fs-1 ts-max-lg:fs-xxl fw-bold"
       >
         <div class="d-flex-center">
           <img
             src="assets/images/logo.png"
             alt="logo de Sportify"
             width="45"
-            class="img-fluid"
+            class="img-fluid ts-max-lg:w-75px"
           >
         </div>
         Sportify
@@ -39,7 +39,7 @@ function headerNavListItem($url, $innerText) {
         id="themeToggler"
         href="<?= parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "?theme=toggle" ?>"
         role="button"
-        class="btn border-0 me-auto"
+        class="btn d-lg-inline d-none ms-2 me-auto border-0"
       >
       </a>
 
@@ -54,7 +54,7 @@ function headerNavListItem($url, $innerText) {
         aria-label="Toggle navigation menu"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
-          class="text-light"
+          class="ts-max-lg:size-80px text-light"
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
@@ -62,7 +62,7 @@ function headerNavListItem($url, $innerText) {
 
       <!-- navbar menu -->
       <div id="navbarLinks" class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav max-lg:p-3 d-flex-center gap-4 fs-4">
+        <ul class="navbar-nav max-lg:p-3 d-flex-center gap-4 fs-4 ts-max-lg:fs-xl">
           <!-- navbar links -->
            <?= headerNavListItem("index.php", "Acceuil") ?>
            <?= headerNavListItem("index.php?action=courses", "Cours") ?>

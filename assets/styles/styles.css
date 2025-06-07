@@ -60,6 +60,36 @@ h1 {
   .max-lg\:p-3 { padding: 1rem !important; }
 }
 
+/* phone/tablet (touch screens < lg) */
+@media only screen and (pointer: coarse) and (max-width: 991.5px /* max-lg */) {
+  .ts-max-lg\:d-flex-col {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .ts-max-lg\:gap-5 {
+    gap: 3rem;
+  }
+  
+  .ts-max-lg\:p-3 { padding: 1rem !important; }
+  
+  .ts-max-lg\:size-80px {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .ts-max-lg\:w-75px { width: 75px; }
+
+  .ts-max-lg\:min-vh-10 { min-height: 10vh; }
+
+  .ts-max-lg\:fs-xl { font-size: 3.7rem !important; }
+  .ts-max-lg\:fs-xxl { font-size: 4.5rem !important; }
+}
+
+.size-25px {
+  width: 25px;
+  height: 25px;
+}
+
 .w-fit {
   width: fit-content;
 }
@@ -87,15 +117,6 @@ h1 {
   transition: 0.25s ease-in-out;
   &:hover {
     transform: scale(1.1);
-  }
-}
-
-/* header.php (contains the navbar) */
-#header {
-  @media (max-width: 991.5px) {
-    & ul {
-      padding: 1rem;
-    }
   }
 }
 

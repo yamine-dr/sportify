@@ -11,7 +11,7 @@ function footerNavListItem($url, $innerText) {
 }
 ?>
 
-<footer id="footer" class="mt-4 px-3 py-4 d-flex-between max-md:d-flex-col gap-3 fs-5 border-top border-2">
+<footer id="footer" class="mt-4 px-3 py-4 d-flex-between max-md:d-flex-col ts-max-lg:d-flex-col gap-3 fs-5 ts-max-lg:fs-xl border-top border-2">
     <p class="m-0 p-2 text-body-secondary">
       &copy;
       <a
@@ -26,19 +26,19 @@ function footerNavListItem($url, $innerText) {
     <a
       id="footer-logo"
       href="index.php"
-      class="m-0 px-2 d-flex-center gap-1 fs-4 fw-bold text-body text-decoration-none"
+      class="m-0 px-2 d-flex-center gap-2 fs-4 ts-max-lg:fs-xxl fw-bold text-body text-decoration-none"
       aria-label="Sportify"
     >
       <img
         src="assets/images/logo.png"
         alt="logo de Sportify"
         width="30"
-        class="d-inline-block align-text-top"
+        class="d-inline-block align-text-top ts-max-lg:w-75px"
       >
       Sportify
     </a>
 
-    <ul class="m-0 nav justify-content-end">
+    <ul class="m-0 nav justify-content-end ts-max-lg:gap-5">
       <?= footerNavListItem("index.php", "Acceuil") ?>
       <?= footerNavListItem("index.php?action=courses", "Cours") ?>
       <?= footerNavListItem("index.php?action=contact", "Contact") ?>
