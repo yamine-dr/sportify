@@ -2,33 +2,23 @@
 $isClientConnected = isset($_SESSION["client"]);
 
 require_once("templates/ui/buttons.php");
-
-function headerNavListItem($url, $innerText) {
-  return ("
-    <li class=\"nav-item w-fit\">
-      <a 
-        href={$url}
-        class=\"nav-link d-inline-block text-light hover:text-underline\"
-      >{$innerText}</a>
-    </li>
-  ");
-}
+require_once("templates/ui/text.php");
 ?>
 
-<header id="header">
-  <nav class="navbar navbar-expand-lg py-3 ts-max-lg:min-vh-10 bg-green-400 shadow-sm">
+<header class="position-fixed top-0 z-1 w-100">
+  <nav class="navbar navbar-expand-lg py-3 bg-green-400 shadow-sm">
     <div class="container-xxl">
       <!-- Navbar logo -->
       <a
         href="index.php"
-        class="navbar-brand m-0 d-flex-center gap-2 text-light fs-1 ts-max-lg:fs-xxl fw-bold"
+        class="navbar-brand m-0 d-flex-center gap-2 text-light fs-1 fw-bold"
       >
         <div class="d-flex-center">
           <img
             src="assets/images/logo.png"
             alt="logo de Sportify"
             width="45"
-            class="img-fluid ts-max-lg:w-75px"
+            class="img-fluid"
           >
         </div>
         Sportify
@@ -37,11 +27,16 @@ function headerNavListItem($url, $innerText) {
       <!-- theme toggle "button" (anchor tag looking like a button) -->
       <a
         id="themeToggler"
-        href="<?= parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "?theme=toggle" ?>"
+        href="<?=
+          (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] !== '') ?
+            (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . 
+            '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "&theme=toggle"
+          :
+            parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "?theme=toggle"
+        ?>"
         role="button"
         class="btn d-lg-inline d-none ms-2 me-auto border-0"
-      >
-      </a>
+      ></a>
 
       <!-- navbar menu toggle button -->
       <button
@@ -54,7 +49,7 @@ function headerNavListItem($url, $innerText) {
         aria-label="Toggle navigation menu"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
-          class="ts-max-lg:size-80px text-light"
+          class="text-light"
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
@@ -62,12 +57,18 @@ function headerNavListItem($url, $innerText) {
 
       <!-- navbar menu -->
       <div id="navbarLinks" class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav max-lg:p-3 d-flex-center gap-4 fs-4 ts-max-lg:fs-xl">
+        <ul class="navbar-nav max-lg:p-3 d-flex-center gap-4 fs-4">
           <!-- navbar links -->
-           <?= headerNavListItem("index.php", "Acceuil") ?>
-           <?= headerNavListItem("index.php?action=courses", "Cours") ?>
-           <?= headerNavListItem("index.php?action=contact", "Contact") ?>
-          <!-- navbar "buttons" (anchor tags looking like buttons) -->
+           <li class="nav-item w-fit">
+            <?= headerNavLink("index.php", "Acceuil") ?>
+           </li>
+           <li class="nav-item w-fit">
+            <?= headerNavLink("index.php?action=courses", "Cours") ?>
+           </li>
+           <li class="nav-item w-fit">
+            <?= headerNavLink("index.php?action=contact", "Contact") ?>
+           </li>
+          <!-- navbar "buttons" -->
           <?php if ($isClientConnected): ?>
             <li class="nav-item">
               <?= $quotationButton ?>

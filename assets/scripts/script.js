@@ -1,4 +1,4 @@
-/* handling switch between light/dark mode */
+/* handling light/dark mode switch */
 function setTheme(theme) {
   localStorage.setItem("theme", theme);
   document.querySelector("body").setAttribute("data-bs-theme", theme);
@@ -41,7 +41,8 @@ setThemeToggleIcon();
 // toggle theme when URL contains "theme=toggle", then remove it from the URL
 const searchParams = new URLSearchParams(window.location.search);
 if (searchParams.get("theme") === "toggle") {
+  let url = (window.location.href).replace(/(\?|&)theme=toggle/, "");
   toggleTheme();
   setThemeToggleIcon();
-  window.location.replace("index.php");
+  window.location.replace(url);
 }

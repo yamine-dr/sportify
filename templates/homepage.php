@@ -1,22 +1,32 @@
 <?php
 $title = "Sportify";
+require_once("templates/ui/text.php");
 require_once("templates/ui/buttons.php");
+
+$checkIconSvg = <<<HTML
+  <svg class="text-success" width="1.5rem" height="1.5rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" lc-helper="svg-icon">
+      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+      <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"></path>
+  </svg>
+HTML;
+$starIconSvg = <<<HTML
+  <svg class="text-success" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" lc-helper="svg-icon">
+    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+  </svg>
+HTML;
 
 $testimonials = [
     [
-        "imageSrc" => "assets/images/homepage-testimonials-woman.jpg",
-        "clientName" => "Joumana Brahmi",
-        "clientTestimonial" => "Je conseille fortement !",
+        "name" => "Joumana Brahmi",
+        "content" => "Je conseille fortement !",
     ],
     [
-        "imageSrc" => "assets/images/homepage-testimonials-man.jpg",
-        "clientName" => "Ryad Bekheira",
-        "clientTestimonial" => "Les séances sont très amusantes, c'est très bien organisé.",
+        "name" => "Ryad Bekheira",
+        "content" => "Les séances sont très amusantes, c'est très bien organisé.",
     ],
     [
-        "imageSrc" => "assets/images/homepage-testimonials-man.jpg",
-        "clientName" => "Yamine Daroueche",
-        "clientTestimonial" => "Des supers coachs !",
+        "name" => "Yamine Daroueche",
+        "content" => "Des supers coachs !",
     ],
 ];
 ?>
@@ -26,11 +36,7 @@ $testimonials = [
     <!-- HERO SECTION -->
     <section class="d-flex-center px-5 w-100 h-550px">
       <div class="d-flex-col gap-4">
-        <h1 class="text-center">
-          Le sport,</br>
-          à Limoges,</br>
-          comme vous l'aimez!
-        </h1>
+        <?= h(1, "Le sport,</br> à Limoges,</br> comme vous l'aimez!") ?>
         <div class="<?= $_SESSION["isClientConnected"] ? "d-none" : "" ?> w-fit">
           <?= $signupButton ?>
         </div>
@@ -38,9 +44,9 @@ $testimonials = [
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="d-flex-col gap-5 px-5 w-100">
+    <section class="d-flex-col gap-4 px-5 w-100">
       <div class="row align-items-md-center">
-        <h2 class="text-center">&#193; propos de Sportify</h2>
+        <?= h(2, "&#193; propos de Sportify") ?>
       </div>
       <div class="row align-items-md-center">
           <!-- mission statement and stats -->
@@ -113,164 +119,120 @@ $testimonials = [
       </div>
     </section>
 
-      <!-- FEATURES SECTION -->
-      <section id="features" class="container mb-5 py-4 py-lg-6">
-          <div class="row align-items-center">
-              <!-- LEFT COLUMN -->
-              <div class="col-lg-6 mb-5 mb-lg-0">
-                  <div class="px-4 d-flex flex-column align-items-center gap-3">
-                      <img class="d-block position-relative img-fluid rounded-3" src="assets/images/homepage-features1.jpg" alt="Une salle de sport avec des tapis de course" loading="lazy">
-                      <img class="d-none d-lg-block position-relative img-fluid rounded-3" src="assets/images/homepage-features2.jpg" alt="" loading="lazy">
-                  </div>
-              </div>
-              <!-- RIGHT COLUMN -->
-              <div class="col-lg-6">
-                  <div class="mb-4 text-center text-lg-start">
-                      <h2 class="mb-4 fw-bold display-5">Une salle de sport bien équipée</h2>
-                      <p class="lead text-muted">
-                          Chez Sportify, nous utilisons des appareils de musculation derniers cris. 
-                      </p>
-                  </div>
+    <!-- FEATURES SECTION -->
+    <section class="d-flex-center max-lg:d-flex-col gap-4 px-5 w-100">
+      <!-- image(s) -->
+      <div class="d-flex-col gap-4 w-35 max-lg:w-75">
+        <img
+          class="d-none d-lg-block position-relative img-fluid w-fit rounded-3"
+          src="assets/images/homepage-features1.jpg"
+          alt="Une salle de sport avec des tapis de course"
+          loading="lazy"
+        >
+        <img
+          class="d-block position-relative img-fluid w-fit rounded-3"
+          src="assets/images/homepage-features2.jpg"
+          alt=""
+          loading="lazy"
+        >
+      </div>
+      <!-- text -->
+      <div class="col-lg-6 d-flex-col gap-3">
+        <div class="text-center text-lg-start">
+          <?= h(2, "Une salle de sport bien équipée") ?>
+          <p class="mt-3">
+            Chez Sportify, nous utilisons des appareils de musculation derniers cris. 
+          </p>
+        </div>
 
-                  <div class="mb-3 d-flex justify-content-center justify-content-lg-start">
-                      <div class="d-inline-flex">
-                          <div>
-                              <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" lc-helper="svg-icon" class="text-success">
-                                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                                  <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"></path>
-                              </svg>
-                          </div>
+        <div class="d-flex justify-content-center justify-content-lg-start w-100">
+          <div class="d-inline-flex gap-2">
+            <?= $checkIconSvg ?>
+            <p>Salles climatisées</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center justify-content-lg-start w-100">
+          <div class="d-inline-flex gap-2">
+            <?= $checkIconSvg ?>
+            <p>Ouverture 7/7J, 6 h - 22 h</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center justify-content-lg-start w-100">
+          <div class="d-inline-flex gap-2">
+            <?= $checkIconSvg ?>
+            <p>Parkings sécurisés</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                          <div class="ms-2 align-self-center">
-                              <p>Salles climatisées</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="mb-3 d-flex justify-content-center justify-content-lg-start">
-                      <div class="d-inline-flex">
-                          <div>
-                              <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" lc-helper="svg-icon" class="text-success">
-                                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                                  <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"></path>
-                              </svg>
-                          </div>
-
-                          <div class="ms-2 align-self-center">
-                              <p>Ouverture 7/7J, 6 h - 22 h</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="mb-3 d-flex justify-content-center justify-content-lg-start">
-                      <div class="d-inline-flex">
-                          <div>
-                              <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" lc-helper="svg-icon" class="text-success">
-                                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                                  <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"></path>
-                              </svg>
-                          </div>
-
-                          <div class="ms-2 align-self-center">
-                              <p>Parkings sécurisés</p>
-                          </div>
-                      </div>
-                  </div>
+    <!-- TESTIMONIALS SECTION -->
+    <section class="d-flex-col gap-4 px-5 w-100">
+      <!-- Testimonials section title -->
+      <div class="text-center">
+        <?= h(2, "Validé par nos adhérents") ?>
+        <p>Voilà ce que nos clients disent de nous.</p>
+      </div>
+      <!-- testimonials cards -->
+      <div class="d-flex-center flex-wrap justify-content-center gap-3">
+        <?php for ($i=0; $i < count($testimonials); $i++): ?>
+          <div class="card w-max-250px shadow">
+            <div class="card-body">
+              <?= h(5, $testimonials[$i]["name"]) ?>
+              <p><?= $testimonials[$i]["content"] ?></p>
+              <div>
+                <?php for ($j=0; $j < 5; $j++) { echo $starIconSvg; } ?>
               </div>
+            </div>
           </div>
-      </section>
-
-      <!-- TESTIMONIALS SECTION -->
-      <section class="container mb-5 py-5">
-          <!-- Testimonials section title -->
-          <div class="row mb-4">
-              <div class="col-md-12 text-center">
-                  <div>
-                      <h2 class="fw-bold display-5">Validé par nos adhérents</h2>
-                      <p>Voilà ce que nos clients disent de nous.</p>
-                  </div>
-              </div>
+        <?php endfor; ?>
+      </div>
+    </section>
+    
+    <!-- PRICING SECTION -->
+    <section class="d-flex-col gap-4 px-5 w-100">
+      <div class="text-center">
+        <?= h(2, "Tarifs") ?>
+        <p>Nous proposons différents services selon vos besoin.</p>
+      </div>
+      <!-- pricing cards -->
+      <div class="row gap-3 w-100 text-center">
+        <!-- card 1 -->
+        <div class="card col p-0">
+          <div class="card-header d-flex-center p-0 pt-1">
+            <?= h(4, "Basique") ?>
           </div>
-          <div class="row justify-content-center">
-              <!-- testimonial cards -->
-              <?php for ($i=0; $i < 3; $i++): ?>
-                  <div class="col-md-6 col-lg-4 mb-4">
-                      <div class="card border-0 shadow">
-                          <div class="card-body py-4">
-                              <div class="d-flex">
-                                  <img
-                                  src="<?= $testimonials[$i]["imageSrc"] ?>"
-                                  alt=""
-                                  class="testimonial-headshot rounded-2 shadow"
-                                  >
-                                  <div class="ps-2">
-                                      <h4 class="ms-2"><?= $testimonials[$i]["clientName"] ?></h4>
-                                  </div>
-                              </div>
-                              <div class="mt-4 text-muted">
-                                  <div>
-                                      <p><?= $testimonials[$i]["clientTestimonial"] ?></p>
-                                  </div>
-                              </div>
-                              <div class="rating mt-3 text-success">
-                                  <div>
-                                      <?php for ($j=0; $j < 5; $j++): ?>
-                                          <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" lc-helper="svg-icon">
-                                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-                                          </svg>
-                                      <?php endfor; ?>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              <?php endfor; ?>
+          <div class="card-body p-2">
+            <p class="card-title display-6 fw-semibold">
+              25€ <small class="text-muted fs-3">/ mois</small>
+            </p>
+            <ul class="d-flex-col gap-1 list-unstyled">
+              <li>- Bénifice 1</li>
+              <li>- Bénifice 2</li>
+              <li>- Bénifice 3</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-primary">Souscrire</button>
           </div>
-      </section>
-      
-      <!-- PRICING SECTION -->
-      <section class="container mb-5 py-4">
-          <div class="row">
-              <div class="col-md-12 text-center">
-                  <div class="mb-4">
-                      <h2 class="fw-bold display-5 mb-0">Tarifs</h2>
-                      <p> 
-                          Services basique.
-                      </p>
-                  </div>
-              </div>
+        </div>
+        <!-- card 2 -->
+        <div class="card col p-0">
+          <div class="card-header d-flex-center p-0 pt-1">
+            <?= h(4, "Premium") ?>
           </div>
-          <div class="row mt-4 justify-content-center align-items-center">
-              <!-- LEFT PRICING (Basique) -->
-              <div class="text-center col-md-6 py-5 bg-body-secondary">
-                  <div>
-                      <h3><strong>Basique</strong></h3>
-                  </div>
-                  <div>
-                      <h3 class="display-3 mb-0">25€</h3>
-                      <p>/mois</p>
-                  </div>
-                  <div class="px-4 mb-4">
-                      <p>
-                          Service basique.
-                      </p>
-                  </div>
-              </div>
-              <!-- RIGHT PRICING (Premium) -->
-              <div class="text-center col-md-6 py-5 bg-body-tertiary border border-1 border-success shadow-lg">
-                  <div>
-                      <h3><strong>Premium</strong></h3>
-                  </div>
-                  <div>
-                      <h3 class="display-3 mb-0">50€</h3>
-                      <p>/mois</p>
-                  </div>
-                  <div class="px-4 mb-4">
-                      <p>
-                          Service premium.
-                      </p>
-                  </div>
-              </div>
+          <div class="card-body p-2">
+            <p class="card-title display-6 fw-semibold">
+              40€ <small class="text-muted fs-3">/ mois</small>
+            </p>
+            <ul class="d-flex-col gap-1 list-unstyled">
+              <li>- Bénifice 1</li>
+              <li>- Bénifice 2</li>
+              <li>- Bénifice 3</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-primary">Souscrire</button>
           </div>
-      </section>
+        </div>
+      </div>
+    </section>
   </main>
 <?php $content = ob_get_clean(); ?>
 
