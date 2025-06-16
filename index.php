@@ -2,8 +2,6 @@
 
 session_start();
 
-// $env = parse_ini_file(".env");
-
 require_once("src/controllers/homepage.php");
 require_once("src/controllers/auth/signup.php");
 require_once("src/controllers/auth/signin.php");

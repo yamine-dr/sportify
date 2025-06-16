@@ -24,19 +24,20 @@ require_once("templates/ui/text.php");
         Sportify
       </a>
 
-      <!-- theme toggle "button" (anchor tag looking like a button) -->
-      <a
+      <!-- theme toggle button -->
+      <button
         id="themeToggler"
-        href="<?=
-          (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] !== '') ?
+        type="button"
+        class="btn d-none d-lg-inline ms-2 me-auto border-0"
+        <?php
+          $themeToggleUrl = (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] !== '') ?
             (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . 
             '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "&theme=toggle"
           :
             parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "?theme=toggle"
-        ?>"
-        role="button"
-        class="btn d-lg-inline d-none ms-2 me-auto border-0"
-      ></a>
+        ?>
+        onclick="window.location.href='<?= $themeToggleUrl ?>'"
+      ></button>
 
       <!-- navbar menu toggle button -->
       <button

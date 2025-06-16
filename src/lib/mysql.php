@@ -2,16 +2,25 @@
 
 namespace App\Lib\MySQL;
 
+$env = parse_ini_file(".env");
+
 class Server {
     // connection infos
-    private string $host = "localhost";
-    private string $username = "yamibldv_portfolio_sportify_user";
-    private string $password = "k}(z#5#sLc+q";
-    private string $dbName = "yamibldv_portfolio_sportify";
+    private string $host;
+    private string $username;
+    private string $password;
+    private string $dbName;
     // server connection
     private ?\PDO $connection;
     
     function __construct() {
+        global $env;
+        // initialise connection infos
+        $this->host = $env["HOST"];
+        $this->username = $env["DB_USER_NAME"];
+        $this->password = $env["DB_USER_PASS"];
+        $this->dbName = $env["DB_NAME"];
+
         // initialise server connection
         $this->connection = new \PDO(
             "mysql:host={$this->host};charset=utf8",
