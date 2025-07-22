@@ -7,7 +7,6 @@ require_once("templates/ui/text.php");
   - $courses (array), with the following keys for each course: 
     ["id", "title", "coach", "duration", "nbPlacesRemaining", "hasLevels"]
 */
-$isConnected = true;
 ?>
 
 <?php ob_start(); ?>
