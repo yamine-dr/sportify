@@ -1,65 +1,71 @@
-<?php $title = "Sportify - Cours"; ?>
-
 <?php
-// variables from the controller:
-// - $isConnected (boolean): if the user is connected
-// - $courses (array)
+$title = "Sportify - Cours";
+require_once("templates/ui/text.php");
+
+/* variables from the controller:
+  - $isConnected (boolean): if the user is connected
+  - $courses (array), with the following keys for each course: 
+    ["id", "title", "coach", "duration", "nbPlacesRemaining", "hasLevels"]
+*/
+$isConnected = true;
 ?>
 
 <?php ob_start(); ?>
-    <main id="courses" class="mt-5">
-        <h1 class="mb-4 text-center">Cours</h1>
+  <main id="courses" class="d-flex-col gap-2">
+    <?= h(1, "Cours") ?>
 
-        <div class="container mb-5">
-            <!-- courses grid -->
-            <div class="mb-5 row justify-content-center align-items-center align-items-md-stretch gap-5">
-                <?php foreach ($courses as $course): ?>
-                    <div class="col-12 col-lg-3 d-flex justify-content-center text-center">
-                        <div class="col-9 col-lg-12 card course-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-uppercase"><?= $course["title"] ?></h5>
-                                <div class="card-text my-3">
-                                    <ul class="text-start">
-                                        <li>Coach : <?= $course["coach"] ?></li>
-                                        <li>Durée : <?= $course["duration"] ? $course["duration"] : "variable" ?></li>
-                                        <?php if ($course["nbPlacesRemaining"] > 0): ?>
-                                            <li class="places-remaining">
-                                                <?= $course["nbPlacesRemaining"] ?> places disponibles
-                                            </li>
-                                        <?php else: ?>
-                                            <li class="places-remaining text-danger">COMPLET</li>
-                                        <?php endif; ?>
-                                    </ul>
-                                </div>
-                                <?php if ($isConnected): ?>
-                                    <?php if ($course["nbPlacesRemaining"] > 0): ?>
-                                        <a
-                                        href="index.php?action=course-registration&course=<?= str_replace(' ', '-', $course["title"]) ?>"
-                                        class="btn btn-primary"
-                                        role="button"
-                                        > 
-                                            Réserver 
-                                        </a>
-                                    <?php else: ?>
-                                        <button class="btn btn-primary" disabled> 
-                                            Réserver 
-                                        </button>
-                                    <?php endif; ?>
-                                <?php else: ?>
-                                    <div class="mb-3 small alert alert-danger">
-                                        Connectez vous d'abord pour vous inscrire
-                                    </div>
-                                    <a href="index.php?action=signin" class="btn btn-primary" role="button">
-                                        Connexion
-                                    </a>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+    <?php if (!$isConnected): ?>
+      <div class="h6 alert alert-danger text-center w-fit">
+        Connectez vous d'abord pour vous inscrire
+      </div>
+    <?php endif; ?>
+
+    <!-- courses grid -->
+    <div class="row w-100 gap-4 justify-content-center align-items-stretch text-center">
+      <?php foreach ($courses as $course): ?>
+        <div class="col-8 col-md-5 col-lg-3 card px-0 pb-3 justify-content-between align-items-center">
+          <h5 class="card-title p-1 w-100 text-uppercase bg-body-secondary rounded-top-2">
+            <?= $course["title"] ?>
+          </h5>
+
+          <ul class="list-unstyled">
+            <li>- Coach : <?= $course["coach"] ?></li>
+            <?= $course["duration"] ? "<li>- Durée : {$course["duration"]}</li>" : "" ?>
+            <!-- places remaining -->
+            <?php if ($course["nbPlacesRemaining"] > 0): ?>
+              <li class="text-success">
+                - <?= $course["nbPlacesRemaining"] ?> places disponibles
+              </li>
+            <?php else: ?>
+              <li class="text-danger">COMPLET</li>
+            <?php endif; ?>
+          </ul>
+
+          <!-- course registration button -->
+          <?php if ($isConnected && $course["nbPlacesRemaining"] > 0): ?>
+            <button
+            class="btn btn-primary w-fit"
+            <?php /* Link of course registration: index.php?action=course-registration&course=<?= str_replace(' ', '-', $course["title"])?> */ ?>
+            onclick="<?php
+              $courseRegistrationUrl = "index.php?action=course-registration&course=" 
+                . str_replace(' ', '-', $course["title"]);
+              echo "window.location.href ='{$courseRegistrationUrl}'";
+            ?>"
+            > 
+              Réserver 
+            </button>
+          <?php else: ?>
+            <button
+              class="btn btn-primary w-fit"
+              onclick="alert('Connectez vous d\'abord pour vous inscrire');"
+            > 
+              Réserver 
+            </button>
+          <?php endif; ?>
         </div>
-    </main>
+      <?php endforeach; ?>
+    </div>
+  </main>
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once("templates/layout/layout.php"); ?>

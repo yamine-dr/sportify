@@ -75,12 +75,16 @@ main { margin-top: 103px; } /* for the fixed navbar */
   
   .max-lg\:p-3 { padding: 1rem !important; }
 
+  .max-lg\:w-50 { width: 50% !important; }
   .max-lg\:w-75 { width: 75% !important; }
+}
+
+@media (min-width: 992px /* lg */) {
 }
 
 /* Sizing */
 .w-fit { width: fit-content; }
-.w-35 { width: 40%; }
+.w-35 { width: 35%; }
 .w-max-250px { max-width: 350px; }
 
 .h-fit { height: fit-content; }
@@ -135,20 +139,11 @@ main { margin-top: 103px; } /* for the fixed navbar */
 
 /* courses.php */
 #courses {
-    & .course-card {
-        color: #fff;
-        background-color: var(--color-bg);
-    }
-    
     & .course-img {
         aspect-ratio: 1/1;
         height: 160px;
         background-size: cover;
         background-position: center;
-    }
-    
-    & .places-remaining {
-        color: var(--green-100);
     }
 }
 

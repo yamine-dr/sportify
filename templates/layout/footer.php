@@ -6,7 +6,7 @@ require_once("templates/ui/text.php");
     <p class="m-0 p-2 text-body-secondary">
       &copy;
       <a
-        href="https://yaminedaroueche.com/portfolio"
+        href="https://yaminedaroueche.com"
         target="_blank"
         rel="noopener noreferrer"
         class="text-body-secondary"

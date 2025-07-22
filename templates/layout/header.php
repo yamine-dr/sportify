@@ -3,6 +3,7 @@ $isClientConnected = isset($_SESSION["client"]);
 
 require_once("templates/ui/buttons.php");
 require_once("templates/ui/text.php");
+require_once("templates/ui/icons.php");
 ?>
 
 <header class="position-fixed top-0 z-1 w-100">
@@ -38,6 +39,16 @@ require_once("templates/ui/text.php");
         ?>
         onclick="window.location.href='<?= $themeToggleUrl ?>'"
       ></button>
+
+      <a
+        class="text-white"
+        href="https://github.com/yamine-dr/sportify"
+        title="GitHub repo du site"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <?= $GitHubIcon ?>
+      </a>
 
       <!-- navbar menu toggle button -->
       <button

@@ -86,6 +86,6 @@ try {
     } else {    
         (new Homepage())->display($isClientConnected);
     }
-} catch (Exception $error) {
-    die($error->getMessage());
+} catch (Exception $e) {
+    die($e->getMessage());
 }
