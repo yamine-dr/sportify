@@ -1,43 +1,84 @@
-<?php $title = "Sportify - Inscription"; ?>
+<?php
+$title = "Sportify - Inscription";
+require_once("templates/ui/text.php");
+require_once("templates/ui/icons.php");
+
+$formInputs = [
+	[
+		"type" => "text",
+		"id" => "firstname",
+		"label" => "Prénom"
+	],
+	[
+		"type" => "text",
+		"id" => "lastname",
+		"label" => "Nom"
+	],
+	[
+		"type" => "email",
+		"id" => "mail",
+		"label" => "Email"
+	],
+	[
+		"type" => "password",
+		"id" => "password",
+		"label" => "Mot de passe"
+	]
+];
+?>
 
 <?php ob_start(); ?>
-	<main id="signup" class="container col-xl-10 col-xxl-8 px-4 py-5">
-		<div class="row align-items-center g-lg-5 py-5">
+	<main id="signup">
+		<div class="row align-items-center p-5">
 			<!-- TITLE PART -->
-			<div class="col-lg-7 text-center text-lg-start">
-				<h1 class="display-4 fw-bold lh-1 mb-3">
-					<img src="assets/images/logo.png" alt="logo de Sportify" id="logo" class="d-inline-block">
-					Sportify
-				</h1>
-				<p class="col-lg-10 fs-4">Le meilleur du sport à Limoges !</p>
+			<div class="col-lg-7">
+				<div class="d-flex gap-1 justify-content-center justify-content-lg-start align-items-center">
+					<?= $SportifyIcon ?>
+					<?= h(1, "Sportify") ?>
+				</div>
+				<p class=" display-6 text-center text-lg-start">Le meilleur du sport à Limoges !</p>
 			</div>
+
 			<!-- FORM PART -->
-			<div class="col-md-10 mx-auto col-lg-5">
+			<div class="col-md-10 col-lg-5">
 				<div class="p-4 p-md-5 border rounded-3 bg-body-secondary">
 					<?php if (!isset($_GET["outcome"])): // display form if not submitted yet ?>
+
 						<!-- FORM -->
 						<form method="POST" action="index.php?action=signup&form=completed">
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" name="firstname" id="firstname" placeholder="" required>
-								<label for="firstname">Prénom</label>
+							<?php foreach ($formInputs as $input): ?>
+								<div class="form-floating mb-3">
+									<input
+										type="<?= $input["type"] ?>"
+										class="form-control"
+										name="<?= $input["id"] ?>"
+										id="<?= $input["id"] ?>"
+										placeholder=""
+										required
+									>
+									<label for="<?= $input["id"] ?>">
+										<?= $input["label"] ?><span style="color:#dc3545;">*</span>
+									</label>
+								</div>
+							<?php endforeach; ?>
+
+							<div class="form-check mb-3">
+								<input type="checkbox" class="form-check-input" id="terms-of-use" checked required>
+								<label class="form-check-label" for="terms-of-use">J'accepte les conditions d'utilisation</label>
 							</div>
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" name="lastname" id="lastname" placeholder="" required>
-								<label for="lastname" class="">Nom</label>
-							</div>
-							<div class="form-floating mb-3">
-								<input type="email" class="form-control" name="mail" id="mail" placeholder="jaime@sportify.com" required>
-								<label for="mail">Email</label>
-							</div>
-							<div class="form-floating mb-3">
-								<input type="password" class="form-control" name="password" id="password" placeholder="" required>
-								<label for="password">Mot de passe</label>
-							</div>
+							
 							<button class="w-100 btn btn-lg btn-primary" type="submit">Inscription</button>
-							<hr class="my-4">
-							<small class="text-muted">En cliquant sur "Inscription", vous acceptez les conditions d'utilisation.</small>
 						</form>
+						
+						<hr class="my-4">
+						
+						<div>
+							<small>Vous avez un compte ?</small>
+							<a href="index.php?action=signin" class="fw-semibold">Connexion</a>
+						</div>
+
 					<?php else: // display outcome if form submitted ?>
+
 						<?php
 						switch (htmlspecialchars($_GET["outcome"])) {
 							case "success":
@@ -67,6 +108,7 @@
 								break;
 						}	
 						?>
+						
 					<?php endif; ?>
 				</div>
 			</div>

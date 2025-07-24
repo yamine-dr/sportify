@@ -1,10 +1,10 @@
 <?php
-$title = "Sportify - Cours";
+$title = "Cours - Sportify";
 require_once("templates/ui/text.php");
 
 /* variables from the controller:
-  - $isConnected (boolean): if the user is connected
-  - $courses (array), with the following keys for each course: 
+  - bool $isConnected: if the user is connected
+  - array $courses (with the following keys for each course): 
     ["id", "title", "coach", "duration", "nbPlacesRemaining", "hasLevels"]
 */
 ?>

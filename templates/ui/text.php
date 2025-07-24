@@ -15,9 +15,15 @@ function h(int $headingLevel, string $innerText): string {
     
     case 2:
       $heading = "
-        <h2 class=\"display-5 fw-bold\">
+        <h2 class=\"display-2 fw-bold\">
           {$innerText}
         </h2>
+      ";
+      break;
+    
+    case 3:
+      $heading = "
+        <h3>{$innerText}</h3>
       ";
       break;
     

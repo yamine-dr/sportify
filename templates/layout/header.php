@@ -6,7 +6,7 @@ require_once("templates/ui/text.php");
 require_once("templates/ui/icons.php");
 ?>
 
-<header class="position-fixed top-0 z-1 w-100">
+<header class="position-fixed top-0 z-3 w-100">
   <nav class="navbar navbar-expand-lg py-3 bg-green-400 shadow-sm">
     <div class="container-xxl">
       <!-- Navbar logo -->

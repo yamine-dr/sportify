@@ -1,40 +1,69 @@
-<?php $title = "Sportify - connexion"; ?>
+<?php
+$title = "Sportify - connexion";
+require_once("templates/ui/text.php");
+require_once("templates/ui/icons.php");
+
+$formInputs = [
+	[
+		"type" => "email",
+		"id" => "mail",
+		"label" => "Email"
+	],
+	[
+		"type" => "password",
+		"id" => "password",
+		"label" => "Mot de passe"
+	]
+];
+?>
 
 <?php ob_start(); ?>
 	<main id="signin" class="container col-xl-10 col-xxl-8 px-4 py-5">
 		<div class="row align-items-center g-lg-5 py-5">
 			<!-- TITLE PART -->
-			<div class="col-lg-7 text-center text-lg-start">
-				<h1 class="display-4 fw-bold lh-1 mb-3">
-					<img src="assets/images/logo.png" alt="logo de Sportify" id="logo" class="d-inline-block">
-					Sportify
-				</h1>
-				<p class="col-lg-10 fs-4">Le meilleur du sport à Limoges !</p>
+			<div class="col-lg-7">
+				<div class="d-flex gap-1 justify-content-center justify-content-lg-start align-items-center">
+					<?= $SportifyIcon ?>
+					<?= h(1, "Sportify") ?>
+				</div>
+				<p class=" display-6 text-center text-lg-start">Le meilleur du sport à Limoges !</p>
 			</div>
+
 			<!-- FORM PART -->
-			<div class="col-md-10 mx-auto col-lg-5">
+			<div class="col-md-10 col-lg-5">
 				<div class="p-4 p-md-5 border rounded-3 bg-body-secondary">
 					<?php if (!isset($_GET["outcome"])): // display form if not submitted yet ?>
+
 						<!-- FORM -->
 						<form method="POST" action="index.php?action=signin&form=completed">
-							<div class="form-floating mb-3">
-								<input type="email" class="form-control" name="mail" id="mail" placeholder="jaime@sportify.com" required>
-								<label for="mail">Email</label>
-							</div>
-							<div class="form-floating mb-3">
-								<input type="password" class="form-control" name="password" id="password" placeholder="" required>
-								<label for="password">Mot de passe</label>
-							</div>
+							<?php foreach ($formInputs as $input): ?>
+								<div class="form-floating mb-3">
+									<input
+										type="<?= $input["type"] ?>"
+										class="form-control"
+										name="<?= $input["id"] ?>"
+										id="<?= $input["id"] ?>"
+										placeholder=""
+										required
+									>
+									<label for="<?= $input["id"] ?>">
+										<?= $input["label"] ?><span style="color:#dc3545;">*</span>
+									</label>
+								</div>
+							<?php endforeach; ?>
+							
 							<button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
 						</form>
-						
+
 						<hr class="my-4">
 
 						<div>
 							<small>Pas de compte ?</small>
-							<a href="index.php?action=signup" class="text-primary text-sm fw-semibold">Inscription</a>
+							<a href="index.php?action=signup" class="fw-semibold">Inscription</a>
 						</div>
+
 					<?php else: // display outcome if form submitted ?>
+
 						<?php
 						switch (htmlspecialchars($_GET["outcome"])) {
 							case "success":
@@ -53,7 +82,7 @@
 								echo(
 									<<<HTML
 										<div class="alert alert-danger text-center"> 
-											Erreur : e-mail et/ou mot de passe incorrects,
+											Erreur : e-mail et/ou mot de passe incorrect(s),
 											<br> veuillez réessayer
 										</div>
 										<a href="index.php?action=signin" class="btn btn-primary w-100" role="button"> 
@@ -64,6 +93,7 @@
 								break;
 						}	
 						?>
+						
 					<?php endif; ?>
 				</div>
 			</div>

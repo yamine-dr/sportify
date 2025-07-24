@@ -98,15 +98,6 @@ main { margin-top: 103px; } /* for the fixed navbar */
 /* Text */
 .fw-900 { font-weight: 900; }
 
-/* Buttons */
-.btn-cta {
-  letter-spacing: 1px;
-  background-color: var(--green-200);
-  &:hover {
-    background-color: var(--green-200);
-  }
-}
-
 /* Hover animations */
 .hover\:text-underline {
   text-decoration: none;
@@ -122,30 +113,6 @@ main { margin-top: 103px; } /* for the fixed navbar */
   }
 }
 /* END BOOTSTRAP-LIKE CLASSES */
-
-/* signup.php */
-#signup {
-    & #logo {
-        width: 10%;
-    }
-}
-
-/* signin.php */
-#signin {
-    & #logo {
-        width: 10%;
-    }
-}
-
-/* courses.php */
-#courses {
-    & .course-img {
-        aspect-ratio: 1/1;
-        height: 160px;
-        background-size: cover;
-        background-position: center;
-    }
-}
 
 /* contact.php */
 #contact {

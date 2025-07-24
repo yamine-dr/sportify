@@ -5,7 +5,8 @@ function button(string $url, string $innerText): string {
     <button
       onclick=\"window.location.href='{$url}'\"
       type=\"button\"
-      class=\"btn btn-cta d-flex-center px-2 h-100 text-light fs-4 fw-bold hover:scale\"
+      class=\"btn bg-green-200 d-flex-center px-2 h-100 text-light fs-4 fw-bold\"
+      style=\"letter-spacing: 1px; --bs-btn-hover-bg: var(--green-200);\"
     >{$innerText}</button>
   ");
 }

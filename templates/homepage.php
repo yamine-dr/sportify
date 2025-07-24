@@ -4,6 +4,10 @@ require_once("templates/ui/text.php");
 require_once("templates/ui/buttons.php");
 require_once("templates/ui/icons.php");
 
+/* variable from the controller:
+  - bool $isConnected: if the user is connected
+*/
+
 $testimonials = [
   [
     "name" => "Joumana Brahmi",
